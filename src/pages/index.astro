@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: "E-commerce Platform API",
+    date: "Mar 2024",
+    company: "Freelance",
+    tags: ["Node.js", "PostgreSQL", "REST API", "Docker"],
+  },
+  {
+    title: "Real-time Analytics Dashboard",
+    date: "Sep 2023",
+    company: "TechCorp Barcelona",
+    tags: ["TypeScript", "WebSocket", "React", "Redis"],
+  },
+  {
+    title: "Auth & User Management Service",
+    date: "Jan 2023",
+    company: "Startup Project",
+    tags: ["Go", "JWT", "PostgreSQL", "Kubernetes"],
+  },
+];
+---
+
+<Layout title="Sergi Rodriguez — Full Stack Developer">
+  <main class="max-w-4xl mx-auto px-4 py-16 sm:px-6">
+
+    <section>
+      <h1 class="text-4xl md:text-5xl font-bold text-(--primary)">Sergi Rodriguez</h1>
+      <p class="mt-4 max-w-2xl leading-relaxed text-(--text-color)/80">
+        A Full Stack Backend Developer based in Barcelona. Meticulous web developer with over 2 years
+        of front end experience and passion for responsive and mobile-first website design.
+      </p>
+    </section>
+
+    <section class="mt-20">
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-(--primary)/70 mb-6">
+        Highlighted Projects
+      </h2>
+      <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <li class="rounded-lg border border-(--border-color) bg-white/5 p-5 hover:border-(--primary)/40 transition-colors">
+            <div class="flex items-start justify-between gap-2">
+              <h3 class="font-semibold text-(--text-color)">{project.title}</h3>
+              <span class="text-sm text-(--text-color)/50 shrink-0 whitespace-nowrap">{project.date}</span>
+            </div>
+            <p class="mt-1 text-sm text-(--primary)">{project.company}</p>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <li>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-(--primary)/10 text-(--primary) border border-(--primary)/20">
+                    {tag}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+  </main>
+</Layout>

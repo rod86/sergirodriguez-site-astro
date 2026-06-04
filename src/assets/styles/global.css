@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --background-color: #20262e;
+  --primary: #66e197;
+  --secondary: #66e197;
+  --text-color: #ceced0;
+  --border-color: #2f4050;
+}
+
+body {
+  @apply bg-(--background-color) text-(--text-color);
+}
+
+/* font: questrial, arial */
