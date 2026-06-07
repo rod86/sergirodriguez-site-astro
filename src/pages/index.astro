@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/img/hero-img.svg';
+import projectImg from '../assets/img/alzamora.jpg';
 
 const projects = [
   {
@@ -20,45 +23,173 @@ const projects = [
     company: "Startup Project",
     tags: ["Go", "JWT", "PostgreSQL", "Kubernetes"],
   },
+  {
+    title: "Microservices Architecture Migration",
+    date: "Nov 2022",
+    company: null,
+    tags: ["Docker", "Kubernetes", "Node.js", "MongoDB"],
+  }
 ];
 ---
 
-<Layout title="Sergi Rodriguez — Full Stack Developer">
-  <main class="max-w-4xl mx-auto px-4 py-16 sm:px-6">
-
-    <section>
-      <h1 class="text-4xl md:text-5xl font-bold text-(--primary)">Sergi Rodriguez</h1>
-      <p class="mt-4 max-w-2xl leading-relaxed text-(--text-color)/80">
-        A Full Stack Backend Developer based in Barcelona. Meticulous web developer with over 2 years
-        of front end experience and passion for responsive and mobile-first website design.
-      </p>
+<Layout title="Home">
+  <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-16">
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-5xl font-bold text-foreground leading-tight mb-6">
+          I am a <br/><span class="text-primary">Full Stack Developer</span><br/>
+        </h1>
+        <p class="text-muted text-base leading-relaxed max-w-lg mb-10">
+          With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
+          I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
+          I care deeply about clean code, thoughtful architecture, and shipping things that last.
+        </p>
+        <div class="flex flex-wrap justify-center">
+          <a href="#about" class="btn-primary">
+            About Me
+          </a>
+        </div>
+        
+      </div>
+      <div class="flex-1 flex justify-center">
+        <Image src={heroImg} alt="Developer illustration" class="w-full max-w-md" />
+      </div>
     </section>
 
-    <section class="mt-20">
-      <h2 class="text-xs font-semibold uppercase tracking-widest text-(--primary)/70 mb-6">
-        Highlighted Projects
-      </h2>
-      <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <li class="rounded-lg border border-(--border-color) bg-white/5 p-5 hover:border-(--primary)/40 transition-colors">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-(--text-color)">{project.title}</h3>
-              <span class="text-sm text-(--text-color)/50 shrink-0 whitespace-nowrap">{project.date}</span>
+    <!-- Projects -->
+    <section id="projects" class="mb-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-foreground mb-12">Featured Projects</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Project 1 -->
+          <article class="bg-surface rounded-xl overflow-hidden group flex flex-col">
+            <div class="h-48 overflow-hidden">
+              <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
             </div>
-            <p class="mt-1 text-sm text-(--primary)">{project.company}</p>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <li>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-(--primary)/10 text-(--primary) border border-(--primary)/20">
-                    {tag}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
-    </section>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                E-Commerce Platform
+              </h3>
+              <p class="text-sm text-muted mb-1">December 2013</p>
+              <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
 
-  </main>
+              <div class="flex flex-wrap gap-2 my-3">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
+              </div>
+
+              <div class="mt-auto flex justify-end">
+                <a href="./projects/e-commerce-platform.html" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
+            <div class="h-48 overflow-hidden">
+              <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                E-Commerce Platform
+              </h3>
+              <p class="text-sm text-muted">December 2013</p>
+              <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
+
+              <div class="flex flex-wrap gap-2 mt-3 mb-4">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
+              </div>
+
+              <div class="mt-auto pt-4 flex justify-end">
+                <a href="./projects/e-commerce-platform.html" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
+            <div class="h-48 overflow-hidden">
+              <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                E-Commerce Platform
+              </h3>
+              <p class="text-sm text-muted">December 2013</p>
+              <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
+
+              <div class="flex flex-wrap gap-2 mt-3 mb-4">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
+              </div>
+
+              <div class="mt-auto pt-4 flex justify-end">
+                <a href="./projects/e-commerce-platform.html" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
+            <div class="h-48 overflow-hidden">
+              <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                E-Commerce Platform
+              </h3>
+              <p class="text-sm text-muted">December 2013</p>
+              <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
+
+              <div class="flex flex-wrap gap-2 mt-3 mb-4">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
+              </div>
+
+              <div class="mt-auto pt-4 flex justify-end">
+                <a href="./projects/e-commerce-platform.html" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- View All Projects -->
+        <div class="flex justify-center mt-12">
+          <a href="/projects" class="btn-outline">
+            View All My Projects
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
 </Layout>

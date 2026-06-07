@@ -1,15 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --background-color: #20262e;
-  --primary: #66e197;
-  --secondary: #66e197;
-  --text-color: #ceced0;
-  --border-color: #2f4050;
+  --font-sans: 'DM Sans', sans-serif;
+  --color-background: theme('colors.slate.900');
+  --color-surface: theme('colors.slate.800');
+  --color-primary: theme('colors.emerald.500');
+  --color-primary-bright: theme('colors.emerald.400');
+  --color-foreground: theme('colors.gray.100');
+  --color-muted: theme('colors.gray.400');
+  --color-border: theme('colors.slate.700');
 }
 
-body {
-  @apply bg-(--background-color) text-(--text-color);
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased min-h-screen;
+  }
 }
 
-/* font: questrial, arial */
+@layer components {
+  /*--- Buttons ---*/
+  .btn-primary {
+    @apply bg-primary text-slate-900 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-primary-bright transition-colors duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary px-6 py-3 rounded-xl text-sm font-semibold hover:bg-primary hover:text-slate-900 transition-colors duration-200 inline-flex items-center gap-2;
+  }
+}
