@@ -34,5 +34,13 @@ const projects = [
 ---
 
 <Layout title="Portfolio">
-    <p>portfolio projects here</p>
+    <ul>
+      {projects.map(item => (
+        <li class="mb-4">
+          <a href={`/portfolio/${item.slug}`}>
+            {item.title}
+          </a>
+        </li>
+      ))}
+    </ul>
 </Layout>
