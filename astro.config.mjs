@@ -1,11 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
-import { astroFont } from 'astro-font/integration';
 
 export default defineConfig({
-  integrations: [astroFont()],
+  fonts: [
+      { 
+        provider: fontProviders.google(),
+        name: 'DM Sans',
+        cssVariable: '--font-dm-sans',
+        weights: [300, 400, 600, 700],
+        styles: ['normal', 'italic'],
+        fallbacks: ['sans-serif'],
+        display: 'swap',
+      }
+  ],
   vite: {
     plugins: [tailwindcss()]
   }

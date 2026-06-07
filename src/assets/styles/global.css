@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-dm-sans);
+}
+
 @theme {
-  --font-sans: 'DM Sans', sans-serif;
   --color-background: theme('colors.slate.900');
   --color-surface: theme('colors.slate.800');
   --color-primary: theme('colors.emerald.500');
