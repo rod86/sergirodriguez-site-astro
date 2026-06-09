@@ -1,39 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import heroImg from '@assets/img/hero-img.svg';
-import projectImg from '@assets/img/alzamora.jpg';
+import projectImg from '@assets/img/projects/alzamora.jpg';
 
-const projects = [
-  {
-    title: "E-commerce Platform API",
-    date: "Mar 2024",
-    company: "Freelance",
-    tags: ["Node.js", "PostgreSQL", "REST API", "Docker"],
-    slug: "e-commerce-platform"
-  },
-  {
-    title: "Real-time Analytics Dashboard",
-    date: "Sep 2023",
-    company: "TechCorp Barcelona",
-    tags: ["TypeScript", "WebSocket", "React", "Redis"],
-    slug: "real-time-analytics-dashboard"
-  },
-  {
-    title: "Auth & User Management Service",
-    date: "Jan 2023",
-    company: "Startup Project",
-    tags: ["Go", "JWT", "PostgreSQL", "Kubernetes"],
-    slug: "auth-user-management-service"
-  },
-  {
-    title: "Microservices Architecture Migration",
-    date: "Nov 2022",
-    company: null,
-    tags: ["Docker", "Kubernetes", "Node.js", "MongoDB"],
-    slug: "microservices-architecture-migration"
-  }
+const homeProjects = [
+  'intranet-alzamora',
+  'afmi',
+  'jobboard',
+  'zoobarcelona',
 ];
+const projects = await getCollection('projects', ({ id }) => {
+  return homeProjects.includes(id);
+}) as CollectionEntry<'projects'>[];
 ---
 
 <Layout title="Home">
@@ -53,7 +33,7 @@ const projects = [
             About Me
           </a>
         </div>
-        
+
       </div>
       <div class="flex-1 flex justify-center">
         <Image src={heroImg} alt="Developer illustration" class="w-full max-w-md" />
@@ -65,123 +45,38 @@ const projects = [
       <h2 class="text-3xl font-bold text-foreground mb-12">Featured Projects</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Project 1 -->
-        <article class="bg-surface rounded-xl overflow-hidden group flex flex-col">
-          <div class="h-48 overflow-hidden">
-            <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-              E-Commerce Platform
-            </h3>
-            <p class="text-sm text-muted mb-1">December 2013</p>
-            <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
+        {projects.map(project => (
+          <article class="bg-surface rounded-xl overflow-hidden group flex flex-col">
+            {project.data.image && (
+              <div class="h-48 overflow-hidden">
+                <Image src={project.data.image} alt={`${project.data.title} thumbnail`} class="w-full h-full object-cover"/>
+              </div>
+            )}
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {project.data.title}
+              </h3>
+              <p class="text-sm text-muted mb-1">
+                {project.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+              </p>
 
-            <div class="flex flex-wrap gap-2 my-3">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
+              <div class="flex flex-wrap gap-2 my-3">
+                {project.data.tags.map((tag: string) => (
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">{tag}</span>
+                ))}
+              </div>
+
+              <div class="mt-auto flex justify-end">
+                <a href={`/portfolio/${project.id}`} class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
+                  View Details
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
             </div>
-
-            <div class="mt-auto flex justify-end">
-              <a href="/portfolio/e-commerce-platform" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                View Details
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
-          <div class="h-48 overflow-hidden">
-            <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-              E-Commerce Platform
-            </h3>
-            <p class="text-sm text-muted">December 2013</p>
-            <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
-
-            <div class="flex flex-wrap gap-2 mt-3 mb-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
-            </div>
-
-            <div class="mt-auto pt-4 flex justify-end">
-              <a href="/portfolio/e-commerce-platform" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                View Details
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
-          <div class="h-48 overflow-hidden">
-            <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-              E-Commerce Platform
-            </h3>
-            <p class="text-sm text-muted">December 2013</p>
-            <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
-
-            <div class="flex flex-wrap gap-2 mt-3 mb-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">React</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">Node.js</span>
-            </div>
-
-            <div class="mt-auto pt-4 flex justify-end">
-              <a href="/portfolio/e-commerce-platform" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                View Details
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow group flex flex-col">
-          <div class="h-48 overflow-hidden">
-            <Image src={projectImg} alt="E-Commerce Platform thumbnail" class="w-full h-full object-cover"/>
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-              E-Commerce Platform
-            </h3>
-            <p class="text-sm text-muted">December 2013</p>
-            <p class="text-sm text-muted/70">Working at TechVentures Ltd</p>
-
-            <div class="flex flex-wrap gap-2 mt-3 mb-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">PHP</span>
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">MySQL</span>
-            </div>
-
-            <div class="mt-auto pt-4 flex justify-end">
-              <a href="/portfolio/e-commerce-platform" class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                View Details
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
+          </article>
+        ))}
       </div>
 
       <!-- View All Projects -->
