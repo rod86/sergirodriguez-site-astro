@@ -16,14 +16,14 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans antialiased min-h-screen;
+    @apply bg-background text-foreground font-sans antialiased min-h-screen flex flex-col;
   }
 }
 
 @layer components {
   /*--- Layout ---*/
   .container-wrapper {
-    @apply max-w-6xl mx-auto px-6;
+    @apply py-20 max-w-6xl mx-auto px-6 grow;
   }
 
   /*--- Buttons ---*/
