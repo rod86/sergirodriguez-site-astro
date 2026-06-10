@@ -23,7 +23,7 @@
 @layer components {
   /*--- Layout ---*/
   .container-wrapper {
-    @apply py-20 max-w-6xl mx-auto px-6 grow;
+    @apply max-w-6xl mx-auto w-full px-6;
   }
 
   /*--- Buttons ---*/
