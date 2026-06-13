@@ -36,32 +36,32 @@
     transition: all 0.5s;
   }
 
-  .hamburger-middle { transform: translateY(7px); }
-  .hamburger-bottom { transform: translateY(14px); }
+  .hamburger-middle { 
+    transform: translateY(7px); 
+  }
+  .hamburger-bottom { 
+    transform: translateY(14px); 
+  }
 
-  .open { transform: rotate(90deg); }
-  .open .hamburger-top    { transform: rotate(45deg) translateY(6px) translateX(6px); }
-  .open .hamburger-middle { @apply hidden; }
-  .open .hamburger-bottom { transform: rotate(-45deg) translateY(6px) translateX(-6px); }
+  .open { 
+    transform: rotate(90deg); 
+  }
+  .open .hamburger-top    { 
+    transform: rotate(45deg) translateY(6px) translateX(6px); 
+  }
+  .open .hamburger-middle { 
+    @apply hidden; 
+  }
+  .open .hamburger-bottom { 
+    transform: rotate(-45deg) translateY(6px) translateX(-6px); 
+  }
 
   /*--- Mobile Nav ---*/
   .mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-0.5rem);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-    @apply px-5 mb-10 lg:hidden bg-surface;
+    @apply hidden flex-col gap-2 px-5 mb-10 lg:hidden bg-surface;
   }
   .mobile-nav.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mobile-nav { transition: none; }
+    @apply flex;
   }
 
   /*--- Layout ---*/
