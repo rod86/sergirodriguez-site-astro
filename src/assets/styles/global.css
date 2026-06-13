@@ -58,10 +58,18 @@
 
   /*--- Mobile Nav ---*/
   .mobile-nav {
-    @apply hidden flex-col gap-2 px-5 mb-10 lg:hidden bg-surface;
+    @apply grid md:hidden;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
   }
   .mobile-nav.is-open {
-    @apply flex;
+    grid-template-rows: 1fr;
+  }
+  .mobile-nav-inner {
+    @apply overflow-hidden;
+  }
+  .mobile-nav-links {
+    @apply flex flex-col gap-2 px-5 py-4;
   }
 
   /*--- Layout ---*/
