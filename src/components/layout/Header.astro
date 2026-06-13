@@ -6,12 +6,38 @@
         <a href="/" class="text-2xl font-light text-primary tracking-wide">
             Sergi Rodriguez
         </a>
-        <nav>
+        <nav class="hidden md:block" role="navigation">
             <ul class="flex gap-8 text-lg">
             <li><a href="/">Home</a></li>
             <li><a href="/portfolio">Projects</a></li>
             <li><a href="/about">About</a></li>
             </ul>
         </nav>
+
+        <div class="md:hidden">
+            <button id="menu-btn" type="button" class="z-40 block hamburger md:hidden focus:outline-none" data-mobile-nav-button>
+                <span class="hamburger-top"></span>
+                <span class="hamburger-middle"></span>
+                <span class="hamburger-bottom"></span>
+            </button>
+        </div>       
     </div>
+    <nav role="navigation" class="mobile-nav" data-mobile-nav>
+        <a href="/">Home</a>
+        <a href="/portfolio">Projects</a>
+        <a href="/">Blog</a>
+        <a href="/about">About</a>
+        <a href="/">Contact</a>
+    </nav> 
 </header>
+
+<script>
+  const btn = document.querySelector('[data-mobile-nav-button]');
+  const menu = document.querySelector("[data-mobile-nav]");
+
+  btn?.addEventListener("click", () => {
+    const open = menu?.classList.toggle('is-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

@@ -21,6 +21,49 @@
 }
 
 @layer components {
+  /*--- hamburguer menu --*/
+  .hamburger {
+    @apply relative w-6 h-2 cursor-pointer;
+    transition: all 0.25s;
+  }
+
+  .hamburger-top,
+  .hamburger-middle,
+  .hamburger-bottom {
+    @apply absolute top-0 left-0 w-6 h-0.5 bg-foreground;
+    content: "";
+    transform: rotate(0);
+    transition: all 0.5s;
+  }
+
+  .hamburger-middle { transform: translateY(7px); }
+  .hamburger-bottom { transform: translateY(14px); }
+
+  .open { transform: rotate(90deg); }
+  .open .hamburger-top    { transform: rotate(45deg) translateY(6px) translateX(6px); }
+  .open .hamburger-middle { @apply hidden; }
+  .open .hamburger-bottom { transform: rotate(-45deg) translateY(6px) translateX(-6px); }
+
+  /*--- Mobile Nav ---*/
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5rem);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    @apply px-5 mb-10 lg:hidden bg-surface;
+  }
+  .mobile-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav { transition: none; }
+  }
+
   /*--- Layout ---*/
   .container-wrapper {
     @apply max-w-6xl mx-auto w-full px-6;
