@@ -46,12 +46,12 @@
 </header>
 
 <script>
-  const btn = document.querySelector('[data-mobile-nav-button]');
-  const menu = document.querySelector("[data-mobile-nav]");
+  const mobileButton = document.querySelector('[data-mobile-nav-button]');
+  const mobileNav = document.querySelector("[data-mobile-nav]");
 
-  btn?.addEventListener("click", () => {
-    const open = menu?.classList.toggle('is-open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
+  mobileButton?.addEventListener("click", () => {
+    const open = mobileNav?.classList.toggle('is-open');
+    mobileButton.classList.toggle('open', open);
+    mobileButton.setAttribute('aria-expanded', String(open));
   });
 </script>
