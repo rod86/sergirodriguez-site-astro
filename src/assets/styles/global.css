@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-dm-sans);
+  --font-sans: var(--font-dm-sans, "DM Sans", sans-serif);
 }
 
 @theme {
@@ -21,7 +21,7 @@
 }
 
 @layer components {
-  /*--- hamburguer menu --*/
+  /*--- hamburger menu --*/
   .hamburger {
     @apply relative w-6 h-2 cursor-pointer;
     transition: all 0.25s;
