@@ -113,7 +113,7 @@
     @apply mb-1 text-xs text-muted;
   }
   .bento-grid-item-company {
-    @apply mb-2 text-xs text-muted;
+    @apply mb-2 min-h-4 text-xs text-muted font-semibold;
   }
   .bento-grid-item-title {
     @apply mb-2 text-xl;
