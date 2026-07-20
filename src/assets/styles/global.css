@@ -1,88 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-dm-sans, "DM Sans", sans-serif);
+  --font-sans: var(--font-montserrat, "Montserrat", sans-serif);
+  --font-mono: var(--font-montserrat, "Montserrat", sans-serif);
 }
 
 @theme {
-  --color-background: theme('colors.slate.900');
-  --color-surface: theme('colors.slate.800');
-  --color-primary: theme('colors.emerald.500');
-  --color-primary-bright: theme('colors.emerald.400');
-  --color-foreground: theme('colors.gray.100');
-  --color-muted: theme('colors.gray.400');
-  --color-border: theme('colors.slate.700');
+  --color-navy: #0a111e;
+  --color-navyalt: #0d1626;
+  --color-card: #111d2e;
+  --color-line: #1e2d42;
+  --color-ink: #e6edf5;
+  --color-muted: #8fa1b8;
+  --color-accent: #10b981;
+  --color-accentbright: #34d399;
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans antialiased min-h-screen flex flex-col;
-  }
-}
-
-@layer components {
-  /*--- hamburger menu --*/
-  .hamburger {
-    @apply relative w-6 h-2 cursor-pointer;
-    transition: all 0.25s;
-  }
-
-  .hamburger-top,
-  .hamburger-middle,
-  .hamburger-bottom {
-    @apply absolute top-0 left-0 w-6 h-0.5 bg-foreground;
-    content: "";
-    transform: rotate(0);
-    transition: all 0.5s;
-  }
-
-  .hamburger-middle { 
-    transform: translateY(7px); 
-  }
-  .hamburger-bottom { 
-    transform: translateY(14px); 
-  }
-
-  .open { 
-    transform: rotate(90deg); 
-  }
-  .open .hamburger-top    { 
-    transform: rotate(45deg) translateY(6px) translateX(6px); 
-  }
-  .open .hamburger-middle { 
-    @apply hidden; 
-  }
-  .open .hamburger-bottom { 
-    transform: rotate(-45deg) translateY(6px) translateX(-6px); 
-  }
-
-  /*--- Mobile Nav ---*/
-  .mobile-nav {
-    @apply grid md:hidden;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-  }
-  .mobile-nav.is-open {
-    grid-template-rows: 1fr;
-  }
-  .mobile-nav-inner {
-    @apply overflow-hidden;
-  }
-  .mobile-nav-links {
-    @apply flex flex-col gap-2 px-5 py-4;
-  }
-
-  /*--- Layout ---*/
-  .container-wrapper {
-    @apply max-w-6xl mx-auto w-full px-6;
-  }
-
-  /*--- Buttons ---*/
-  .btn-primary {
-    @apply bg-primary text-slate-900 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-primary-bright transition-colors duration-200 inline-flex items-center gap-2;
-  }
-
-  .btn-outline {
-    @apply border border-primary text-primary px-6 py-3 rounded-xl text-sm font-semibold hover:bg-primary hover:text-slate-900 transition-colors duration-200 inline-flex items-center gap-2;
+    @apply bg-navy text-ink font-sans antialiased;
   }
 }

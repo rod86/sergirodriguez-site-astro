@@ -1,91 +1,131 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import heroImg from '@assets/img/hero-img.svg';
-
-const homeProjects = [
-  'intranet-alzamora',
-  'afmi',
-  'jobboard',
-  'zoobarcelona',
-];
-const projects = await getCollection('projects', ({ id }) => {
-  return homeProjects.includes(id);
-}) as CollectionEntry<'projects'>[];
+import heroImg from '@assets/img/coding-agent.svg';
+import projectImg from '@assets/img/home.png';
 ---
 
-<Layout title="Home">
-  <!-- Hero -->
-    <section class="flex flex-col md:flex-row items-center gap-16 mb-18">
-      <div class="flex-1 text-center md:text-left">
-        <h1 class="text-5xl font-bold text-foreground leading-tight mb-6">
-          I am a <br/><span class="text-primary">Full Stack Developer</span><br/>
-        </h1>
-        <p class="text-muted text-base leading-relaxed max-w-lg mb-10">
-          With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
-          I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
-          I care deeply about clean code, thoughtful architecture, and shipping things that last.
-        </p>
-        <div class="flex flex-wrap justify-center">
-          <a href="/about" class="btn-primary">
-            About Me
-          </a>
-        </div>
+<Layout>
+	<!-- ===== HERO ===== -->
+	<section class="relative overflow-hidden">
+		<div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-20 lg:grid-cols-2 lg:py-28">
+			<!-- left -->
+			<div>
+				<h1 class="text-2xl font-semibold leading-[1.15] tracking-tight whitespace-nowrap sm:text-4xl sm:whitespace-normal lg:text-6xl" style="font-size: 48px; font-weight: 600">
+					Full Stack Developer
+				</h1>
+				<p class="mt-6 max-w-xl text-[15px] leading-relaxed text-muted">
+					With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
+					I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
+					I care deeply about clean code, thoughtful architecture, and shipping things that last.
+				</p>
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a href="/about" class="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-navy hover:bg-accentbright transition-colors">
+						About Me
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
+					<a href="/portfolio" class="inline-flex items-center gap-2 rounded-md border border-line bg-navyalt px-5 py-3 text-sm font-semibold text-ink hover:border-accent transition-colors">
+						View Projects
+					</a>
+				</div>
+			</div>
+			<!-- right: hero image -->
+			<div>
+				<Image src={heroImg} alt="Full-stack development illustration" class="mx-auto w-full max-w-md" />
+			</div>
+		</div>
+	</section>
 
-      </div>
-      <div class="flex-1 flex justify-center">
-        <Image src={heroImg} alt="Developer illustration" class="w-full max-w-md" />
-      </div>
-    </section>
+	<!-- ===== FEATURED PROJECTS ===== -->
+	<section>
+		<div class="mx-auto max-w-6xl px-6 pt-4 pb-20 lg:pt-6 lg:pb-24">
+			<div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+				<h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Featured Projects</h2>
+				<a href="/portfolio" class="inline-flex items-center gap-2 text-sm font-semibold text-accentbright hover:text-ink transition-colors">
+					All projects
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</a>
+			</div>
 
-    <!-- Projects -->
-    <section>
-      <h2 class="text-3xl font-bold text-foreground mb-12">Featured Projects</h2>
+			<div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-2">
+				<a href="/portfolio" class="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-line bg-card lg:row-span-2">
+					<Image src={projectImg} alt="Streamline screenshot" class="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-300 group-hover:opacity-45" />
+					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/25"></div>
+					<div class="relative p-7">
+						<p class="font-mono text-xs text-[#64748b]">January 2024</p>
+						<p class="mt-0.5 text-xs text-[#64748b]">Working at DataForge</p>
+						<h3 class="mt-2 text-2xl font-medium tracking-tight">Streamline</h3>
+						<p class="mt-2 max-w-sm text-sm leading-relaxed text-muted">Real-time analytics pipeline processing millions of events daily.</p>
+						<div class="mt-4 flex flex-wrap gap-2">
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">TypeScript</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Next.js</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">GraphQL</span>
+						</div>
+						<span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
+							View Project
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</span>
+					</div>
+				</a>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map(project => (
-          <article class="bg-surface rounded-xl overflow-hidden group flex flex-col">
-            {project.data.image && (
-              <div class="h-48 overflow-hidden">
-                <Image src={project.data.image} alt={`${project.data.title} thumbnail`} class="w-full h-full object-cover"/>
-              </div>
-            )}
-            <div class="p-6 flex flex-col flex-1">
-              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {project.data.title}
-              </h3>
-              <p class="text-sm text-muted mb-1">
-                {project.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
-              </p>
+				<a href="/portfolio" class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60">
+					<Image src={projectImg} alt="MediTrack screenshot" class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
+					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
+					<div class="relative">
+						<p class="font-mono text-xs text-[#64748b]">September 2022</p>
+						<p class="mt-0.5 text-xs text-[#64748b]">Working at Helix Health</p>
+						<h3 class="mt-2 text-xl font-medium tracking-tight">MediTrack</h3>
+						<p class="mt-2 text-sm leading-relaxed text-muted">HIPAA-compliant patient monitoring for thousands of clinicians.</p>
+						<div class="mt-3 flex flex-wrap gap-2">
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Python</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Django</span>
+						</div>
+						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
+							View Project
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</span>
+					</div>
+				</a>
 
-              <div class="flex flex-wrap gap-2 my-3">
-                {project.data.tags.map((tag: string) => (
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">{tag}</span>
-                ))}
-              </div>
+				<a href="/portfolio" class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60">
+					<Image src={projectImg} alt="ShipFast screenshot" class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
+					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
+					<div class="relative">
+						<p class="font-mono text-xs text-[#64748b]">March 2021</p>
+						<p class="mt-0.5 text-xs text-[#64748b]">Working at Nomad Logistics</p>
+						<h3 class="mt-2 text-xl font-medium tracking-tight">ShipFast</h3>
+						<p class="mt-2 text-sm leading-relaxed text-muted">Route-optimization engine that cut delivery times by 22%.</p>
+						<div class="mt-3 flex flex-wrap gap-2">
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Node.js</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">React</span>
+						</div>
+						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
+							View Project
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</span>
+					</div>
+				</a>
 
-              <div class="mt-auto flex justify-end">
-                <a href={`/portfolio/${project.id}`} class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                  View Details
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <!-- View All Projects -->
-      <div class="flex justify-center mt-12">
-        <a href="/portfolio" class="btn-outline">
-          View All My Projects
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+				<a href="/portfolio" class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60 sm:col-span-2 lg:col-span-2">
+					<Image src={projectImg} alt="Ledgerly screenshot" class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
+					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
+					<div class="relative">
+						<p class="font-mono text-xs text-[#64748b]">May 2019</p>
+						<p class="mt-0.5 text-xs text-[#64748b]">Working at FinCore Systems</p>
+						<h3 class="mt-2 text-xl font-medium tracking-tight">Ledgerly</h3>
+						<p class="mt-2 max-w-lg text-sm leading-relaxed text-muted">Double-entry accounting platform with automated reconciliation.</p>
+						<div class="mt-3 flex flex-wrap gap-2">
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">PHP</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Laravel</span>
+							<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">Vue</span>
+						</div>
+						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
+							View Project
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
 </Layout>

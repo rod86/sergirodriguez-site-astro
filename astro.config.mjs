@@ -7,9 +7,9 @@ export default defineConfig({
   fonts: [
       { 
         provider: fontProviders.google(),
-        name: 'DM Sans',
-        cssVariable: '--font-dm-sans',
-        weights: [300, 400, 600, 700],
+        name: 'Montserrat',
+        cssVariable: '--font-montserrat',
+        weights: [200, 300, 400, 500, 600, 700, 800],
         styles: ['normal', 'italic'],
         fallbacks: ['sans-serif'],
         display: 'swap',
