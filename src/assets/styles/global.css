@@ -13,6 +13,9 @@
   --color-muted: #8fa1b8;
   --color-accent: #10b981;
   --color-accentbright: #34d399;
+  --color-success: #10b981;
+  --color-danger: #f87171;
+  --color-accent-muted: #6bb3c4;
 }
 
 @layer base {
@@ -38,7 +41,7 @@
     @apply mt-4 list-disc space-y-1.5 pl-5;
   }
   li::marker {
-    @apply text-accent;
+    @apply text-accent-muted;
   }
 
   /* forms */
