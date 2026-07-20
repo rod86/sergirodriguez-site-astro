@@ -76,4 +76,51 @@
   .badge {
     @apply rounded border border-accent-muted/40 px-2 py-1 text-[11px] text-accent-muted;
   }
+
+  .bento-grid {
+    @apply grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-2;
+  }
+  .bento-grid-item {
+    @apply relative flex flex-col overflow-hidden rounded-xl border border-line bg-card hover:border-accent/60;
+  }
+  .bento-grid-item-1 {
+    @apply justify-end lg:row-span-2;
+  }
+  .bento-grid-item-2 {
+    @apply justify-center p-7;
+  }
+  .bento-grid-item-3 {
+    @apply justify-center p-7;
+  }
+  .bento-grid-item-4 {
+    @apply justify-center p-7 sm:col-span-2 lg:col-span-2;
+  }
+
+  .bento-grid-item-image {
+    @apply absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40;
+  }
+  .bento-grid-item-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40;
+  }
+  .bento-grid-item-content {
+    @apply relative;
+  }
+  .bento-grid-item-date {
+    @apply mb-0.5 text-xs text-muted;
+  }
+  .bento-grid-item-company {
+    @apply mb-2 text-xs text-muted;
+  }
+  .bento-grid-item-title {
+    @apply mb-2 text-xl;
+  }
+  .bento-grid-item-description {
+    @apply mb-3 text-sm leading-relaxed text-muted;
+  }
+  .bento-grid-item-tags {
+    @apply mb-4;
+  }
+  .bento-grid-item-cta {
+    @apply flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink;
+  }
 }
