@@ -1,4 +1,7 @@
 ---
+import Image from "astro/components/Image.astro";
+import logoImg from "@assets/img/logo.png";
+
 const navLinks = [
 	{ href: '/', label: 'Home' },
 	{ href: '/portfolio', label: 'Projects' },
@@ -12,11 +15,11 @@ const isActive = (href: string) =>
 ---
 
 <header class="sticky top-0 z-50 bg-navyalt/60 backdrop-blur">
-	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-		<a href="/" class="inline-flex items-baseline gap-1.5 text-xl tracking-tight" aria-label="Sergi Rodriguez — home">
-			<span class="font-extrabold tracking-widest text-accent">//</span>
-			<span class="font-light text-white">Sergi Rodriguez</span>
+	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+		<a href="/" class="inline-flex items-center" aria-label="Sergi Rodriguez — home">
+			<Image src={logoImg} alt="Sergi Rodriguez" class="h-16 w-auto" />
 		</a>
+
 		<div class="hidden md:flex items-center gap-8 text-sm">
 			{navLinks.map((link) => (
 				<a
