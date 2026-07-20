@@ -34,7 +34,7 @@ const projects = await getCollection('projects', ({ id }) => {
 						About Me
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 					</a>
-					<a href="/portfolio" class="button-outlined bg-navyalt">
+					<a href="/portfolio" class="button-outlined bg-background">
 						View Projects
 					</a>
 				</div>
@@ -62,7 +62,7 @@ const projects = await getCollection('projects', ({ id }) => {
 					{projects[0].data.image && (
 						<Image src={projects[0].data.image} alt={`${projects[0].data.title} thumbnail`} class="bento-grid-item-image opacity-30 group-hover:opacity-45" />
 					)}
-					<div class="bento-grid-item-overlay via-navy/75 to-navy/25"></div>
+					<div class="bento-grid-item-overlay via-background/75 to-background/25"></div>
 					<div class="bento-grid-item-content p-7">
 						<p class="bento-grid-item-date">
 							{projects[0].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}

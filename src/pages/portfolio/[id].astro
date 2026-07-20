@@ -62,7 +62,7 @@ const { title, date, company, image, url, github_url, tags } = entry.data;
 
         <!-- RIGHT: image -->
         {image && (
-          <div class="flex w-[453px] max-w-full items-center justify-center overflow-hidden rounded-2xl border border-line lg:mx-auto lg:my-auto">
+          <div class="flex w-[453px] max-w-full items-center justify-center overflow-hidden rounded-2xl border border-stroke lg:mx-auto lg:my-auto">
             <Image src={image} alt={`${title} — dashboard screenshot`} class="h-[274px] w-full object-cover" />
           </div>
         )}

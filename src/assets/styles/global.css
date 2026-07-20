@@ -5,43 +5,48 @@
 }
 
 @theme {
-  --color-navy: #0a111e;
-  --color-navyalt: #0d1626;
-  --color-card: #111d2e;
-  --color-line: #1e2d42;
-  --color-ink: #e6edf5;
-  --color-muted: #8fa1b8;
-  --color-accent: #10b981;
-  --color-accentbright: #34d399;
+  /* Brand / semantic */
+  --color-primary: #10b981;
+  --color-primary-bright: #34d399;
+  --color-secondary: #6bb3c4;
   --color-success: #10b981;
   --color-danger: #f87171;
-  --color-accent-muted: #6bb3c4;
+
+  /* theme main colors */
+  --color-background: #0a111e;
+  --color-background-alternate: #0d1626;
+  --color-surface: #111d2e;
+  --color-stroke: #1e2d42;
+
+  /* Text */
+  --color-light: #e6edf5;
+  --color-muted: #8fa1b8;
 }
 
 @layer base {
   body {
-    @apply bg-navy text-ink font-sans antialiased;
+    @apply bg-background text-light font-sans antialiased;
   }
 
   h1 {
-    @apply text-4xl font-semibold tracking-tight text-ink sm:text-5xl;
+    @apply text-4xl font-semibold tracking-tight text-light sm:text-5xl;
   }
   h2 {
-    @apply text-lg font-medium text-ink;
+    @apply text-lg font-medium text-light;
   }
   h3 {
-    @apply font-medium tracking-tight text-ink;
+    @apply font-medium tracking-tight text-light;
   }
 
   a {
-    @apply text-accentbright transition-colors hover:text-ink;
+    @apply text-primary-bright transition-colors hover:text-light;
   }
 
   ul {
     @apply mt-4 list-disc space-y-1.5 pl-5;
   }
   li::marker {
-    @apply text-accent-muted;
+    @apply text-secondary;
   }
 
   /* forms */
@@ -54,7 +59,7 @@
     @apply mb-1.5 block text-xs text-muted;
   }
   .form-input, .form-select {
-    @apply w-full rounded-md border border-line bg-transparent px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-none;
+    @apply w-full rounded-md border border-stroke bg-transparent px-3.5 py-2.5 text-sm text-light placeholder:text-muted focus:border-primary focus:outline-none;
   }
 }
 
@@ -64,24 +69,24 @@
   }
 
   .button {
-    @apply inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-navy transition-colors hover:bg-accentbright;
+    @apply inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
   }
   .button-outlined {
-    @apply inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent;
+    @apply inline-flex items-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
   }
 
   .badge-list {
     @apply flex flex-wrap gap-2;
   }
   .badge {
-    @apply rounded border border-accent-muted/40 px-2 py-1 text-[11px] text-accent-muted;
+    @apply rounded border border-secondary/40 px-2 py-1 text-[11px] text-secondary;
   }
 
   .bento-grid {
     @apply grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-2;
   }
   .bento-grid-item {
-    @apply relative flex flex-col overflow-hidden rounded-xl border border-line bg-card hover:border-accent/60;
+    @apply relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60;
   }
   .bento-grid-item-1 {
     @apply justify-end lg:row-span-2;
@@ -100,7 +105,7 @@
     @apply absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40;
   }
   .bento-grid-item-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40;
+    @apply absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40;
   }
   .bento-grid-item-content {
     @apply relative;
@@ -121,6 +126,6 @@
     @apply mb-4;
   }
   .bento-grid-item-cta {
-    @apply flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink;
+    @apply flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light;
   }
 }
