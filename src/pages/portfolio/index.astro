@@ -121,9 +121,9 @@ const projects = [
 							</div>
 							<h3 class="mt-2 text-2xl sm:text-3xl">{project.title}</h3>
 							<p class="mt-3 max-w-xl text-sm leading-relaxed text-muted">{project.description}</p>
-							<div class="mt-4 flex flex-wrap gap-2">
+							<div class="mt-4 badge-list">
 								{project.tags.map((tag) => (
-									<span class="rounded border border-accent-muted/40 px-2 py-1 text-[11px] text-accent-muted">{tag}</span>
+									<span class="badge">{tag}</span>
 								))}
 							</div>
 							<a href="/portfolio" class="group mt-6 inline-flex items-center gap-2 text-sm font-semibold">

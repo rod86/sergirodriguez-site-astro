@@ -62,4 +62,18 @@
   .page-container {
     @apply mx-auto max-w-6xl px-6;
   }
+
+  .button {
+    @apply inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-navy transition-colors hover:bg-accentbright;
+  }
+  .button-outlined {
+    @apply inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent;
+  }
+
+  .badge-list {
+    @apply flex flex-wrap gap-2;
+  }
+  .badge {
+    @apply rounded border border-accent-muted/40 px-2 py-1 text-[11px] text-accent-muted;
+  }
 }
