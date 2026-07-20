@@ -15,7 +15,7 @@ const isActive = (href: string) =>
 ---
 
 <header class="sticky top-0 z-50 bg-navyalt/60 backdrop-blur">
-	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+	<nav class="page-container flex items-center justify-between py-4">
 		<a href="/" class="inline-flex items-center" aria-label="Sergi Rodriguez — home">
 			<Image src={logoImg} alt="Sergi Rodriguez" class="h-16 w-auto" />
 		</a>
@@ -25,7 +25,7 @@ const isActive = (href: string) =>
 				<a
 					href={link.href}
 					class:list={[
-						'pb-1 border-b-2 transition-colors duration-300',
+						'pb-1 border-b-2 duration-300',
 						isActive(link.href)
 							? 'border-accent text-white'
 							: 'border-transparent text-muted hover:text-white',
@@ -46,7 +46,7 @@ const isActive = (href: string) =>
 				<a
 					href={link.href}
 					class:list={[
-						'rounded-md px-3 py-2.5 transition-colors',
+						'rounded-md px-3 py-2.5',
 						isActive(link.href) ? 'text-accentbright' : 'text-muted hover:bg-card hover:text-ink',
 					]}
 				>

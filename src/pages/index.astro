@@ -18,10 +18,10 @@ const projects = await getCollection('projects', ({ id }) => {
 <Layout>
 	<!-- ===== HERO ===== -->
 	<section class="relative overflow-hidden">
-		<div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-20 lg:grid-cols-2 lg:py-28">
+		<div class="page-container grid grid-cols-1 items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
 			<!-- left -->
 			<div>
-				<h1 class="text-2xl font-semibold leading-[1.15] tracking-tight whitespace-nowrap sm:text-4xl sm:whitespace-normal lg:text-6xl" style="font-size: 48px; font-weight: 600">
+				<h1 class="text-2xl leading-[1.15] whitespace-nowrap sm:text-4xl sm:whitespace-normal lg:text-6xl" style="font-size: 48px; font-weight: 600">
 					Full Stack Developer
 				</h1>
 				<p class="mt-6 max-w-xl text-[15px] leading-relaxed text-muted">
@@ -30,11 +30,11 @@ const projects = await getCollection('projects', ({ id }) => {
 					I care deeply about clean code, thoughtful architecture, and shipping things that last.
 				</p>
 				<div class="mt-8 flex flex-wrap gap-3">
-					<a href="/about" class="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-navy hover:bg-accentbright transition-colors">
+					<a href="/about" class="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-navy hover:bg-accentbright">
 						About Me
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 					</a>
-					<a href="/portfolio" class="inline-flex items-center gap-2 rounded-md border border-line bg-navyalt px-5 py-3 text-sm font-semibold text-ink hover:border-accent transition-colors">
+					<a href="/portfolio" class="inline-flex items-center gap-2 rounded-md border border-line bg-navyalt px-5 py-3 text-sm font-semibold text-ink hover:border-accent">
 						View Projects
 					</a>
 				</div>
@@ -48,10 +48,10 @@ const projects = await getCollection('projects', ({ id }) => {
 
 	<!-- ===== FEATURED PROJECTS ===== -->
 	<section>
-		<div class="mx-auto max-w-6xl px-6 pt-4 pb-20 lg:pt-6 lg:pb-24">
+		<div class="page-container pt-4 pb-20 lg:pt-6 lg:pb-24">
 			<div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-				<h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Featured Projects</h2>
-				<a href="/portfolio" class="inline-flex items-center gap-2 text-sm font-semibold text-accentbright hover:text-ink transition-colors">
+				<h2 class="text-3xl sm:text-4xl">Featured Projects</h2>
+				<a href="/portfolio" class="inline-flex items-center gap-2 text-sm font-semibold">
 					All projects
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 				</a>
@@ -64,13 +64,13 @@ const projects = await getCollection('projects', ({ id }) => {
 					)}
 					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/25"></div>
 					<div class="relative p-7">
-						<p class="font-mono text-xs text-[#64748b]">
+						<p class="text-xs text-[#64748b]">
 							{projects[0].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
 						</p>
 						<p class="mt-0.5 text-xs text-[#64748b]">
 							{projects[0].data.company && `Working at ${projects[0].data.company}`}
 						</p>
-						<h3 class="mt-2 text-2xl font-medium tracking-tight">
+						<h3 class="mt-2 text-2xl">
 							{projects[0].data.title}
 						</h3>
 						<p class="mt-2 max-w-sm text-sm leading-relaxed text-muted">
@@ -78,7 +78,7 @@ const projects = await getCollection('projects', ({ id }) => {
 						</p>
 						<div class="mt-4 flex flex-wrap gap-2">
 							{projects[0].data.tags.map((tag: string) => (
-								<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">{tag}</span>
+								<span class="rounded border border-accent px-2 py-1 text-[11px] text-accent">{tag}</span>
 							))}
 						</div>
 						<span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
@@ -88,19 +88,19 @@ const projects = await getCollection('projects', ({ id }) => {
 					</div>
 				</a>
 
-				<a href={`/portfolio/${projects[1].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60">
+				<a href={`/portfolio/${projects[1].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 hover:border-accent/60">
 					{projects[1].data.image && (
 						<Image src={projects[1].data.image} alt={`${projects[1].data.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 					)}
 					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
 					<div class="relative">
-						<p class="font-mono text-xs text-[#64748b]">
+						<p class="text-xs text-[#64748b]">
 							{projects[1].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
 						</p>
 						<p class="mt-0.5 text-xs text-[#64748b]">
 							{projects[1].data.company && `Working at ${projects[1].data.company}`}
 						</p>
-						<h3 class="mt-2 text-xl font-medium tracking-tight">
+						<h3 class="mt-2 text-xl">
 							{projects[1].data.title}
 						</h3>
 						<p class="mt-2 text-sm leading-relaxed text-muted">
@@ -108,7 +108,7 @@ const projects = await getCollection('projects', ({ id }) => {
 						</p>
 						<div class="mt-3 flex flex-wrap gap-2">
 							{projects[1].data.tags.map((tag: string) => (
-								<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">{tag}</span>
+								<span class="rounded border border-accent px-2 py-1 text-[11px] text-accent">{tag}</span>
 							))}
 						</div>
 						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
@@ -118,19 +118,19 @@ const projects = await getCollection('projects', ({ id }) => {
 					</div>
 				</a>
 
-				<a href={`/portfolio/${projects[2].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60">
+				<a href={`/portfolio/${projects[2].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 hover:border-accent/60">
 					{projects[2].data.image && (
 						<Image src={projects[2].data.image} alt={`${projects[2].data.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 					)}
 					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
 					<div class="relative">
-						<p class="font-mono text-xs text-[#64748b]">
+						<p class="text-xs text-[#64748b]">
 							{projects[2].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
 						</p>
 						<p class="mt-0.5 text-xs text-[#64748b]">
 							{projects[2].data.company && `Working at ${projects[2].data.company}`}
 						</p>
-						<h3 class="mt-2 text-xl font-medium tracking-tight">
+						<h3 class="mt-2 text-xl">
 							{projects[2].data.title}
 						</h3>
 						<p class="mt-2 text-sm leading-relaxed text-muted">
@@ -138,7 +138,7 @@ const projects = await getCollection('projects', ({ id }) => {
 						</p>
 						<div class="mt-3 flex flex-wrap gap-2">
 							{projects[2].data.tags.map((tag: string) => (
-								<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">{tag}</span>
+								<span class="rounded border border-accent px-2 py-1 text-[11px] text-accent">{tag}</span>
 							))}
 						</div>
 						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">
@@ -148,19 +148,19 @@ const projects = await getCollection('projects', ({ id }) => {
 					</div>
 				</a>
 
-				<a href={`/portfolio/${projects[3].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 transition-colors hover:border-accent/60 sm:col-span-2 lg:col-span-2">
+				<a href={`/portfolio/${projects[3].id}`} class="group relative flex flex-col justify-center overflow-hidden rounded-xl border border-line bg-card p-7 hover:border-accent/60 sm:col-span-2 lg:col-span-2">
 					{projects[3].data.image && (
 						<Image src={projects[3].data.image} alt={`${projects[3].data.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 					)}
 					<div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>
 					<div class="relative">
-						<p class="font-mono text-xs text-[#64748b]">
+						<p class="text-xs text-[#64748b]">
 							{projects[3].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
 						</p>
 						<p class="mt-0.5 text-xs text-[#64748b]">
 							{projects[3].data.company && `Working at ${projects[3].data.company}`}
 						</p>
-						<h3 class="mt-2 text-xl font-medium tracking-tight">
+						<h3 class="mt-2 text-xl">
 							{projects[3].data.title}
 						</h3>
 						<p class="mt-2 max-w-lg text-sm leading-relaxed text-muted">
@@ -168,7 +168,7 @@ const projects = await getCollection('projects', ({ id }) => {
 						</p>
 						<div class="mt-3 flex flex-wrap gap-2">
 							{projects[3].data.tags.map((tag: string) => (
-								<span class="rounded border border-accent px-2 py-1 font-mono text-[11px] text-accent">{tag}</span>
+								<span class="rounded border border-accent px-2 py-1 text-[11px] text-accent">{tag}</span>
 							))}
 						</div>
 						<span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accentbright transition-colors group-hover:text-ink">

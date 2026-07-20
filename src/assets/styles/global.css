@@ -2,7 +2,6 @@
 
 @theme inline {
   --font-sans: var(--font-montserrat, "Montserrat", sans-serif);
-  --font-mono: var(--font-montserrat, "Montserrat", sans-serif);
 }
 
 @theme {
@@ -19,5 +18,45 @@
 @layer base {
   body {
     @apply bg-navy text-ink font-sans antialiased;
+  }
+
+  h1 {
+    @apply text-4xl font-semibold tracking-tight text-ink sm:text-5xl;
+  }
+  h2 {
+    @apply text-lg font-medium text-ink;
+  }
+  h3 {
+    @apply font-medium tracking-tight text-ink;
+  }
+
+  a {
+    @apply text-accentbright transition-colors hover:text-ink;
+  }
+
+  ul {
+    @apply mt-4 list-disc space-y-1.5 pl-5;
+  }
+  li::marker {
+    @apply text-accent;
+  }
+
+  /* forms */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  }
+  .form-label {
+    @apply mb-1.5 block text-xs text-muted;
+  }
+  .form-input, .form-select {
+    @apply w-full rounded-md border border-line bg-transparent px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-none;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply mx-auto max-w-6xl px-6;
   }
 }
