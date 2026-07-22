@@ -6,7 +6,7 @@ image: ./img/alzamora.jpg
 tags: ['TYPO3', 'HTML', 'CSS', 'Javascript']
 ---
 
-Development in TYPO3 an intranet for a printing & packaging company. This site has:
+Development of an intranet in TYPO3 for a printing and packaging company.
 
 * News
 * Generate budgets/client record in PDF
