@@ -1,8 +1,8 @@
 ---
 title: MC Blueprints
 date: 2015-07-01
-image: ./img/mcblueprints/home.png
-tags: ['NodeJS', 'AngularJS', 'MongoDB', 'Express']
+image: ./img/mcblueprints.png
+tags: ['NodeJS', 'AngularJS', 'MongoDB', 'Bootstrap']
 github_url: https://github.com/rod86/mcblueprints
 ---
 
