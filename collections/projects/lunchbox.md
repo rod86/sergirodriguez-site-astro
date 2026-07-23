@@ -8,6 +8,6 @@ github_url: https://github.com/rod86/lunchbox
 
 A web application to discover street food stands around London.
 
-- Browse food stands on a map
-- Use your location to find stands close to you
-- Create a vendor account to manage your stands
+- Browse food stands on a map.
+- Use your location to find stands close to you.
+- Create a vendor account to manage your stands.

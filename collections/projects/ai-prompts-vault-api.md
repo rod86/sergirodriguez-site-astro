@@ -1,5 +1,5 @@
 ---
-title: Symfony Auctions API
+title: AI Prompts Vault API
 date: 2023-02-28
 image: ./img/ai-prompts-vault-api.png
 tags: ['NodeJS', 'TypeScript', 'PostgreSQL']
@@ -14,3 +14,4 @@ AI Prompts Vault is a backend service for saving and organizing AI prompts in on
 - Add, edit and delete prompts.
 - Organize prompts by category.
 - Rate limiting to prevent brute-force attacks and excessive traffic load.
+- Interactive API documentation with Scalar.

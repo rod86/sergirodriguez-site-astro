@@ -8,8 +8,8 @@ github_url: https://github.com/rod86/symfonyauctions-docker
 
 A REST API for managing online auctions.
 
-- List auctions
-- Create an auction
-- Add a bid to open auction
-- close auction
-- Notify users about auction results
+- List auctions.
+- Create an auction.
+- Add a bid to open auction.
+- close auction with an existing bid.
+- Notify users about auction results.

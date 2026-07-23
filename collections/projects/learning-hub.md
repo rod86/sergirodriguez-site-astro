@@ -8,7 +8,7 @@ github_url: https://github.com/rod86/learninghub-app
 
 A platform to organize courses or training materials in an organization.
 
-- Browse courses by topic
-- View latest courses
+- Browse courses by topic.
+- View latest courses.
 - Narrow courses by length, skill level, and other options.
-- Content provided by Sanity (Headless CMS)
+- Content provided by Sanity (Headless CMS).

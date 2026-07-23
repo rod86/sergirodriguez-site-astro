@@ -5,10 +5,10 @@ import heroImg from '@assets/img/coding-agent.svg';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 const homeProjects = [
-	'intranet-alzamora',
+	'ai-prompts-vault-api',
+	'learning-hub',
+	'symfony-auctions-api',
 	'lunchbox',
-	'jobboard',
-	'zoobarcelona',
 ];
 const projects = await getCollection('projects', ({ id }) => {
 	return homeProjects.includes(id);

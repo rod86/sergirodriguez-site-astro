@@ -8,9 +8,9 @@ tags: ['TYPO3']
 
 HTML templates integration and functionalities development in TYPO3 for Barcelona Zoo.
 
-* Animals/Plants library
-* Online animal sponsorship
-* Media gallery
-* Membership area
-* News
-* Newsletter
+* Animals/Plants library.
+* Online animal sponsorship.
+* Media gallery.
+* Membership area.
+* News.
+* Newsletter.
