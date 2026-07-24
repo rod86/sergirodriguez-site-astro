@@ -25,7 +25,10 @@
 
 @layer base {
   body {
-    @apply bg-background text-light font-sans antialiased;
+    @apply flex flex-col min-h-screen bg-background text-light font-sans antialiased;
+  }
+  main {
+    @apply flex-1;
   }
 
   h1 {
