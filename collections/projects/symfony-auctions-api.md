@@ -1,7 +1,7 @@
 ---
 title: Symfony Auctions API
 date: 2023-02-28
-image: ./img/learninghub.png
+image: ./img/symfony-auctions-api.png
 tags: ['Symfony', 'MariaDB', 'RabbitMQ']
 github_url: https://github.com/rod86/symfonyauctions-docker
 ---
@@ -11,5 +11,5 @@ A REST API for managing online auctions.
 - List auctions.
 - Create an auction.
 - Add a bid to open auction.
-- close auction with an existing bid.
+- Close auction with an existing bid.
 - Notify users about auction results.
