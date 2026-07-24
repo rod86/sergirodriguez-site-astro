@@ -15,12 +15,12 @@ const isActive = (href: string) =>
 ---
 
 <header class="sticky top-0 z-50 bg-background-alternate/60 backdrop-blur">
-	<nav class="page-container flex items-center justify-between py-4">
+	<nav class="page-container flex items-center justify-between py-3">
 		<a href="/" class="inline-flex items-center" aria-label="Sergi Rodriguez — home">
-			<Image src={logoImg} alt="Sergi Rodriguez" class="h-16 w-auto" />
+			<Image src={logoImg} alt="Sergi Rodriguez" class="h-18 w-auto" />
 		</a>
 
-		<div class="hidden md:flex items-center gap-8 text-sm">
+		<div class="hidden md:flex items-center gap-8">
 			{navLinks.map((link) => (
 				<a
 					href={link.href}
