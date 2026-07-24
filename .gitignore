@@ -1,17 +1,14 @@
-# build output
-dist/
-# generated types
-.astro/
 
-# dependencies
+dist/
+.astro/
 node_modules/
+coverage/
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
 
 # environment variables
 .env
@@ -21,6 +18,7 @@ pnpm-debug.log*
 .DS_Store
 *:Zone.Identifier
 
-# jetbrains setting folder
+# Other (ides, ai,..)
 .idea/
 .vscode/
+.claude/
