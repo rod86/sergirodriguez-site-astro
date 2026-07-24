@@ -10,27 +10,27 @@ interface Props {
 }
 
 const {
-	title = 'Full Stack Developer',
-	description = 'Sergi Rodriguez — Full Stack Developer with 10+ years building scalable web applications with PHP, Node.js, TypeScript, Python and React.',
+    title = 'Full Stack Developer',
+    description = 'Sergi Rodriguez — Full Stack Developer with 10+ years building scalable web applications with PHP, Node.js, TypeScript, Python and React.',
 } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Sergi Rodriguez — {title}</title>
-		<meta name="description" content={description} />
-		<Font cssVariable="--font-montserrat" preload />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Sergi Rodriguez — {title}</title>
+        <meta name="description" content={description} />
+        <Font cssVariable="--font-montserrat" preload />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>
