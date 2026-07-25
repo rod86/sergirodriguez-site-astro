@@ -20,6 +20,9 @@ export const getProjectsList: GetProjectsList = async (): Promise<ProjectListIte
 
 export const getProjectDetails: GetProjectDetails = async (id: string): Promise<ProjectDetails> => {
     const entry = await getEntry('projects', id) as CollectionEntry<'projects'>;
+    if (!entry) {
+        throw new Error(`Project with id ${id} not found`);
+    }
     const { Content } = await render(entry);
     return {
         id: entry.id,
