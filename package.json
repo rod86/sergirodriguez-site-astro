@@ -27,7 +27,6 @@
     "eslint-plugin-astro": "^3.0.1",
     "globals": "^17.7.0",
     "typescript-eslint": "^8.65.0",
-    "vitest": "^4.1.10",
-    "vitest-mock-extended": "^5.1.0"
+    "vitest": "^4.1.10"
   }
 }
