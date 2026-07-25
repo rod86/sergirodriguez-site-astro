@@ -48,7 +48,10 @@ export const getFeaturedProjects: GetFeaturedProjects = async (ids: string[]): P
     const projects = (await getCollection('projects',
         ({ id }) => ids.includes(id)
     )) as CollectionEntry<'projects'>[];
-    return projects.map(item => ({
+    const orderedProjects = projects.sort((a, b) => {
+        return ids.indexOf(a.id) - ids.indexOf(b.id);
+    });
+    return orderedProjects.map(item => ({
         id: item.id,
         title: item.data.title,
         image: item.data.image,
