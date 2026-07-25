@@ -4,6 +4,7 @@ date: 2017-10-07
 image: ./img/symfony-forum.png
 tags: ['Symfony', 'Bulma CSS']
 github_url: https://github.com/rod86/symfony-forum
+short_description: Community discussion forum
 ---
 
 A community forum where people can browse topics by category, start new ones and reply to each other.

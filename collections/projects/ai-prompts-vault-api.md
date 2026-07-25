@@ -4,6 +4,7 @@ date: 2023-02-28
 image: ./img/ai-prompts-vault-api.png
 tags: ['NodeJS', 'TypeScript', 'PostgreSQL']
 github_url: https://github.com/rod86/ai-prompts-vault-api
+short_description: A REST API to manage AI prompts
 ---
 
 AI Prompts Vault is a backend service for saving and organizing AI prompts in one place.

@@ -4,6 +4,7 @@ date: 2017-03-14
 image: ./img/jobboard.png
 tags: ['Laravel', 'Bootstrap']
 github_url: https://github.com/rod86/jobboard
+short_description: Job board platform
 ---
 
 A job board platform to connect companies with candidates.
