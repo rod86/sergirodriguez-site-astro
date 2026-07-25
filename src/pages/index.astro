@@ -1,91 +1,183 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import heroImg from '@assets/img/coding-agent.svg';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import heroImg from '@assets/img/hero-img.svg';
 
 const homeProjects = [
-  'intranet-alzamora',
-  'afmi',
-  'jobboard',
-  'zoobarcelona',
+    'ai-prompts-vault-api',
+    'learning-hub',
+    'symfony-auctions-api',
+    'lunchbox',
 ];
 const projects = await getCollection('projects', ({ id }) => {
-  return homeProjects.includes(id);
+    return homeProjects.includes(id);
 }) as CollectionEntry<'projects'>[];
 ---
 
-<Layout title="Home">
-  <!-- Hero -->
-    <section class="flex flex-col md:flex-row items-center gap-16 mb-18">
-      <div class="flex-1 text-center md:text-left">
-        <h1 class="text-5xl font-bold text-foreground leading-tight mb-6">
-          I am a <br/><span class="text-primary">Full Stack Developer</span><br/>
-        </h1>
-        <p class="text-muted text-base leading-relaxed max-w-lg mb-10">
-          With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
-          I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
-          I care deeply about clean code, thoughtful architecture, and shipping things that last.
-        </p>
-        <div class="flex flex-wrap justify-center">
-          <a href="/about" class="btn-primary">
-            About Me
-          </a>
-        </div>
+<Layout>
+	<!-- ===== HERO ===== -->
+	<section class="relative overflow-hidden">
+	    <div class="page-container grid grid-cols-1 items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
+			<!-- left -->
+			<div>
+			    <h1 class="text-2xl leading-[1.15] whitespace-nowrap sm:text-4xl sm:whitespace-normal lg:text-6xl" style="font-size: 48px; font-weight: 600">
+					Full Stack Developer
+			    </h1>
+			    <p class="mt-6 max-w-xl text-[15px] leading-relaxed text-muted">
+					With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
+					I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
+					I care deeply about clean code, thoughtful architecture, and shipping things that last.
+			    </p>
+			    <div class="mt-8 flex flex-wrap gap-3">
+			        <a href="/about" class="button">
+						About Me
+			            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			        </a>
+			        <a href="/portfolio" class="button-outlined bg-background">
+						View Projects
+			        </a>
+			    </div>
+			</div>
+			<!-- right: hero image -->
+			<div>
+			    <Image src={heroImg} alt="Full-stack development illustration" class="mx-auto w-full max-w-md" />
+			</div>
+	    </div>
+	</section>
 
-      </div>
-      <div class="flex-1 flex justify-center">
-        <Image src={heroImg} alt="Developer illustration" class="w-full max-w-md" />
-      </div>
-    </section>
+	<!-- ===== FEATURED PROJECTS ===== -->
+	<section>
+	    <div class="page-container pt-4 pb-20 lg:pt-6 lg:pb-24">
+	        <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+	            <h2 class="text-3xl sm:text-4xl">Featured Projects</h2>
+	            <a href="/portfolio" class="inline-flex items-center gap-2 text-sm font-semibold">
+					All projects
+	                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	            </a>
+	        </div>
 
-    <!-- Projects -->
-    <section>
-      <h2 class="text-3xl font-bold text-foreground mb-12">Featured Projects</h2>
+	        <div class="bento-grid mt-12">
+	            <a href={`/portfolio/${projects[0].id}`} class="group bento-grid-item bento-grid-item-1">
+	                {projects[0].data.image && (
+	                    <Image src={projects[0].data.image} alt={`${projects[0].data.title} thumbnail`} class="bento-grid-item-image opacity-30 group-hover:opacity-45" />
+	                )}
+	                <div class="bento-grid-item-overlay"></div>
+	                <div class="bento-grid-item-content">
+	                    <p class="bento-grid-item-date">
+	                        {projects[0].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                    </p>
+	                    <p class="bento-grid-item-company">
+	                        {projects[0].data.company && `Working at ${projects[0].data.company}`}
+	                    </p>
+	                    <h3 class="bento-grid-item-title text-2xl">
+	                        {projects[0].data.title}
+	                    </h3>
+	                    <p class="bento-grid-item-description max-w-sm mb-4">
+							Real-time analytics pipeline processing millions of events daily.
+	                    </p>
+	                    <div class="bento-grid-item-tags badge-list mb-5">
+	                        {projects[0].data.tags.map((tag: string) => (
+	                            <span class="badge">{tag}</span>
+	                        ))}
+	                    </div>
+	                    <span class="bento-grid-item-cta">
+							View Project
+	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	                    </span>
+	                </div>
+	            </a>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map(project => (
-          <article class="bg-surface rounded-xl overflow-hidden group flex flex-col">
-            {project.data.image && (
-              <div class="h-48 overflow-hidden">
-                <Image src={project.data.image} alt={`${project.data.title} thumbnail`} class="w-full h-full object-cover"/>
-              </div>
-            )}
-            <div class="p-6 flex flex-col flex-1">
-              <h3 class="text-base font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {project.data.title}
-              </h3>
-              <p class="text-sm text-muted mb-1">
-                {project.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
-              </p>
+	            <a href={`/portfolio/${projects[1].id}`} class="group bento-grid-item bento-grid-item-2">
+	                {projects[1].data.image && (
+	                    <Image src={projects[1].data.image} alt={`${projects[1].data.title} thumbnail`} class="bento-grid-item-image" />
+	                )}
+	                <div class="bento-grid-item-overlay"></div>
+	                <div class="bento-grid-item-content">
+	                    <p class="bento-grid-item-date">
+	                        {projects[1].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                    </p>
+	                    <p class="bento-grid-item-company">
+	                        {projects[1].data.company && `Working at ${projects[1].data.company}`}
+	                    </p>
+	                    <h3 class="bento-grid-item-title">
+	                        {projects[1].data.title}
+	                    </h3>
+	                    <p class="bento-grid-item-description">
+							Real-time analytics pipeline processing millions of events daily.
+	                    </p>
+	                    <div class="bento-grid-item-tags badge-list">
+	                        {projects[1].data.tags.map((tag: string) => (
+	                            <span class="badge">{tag}</span>
+	                        ))}
+	                    </div>
+	                    <span class="bento-grid-item-cta">
+							View Project
+	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	                    </span>
+	                </div>
+	            </a>
 
-              <div class="flex flex-wrap gap-2 my-3">
-                {project.data.tags.map((tag: string) => (
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary select-none cursor-default">{tag}</span>
-                ))}
-              </div>
+	            <a href={`/portfolio/${projects[2].id}`} class="group bento-grid-item bento-grid-item-3">
+	                {projects[2].data.image && (
+	                    <Image src={projects[2].data.image} alt={`${projects[2].data.title} thumbnail`} class="bento-grid-item-image" />
+	                )}
+	                <div class="bento-grid-item-overlay"></div>
+	                <div class="bento-grid-item-content">
+	                    <p class="bento-grid-item-date">
+	                        {projects[2].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                    </p>
+	                    <p class="bento-grid-item-company">
+	                        {projects[2].data.company && `Working at ${projects[2].data.company}`}
+	                    </p>
+	                    <h3 class="bento-grid-item-title">
+	                        {projects[2].data.title}
+	                    </h3>
+	                    <p class="bento-grid-item-description">
+							Real-time analytics pipeline processing millions of events daily.
+	                    </p>
+	                    <div class="bento-grid-item-tags badge-list">
+	                        {projects[2].data.tags.map((tag: string) => (
+	                            <span class="badge">{tag}</span>
+	                        ))}
+	                    </div>
+	                    <span class="bento-grid-item-cta">
+							View Project
+	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	                    </span>
+	                </div>
+	            </a>
 
-              <div class="mt-auto flex justify-end">
-                <a href={`/portfolio/${project.id}`} class="text-sm text-primary hover:text-primary-bright font-medium inline-flex items-center gap-1 transition-colors">
-                  View Details
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <!-- View All Projects -->
-      <div class="flex justify-center mt-12">
-        <a href="/portfolio" class="btn-outline">
-          View All My Projects
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+	            <a href={`/portfolio/${projects[3].id}`} class="group bento-grid-item bento-grid-item-4">
+	                {projects[3].data.image && (
+	                    <Image src={projects[3].data.image} alt={`${projects[3].data.title} thumbnail`} class="bento-grid-item-image" />
+	                )}
+	                <div class="bento-grid-item-overlay"></div>
+	                <div class="bento-grid-item-content">
+	                    <p class="bento-grid-item-date">
+	                        {projects[3].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                    </p>
+	                    <p class="bento-grid-item-company">
+	                        {projects[3].data.company && `Working at ${projects[3].data.company}`}
+	                    </p>
+	                    <h3 class="bento-grid-item-title">
+	                        {projects[3].data.title}
+	                    </h3>
+	                    <p class="bento-grid-item-description max-w-lg">
+							Real-time analytics pipeline processing millions of events daily.
+	                    </p>
+	                    <div class="bento-grid-item-tags badge-list">
+	                        {projects[3].data.tags.map((tag: string) => (
+	                            <span class="badge">{tag}</span>
+	                        ))}
+	                    </div>
+	                    <span class="bento-grid-item-cta">
+							View Project
+	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+	                    </span>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+	</section>
 </Layout>

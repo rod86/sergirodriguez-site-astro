@@ -4,12 +4,13 @@ date: 2010-12-01
 company: Opus5
 image: ./img/alzamora.jpg
 tags: ['TYPO3', 'HTML', 'CSS', 'Javascript']
+short_description: Intranet for a printing & packaging company
 ---
 
-Development in TYPO3 an intranet for a printing & packaging company. This site has:
+Development of an intranet in TYPO3 for a printing and packaging company.
 
-* News
-* Generate budgets/client record in PDF
-* Forum
-* Clients area where the company can share documents
-* Newsletter
+* News.
+* Generate budgets/client record in PDF.
+* Forum.
+* Clients area where the company can share documents.
+* Newsletter.

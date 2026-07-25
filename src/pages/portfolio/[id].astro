@@ -1,34 +1,72 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Layout from '@layouts/Layout.astro';
 import { getCollection, getEntry, type CollectionEntry, render } from 'astro:content';
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects') as CollectionEntry<'projects'>[];
-  return projects.map((entry) => ({
-    params: { id: entry.id },
-    props: { entry },
-  }));
+    const projects = await getCollection('projects') as CollectionEntry<'projects'>[];
+    return projects.map((entry) => ({
+        params: { id: entry.id },
+        props: { entry },
+    }));
 }
 
 const { id } = Astro.params;
 const entry = await getEntry('projects', id) as CollectionEntry<'projects'>;
 const { Content } = await render(entry);
+const { title, date, company, image, url, github_url, tags } = entry.data;
 ---
 
-<Layout title={entry.data.title}>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-      <div>
-        <h1 class="text-4xl font-bold text-foreground leading-tight mb-3">
-          {entry.data.title}
-        </h1>
+<Layout title={title} description={`${title} — a project by Sergi Rodriguez, Full Stack Developer.`}>
+    <section>
+        <div class="page-container py-12 lg:py-16">
+            <a href="/portfolio" class="inline-flex items-center gap-2 text-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to projects
+            </a>
 
-        <Content />
-      </div>
-      <div>
-        {entry.data.image && (
-          <Image src={entry.data.image} alt={entry.data.title} />
+            <div class="mt-10 grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2">
+        <!-- LEFT: info -->
+        <div class="flex flex-col">
+            <p class="text-sm text-muted">{date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}</p>
+            <h1 class="mt-3">{title}</h1>
+            {company && <p class="mt-3 text-[15px] text-muted">Working at {company}</p>}
+
+            {tags.length > 0 && (
+                <div class="mt-6 badge-list">
+                    {tags.map((tag) => (
+                        <span class="badge px-2.5 text-xs">{tag}</span>
+                    ))}
+                </div>
+            )}
+
+            <div class="mt-8 space-y-4 text-[15px] leading-relaxed text-muted">
+                <Content />
+            </div>
+
+            {(url || github_url) && (
+                <div class="mt-auto flex flex-wrap gap-3 pt-10">
+                    {url && (
+                        <a href={url} target="_blank" rel="noopener" class="button">
+                  View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    )}
+                    {github_url && (
+                        <a href={github_url} target="_blank" rel="noopener" class="button-outlined">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg> GitHub Repository
+                        </a>
+                    )}
+                </div>
+            )}
+        </div>
+
+        <!-- RIGHT: image -->
+        {image && (
+            <div class="flex w-[453px] max-w-full items-center justify-center overflow-hidden rounded-2xl border border-stroke lg:mx-auto lg:my-auto">
+                <Image src={image} alt={`${title} — dashboard screenshot`} class="h-[274px] w-full object-cover" />
+            </div>
         )}
-      </div>
-    </div>
+            </div>
+        </div>
+    </section>
 </Layout>

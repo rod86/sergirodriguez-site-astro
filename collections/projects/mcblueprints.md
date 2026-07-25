@@ -1,11 +1,10 @@
 ---
 title: MC Blueprints
 date: 2015-07-01
-image: ./img/mcblueprints/home.png
-tags: ['NodeJS', 'AngularJS', 'MongoDB', 'Express']
+image: ./img/mcblueprints.png
+tags: ['NodeJS', 'AngularJS', 'MongoDB', 'Bootstrap']
 github_url: https://github.com/rod86/mcblueprints
+short_description: Manage and share Minecraft structures.
 ---
 
-Application to manage and share Minecraft structures.
-
-I used the MEAN stack (MongoDB, Express, AngularJS 1.x, NodeJs).
+An application to manage and share Minecraft structures.
