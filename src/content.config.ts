@@ -10,8 +10,8 @@ const projectCollection = defineCollection({
         image: image(),
         short_description: z.string(),
         company: z.string().optional().nullable().default(null),
-        url: z.string().url().optional().nullable().default(null),
-        github_url: z.string().url().optional().nullable().default(null),
+        url: z.url().optional().nullable().default(null),
+        github_url: z.url().optional().nullable().default(null),
         tags: z.array(z.string()).optional().default([]),
     }),
 });
