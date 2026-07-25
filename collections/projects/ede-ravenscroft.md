@@ -3,6 +3,7 @@ title: Ede & Ravenscroft
 date: 2013-12-01
 image: ./img/ede.jpg
 url: http://www.edeandravenscroft.com/
+company: Liquid Light
 tags: ['TYPO3', 'HTML', 'CSS', 'Javascript']
 short_description: A site of oldest britain oldest tailors
 ---

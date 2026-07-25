@@ -1,6 +1,6 @@
 ---
 title: AI Prompts Vault API
-date: 2023-02-28
+date: 2026-07-15
 image: ./img/ai-prompts-vault-api.png
 tags: ['NodeJS', 'TypeScript', 'PostgreSQL']
 github_url: https://github.com/rod86/ai-prompts-vault-api
