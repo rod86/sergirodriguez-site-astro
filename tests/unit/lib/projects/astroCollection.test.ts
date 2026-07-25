@@ -7,7 +7,7 @@ vi.mock('astro:content', () => ({
     render: vi.fn(),
 }));
 
-import {getProjectsList, getProjectDetails} from "@lib/projects/astroCollection.ts";
+import {getProjectsList, getProjectDetails, getFeaturedProjects} from "@lib/projects/astroCollection.ts";
 import type {AstroComponentFactory} from "astro/runtime/server/index.js";
 import {projectsFixture} from "@tests/lib/fixtures/projects.ts";
 import type {ProjectDetails, ProjectListItem} from "@lib/projects/types.ts";
@@ -80,5 +80,26 @@ describe('Astro Collection', () => {
             await expect(getProjectDetails(id)).rejects.toThrow(new Error(`Project with id ${id} not found`));
             expect(render).not.toHaveBeenCalled();
         });
+    });
+
+    describe('getFeaturedProjects', () => {
+       it('returns an object containing featured projects', async () => {
+           const notesProject: CollectionEntry<'projects'> = projectsFixture[1];
+           const weatherProject: CollectionEntry<'projects'> = projectsFixture[5];
+           const budgetProject: CollectionEntry<'projects'> = projectsFixture[0];
+           const habitsProject: CollectionEntry<'projects'> = projectsFixture[2];
+           const featuredIds = [notesProject.id, weatherProject.id, budgetProject.id, habitsProject.id];
+           const expectedResponse = [
+               buildItemFromEntry(notesProject),
+               buildItemFromEntry(weatherProject),
+               buildItemFromEntry(budgetProject),
+               buildItemFromEntry(habitsProject)
+           ];
+           vi.mocked(getCollection).mockResolvedValue([notesProject, weatherProject, budgetProject, habitsProject]);
+
+           const result = await getFeaturedProjects(featuredIds);
+           expect(getCollection).toHaveBeenCalledWith('projects', expect.any(Function));
+           expect(result).toEqual(expectedResponse);
+       });
     });
 });

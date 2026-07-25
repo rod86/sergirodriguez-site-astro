@@ -2,7 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import heroImg from '@assets/img/coding-agent.svg';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import {getFeaturedProjects} from "@lib/projects/astroCollection.ts";
 
 const homeProjects = [
     'ai-prompts-vault-api',
@@ -10,9 +10,7 @@ const homeProjects = [
     'symfony-auctions-api',
     'lunchbox',
 ];
-const projects = await getCollection('projects', ({ id }) => {
-    return homeProjects.includes(id);
-}) as CollectionEntry<'projects'>[];
+const [project1, project2, project3, project4] = await getFeaturedProjects(homeProjects);
 ---
 
 <Layout>
@@ -58,26 +56,26 @@ const projects = await getCollection('projects', ({ id }) => {
 	        </div>
 
 	        <div class="bento-grid mt-12">
-	            <a href={`/portfolio/${projects[0].id}`} class="group bento-grid-item bento-grid-item-1">
-	                {projects[0].data.image && (
-	                    <Image src={projects[0].data.image} alt={`${projects[0].data.title} thumbnail`} class="bento-grid-item-image opacity-30 group-hover:opacity-45" />
+	            <a href={`/portfolio/${project1.id}`} class="group bento-grid-item bento-grid-item-1">
+	                {project1.image && (
+	                    <Image src={project1.image} alt={`${project1.title} thumbnail`} class="bento-grid-item-image opacity-30 group-hover:opacity-45" />
 	                )}
 	                <div class="bento-grid-item-overlay"></div>
 	                <div class="bento-grid-item-content">
 	                    <p class="bento-grid-item-date">
-	                        {projects[0].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                        {project1.date}
 	                    </p>
 	                    <p class="bento-grid-item-company">
-	                        {projects[0].data.company && `Working at ${projects[0].data.company}`}
+	                        {project1.company && `Working at ${project1.company}`}
 	                    </p>
 	                    <h3 class="bento-grid-item-title text-2xl">
-	                        {projects[0].data.title}
+	                        {project1.title}
 	                    </h3>
 	                    <p class="bento-grid-item-description max-w-sm mb-4">
 							Real-time analytics pipeline processing millions of events daily.
 	                    </p>
 	                    <div class="bento-grid-item-tags badge-list mb-5">
-	                        {projects[0].data.tags.map((tag: string) => (
+	                        {project1.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
@@ -88,26 +86,26 @@ const projects = await getCollection('projects', ({ id }) => {
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${projects[1].id}`} class="group bento-grid-item bento-grid-item-2">
-	                {projects[1].data.image && (
-	                    <Image src={projects[1].data.image} alt={`${projects[1].data.title} thumbnail`} class="bento-grid-item-image" />
+	            <a href={`/portfolio/${project2.id}`} class="group bento-grid-item bento-grid-item-2">
+	                {project2.image && (
+	                    <Image src={project2.image} alt={`${project2.title} thumbnail`} class="bento-grid-item-image" />
 	                )}
 	                <div class="bento-grid-item-overlay"></div>
 	                <div class="bento-grid-item-content">
 	                    <p class="bento-grid-item-date">
-	                        {projects[1].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                        {project2.date}
 	                    </p>
 	                    <p class="bento-grid-item-company">
-	                        {projects[1].data.company && `Working at ${projects[1].data.company}`}
+	                        {project2.company && `Working at ${project2.company}`}
 	                    </p>
 	                    <h3 class="bento-grid-item-title">
-	                        {projects[1].data.title}
+	                        {project2.title}
 	                    </h3>
 	                    <p class="bento-grid-item-description">
 							Real-time analytics pipeline processing millions of events daily.
 	                    </p>
 	                    <div class="bento-grid-item-tags badge-list">
-	                        {projects[1].data.tags.map((tag: string) => (
+	                        {project2.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
@@ -118,26 +116,26 @@ const projects = await getCollection('projects', ({ id }) => {
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${projects[2].id}`} class="group bento-grid-item bento-grid-item-3">
-	                {projects[2].data.image && (
-	                    <Image src={projects[2].data.image} alt={`${projects[2].data.title} thumbnail`} class="bento-grid-item-image" />
+	            <a href={`/portfolio/${project3.id}`} class="group bento-grid-item bento-grid-item-3">
+	                {project3.image && (
+	                    <Image src={project3.image} alt={`${project3.title} thumbnail`} class="bento-grid-item-image" />
 	                )}
 	                <div class="bento-grid-item-overlay"></div>
 	                <div class="bento-grid-item-content">
 	                    <p class="bento-grid-item-date">
-	                        {projects[2].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                        {project3.date}
 	                    </p>
 	                    <p class="bento-grid-item-company">
-	                        {projects[2].data.company && `Working at ${projects[2].data.company}`}
+	                        {project3.company && `Working at ${project3.company}`}
 	                    </p>
 	                    <h3 class="bento-grid-item-title">
-	                        {projects[2].data.title}
+	                        {project3.title}
 	                    </h3>
 	                    <p class="bento-grid-item-description">
 							Real-time analytics pipeline processing millions of events daily.
 	                    </p>
 	                    <div class="bento-grid-item-tags badge-list">
-	                        {projects[2].data.tags.map((tag: string) => (
+	                        {project3.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
@@ -148,26 +146,26 @@ const projects = await getCollection('projects', ({ id }) => {
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${projects[3].id}`} class="group bento-grid-item bento-grid-item-4">
-	                {projects[3].data.image && (
-	                    <Image src={projects[3].data.image} alt={`${projects[3].data.title} thumbnail`} class="bento-grid-item-image" />
+	            <a href={`/portfolio/${project4.id}`} class="group bento-grid-item bento-grid-item-4">
+	                {project4.image && (
+	                    <Image src={project4.image} alt={`${project4.title} thumbnail`} class="bento-grid-item-image" />
 	                )}
 	                <div class="bento-grid-item-overlay"></div>
 	                <div class="bento-grid-item-content">
 	                    <p class="bento-grid-item-date">
-	                        {projects[3].data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
+	                        {project4.date}
 	                    </p>
 	                    <p class="bento-grid-item-company">
-	                        {projects[3].data.company && `Working at ${projects[3].data.company}`}
+	                        {project4.company && `Working at ${project4.company}`}
 	                    </p>
 	                    <h3 class="bento-grid-item-title">
-	                        {projects[3].data.title}
+	                        {project4.title}
 	                    </h3>
 	                    <p class="bento-grid-item-description max-w-lg">
 							Real-time analytics pipeline processing millions of events daily.
 	                    </p>
 	                    <div class="bento-grid-item-tags badge-list">
-	                        {projects[3].data.tags.map((tag: string) => (
+	                        {project4.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
