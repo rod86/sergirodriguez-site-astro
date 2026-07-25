@@ -5,7 +5,7 @@ vi.mock('astro:content', () => ({
     getCollection: vi.fn()
 }));
 
-import {getProjects} from "@lib/projects/astroCollection.ts";
+import {getProjectsList} from "@lib/projects/astroCollection.ts";
 
 import type {ProjectListItem} from "@lib/projects/types.ts";
 
@@ -138,7 +138,7 @@ describe('Astro Collection', () => {
             ];
             vi.mocked(getCollection).mockResolvedValue(fakeProjects);
 
-            const result = await getProjects();
+            const result = await getProjectsList();
             expect(getCollection).toHaveBeenCalledWith('projects');
             expect(result).toEqual(expectedProjects);
         });

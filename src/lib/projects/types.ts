@@ -10,11 +10,11 @@ export type ProjectListItem = {
     tags: string[];
 };
 
-export type ProjectDetail = ProjectListItem & {
+export type ProjectDetails = ProjectListItem & {
     url: string | null;
     github_url: string | null;
     Content: unknown; // rendered body component
 };
 
-export type GetProjects = () => Promise<ProjectListItem[]>;
-export type GetProject = (id: string) => Promise<ProjectDetail>;
+export type GetProjectsList = () => Promise<ProjectListItem[]>;
+export type GetProjectDetails = (id: string) => Promise<ProjectDetails>;
