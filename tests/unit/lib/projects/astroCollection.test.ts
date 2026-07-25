@@ -1,13 +1,15 @@
 import { vi } from "vitest";
-import {type CollectionEntry, getCollection} from 'astro:content';
+import {type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
 
 vi.mock('astro:content', () => ({
-    getCollection: vi.fn()
+    getCollection: vi.fn(),
+    getEntry: vi.fn(),
+    render: vi.fn(),
 }));
 
-import {getProjectsList} from "@lib/projects/astroCollection.ts";
-
+import {getProjectsList, getProjectDetails} from "@lib/projects/astroCollection.ts";
 import type {ProjectListItem} from "@lib/projects/types.ts";
+import type {AstroComponentFactory} from "astro/runtime/server/index.js";
 
 const fakeImage = (image: string): ImageMetadata => ({
     src: `/_astro/${image ?? 'image'}.png`,
@@ -126,7 +128,7 @@ const buildItemFromEntry = (item: CollectionEntry<'projects'>): ProjectListItem 
 });
 
 describe('Astro Collection', () => {
-    describe('getProjects', async () => {
+    describe('getProjects', () => {
         it('returns an list of projects sorted by date (newest first)', async () => {
             const expectedProjects = [
                 buildItemFromEntry(fakeProjects[0]), // Budget Tracker
@@ -141,6 +143,45 @@ describe('Astro Collection', () => {
             const result = await getProjectsList();
             expect(getCollection).toHaveBeenCalledWith('projects');
             expect(result).toEqual(expectedProjects);
+        });
+    });
+
+    describe('getProjectDetails', () => {
+        it('returns a project details item', async () => {
+            const project: CollectionEntry<'projects'> = {
+                id: 'budget-tracker-app',
+                collection: 'projects',
+                filePath: 'collections/projects/budget-tracker-app.md',
+                body: 'Budget Tracker App is a personal finance tool for tracking income and expenses.',
+                data: {
+                    title: 'Budget Tracker App',
+                    date: new Date('2024-06-03'),
+                    company: null,
+                    image: fakeImage('budget-tracker-app'),
+                    url: 'https://budget-tracker-app.vercel.app/',
+                    github_url: 'https://github.com/jdoe/budget-tracker-app',
+                    tags: ['Vue', 'NodeJS', 'MongoDB'],
+                    short_description: 'Budget Tracker App',
+                },
+            };
+            const contentMock = vi.fn() as unknown as AstroComponentFactory;
+
+            // TODO fix this ugly code
+            const { shortDescription: _, ...projectData} = buildItemFromEntry(project)
+            const expectedProject = {
+                ...projectData,
+                url: project.data.url,
+                github_url: project.data.github_url,
+                Content: contentMock,
+            };
+
+            vi.mocked(getEntry).mockResolvedValue(project);
+            vi.mocked(render).mockResolvedValue({ Content: contentMock, headings: [], remarkPluginFrontmatter: {} });
+
+            const result = await getProjectDetails(project.id);
+            expect(getEntry).toHaveBeenCalledWith('projects', project.id);
+            expect(render).toHaveBeenCalledWith(project);
+            expect(result).toEqual(expectedProject);
         });
     });
 });
