@@ -37,7 +37,7 @@ const buildDetailsFromEntry = (item: CollectionEntry<'projects'>, content: Astro
 describe('Astro Collection', () => {
 
     beforeEach(() => {
-       vi.resetAllMocks();
+        vi.resetAllMocks();
     });
 
     describe('getProjects', () => {
@@ -83,26 +83,26 @@ describe('Astro Collection', () => {
     });
 
     describe('getFeaturedProjects', () => {
-       it('returns an object containing featured projects', async () => {
-           const featuredProjects = [
-               projectsFixture[0], // budget tracker
-               projectsFixture[1], // cloud notes
-               projectsFixture[2], // habits tracker
-               projectsFixture[5], // weather project
-           ]
+        it('returns an object containing featured projects', async () => {
+            const featuredProjects = [
+                projectsFixture[0], // budget tracker
+                projectsFixture[1], // cloud notes
+                projectsFixture[2], // habits tracker
+                projectsFixture[5], // weather project
+            ]
 
-           const expectedResponse = [
-               buildItemFromEntry(projectsFixture[1]),
-               buildItemFromEntry(projectsFixture[5]),
-               buildItemFromEntry(projectsFixture[0]),
-               buildItemFromEntry(projectsFixture[2])
-           ];
-           const featuredIds = expectedResponse.map((item) => item.id);
-           vi.mocked(getCollection).mockResolvedValue(featuredProjects);
+            const expectedResponse = [
+                buildItemFromEntry(projectsFixture[1]),
+                buildItemFromEntry(projectsFixture[5]),
+                buildItemFromEntry(projectsFixture[0]),
+                buildItemFromEntry(projectsFixture[2])
+            ];
+            const featuredIds = expectedResponse.map((item) => item.id);
+            vi.mocked(getCollection).mockResolvedValue(featuredProjects);
 
-           const result = await getFeaturedProjects(featuredIds);
-           expect(getCollection).toHaveBeenCalledWith('projects', expect.any(Function));
-           expect(result).toEqual(expectedResponse);
-       });
+            const result = await getFeaturedProjects(featuredIds);
+            expect(getCollection).toHaveBeenCalledWith('projects', expect.any(Function));
+            expect(result).toEqual(expectedResponse);
+        });
     });
 });
