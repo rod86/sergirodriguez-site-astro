@@ -1,13 +1,74 @@
 ---
 // import {Image} from 'astro:assets';
 import type {ProjectListItem} from "@lib/projects/types.ts";
+import {Image} from "astro:assets";
 
 interface Props {
     project: ProjectListItem,
     position: number,
 }
 
-const { project } = Astro.props;
+const { project, position } = Astro.props;
+const isFeatured = position === 1;
+const isWide = position === 4;
+const itemClasses = [
+    'group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60',
+    { 'justify-end lg:row-span-2': isFeatured },
+    { 'justify-center p-7': !isFeatured },
+    { 'sm:col-span-2 lg:col-span-2': isWide },
+];
+const innerContentClasses = [
+    'relative flex h-full flex-col',
+    { 'justify-end p-7': isFeatured },
+];
+const imageClasses = [
+    'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
+    { 'opacity-30 group-hover:opacity-45': isFeatured },
+    { 'opacity-25 group-hover:opacity-40': !isFeatured },
+];
+const overlayClasses = [
+    'absolute inset-0 bg-linear-to-t from-background',
+    { 'via-background/75 to-background/25': isFeatured },
+    { 'via-background/80 to-background/40': !isFeatured },
+];
+const descriptionClasses = [
+    'text-sm leading-relaxed text-muted mb-4',
+    { 'max-w-sm': isFeatured },
+    { 'max-w-lg': isWide },
+];
+const viewClasses = [
+    'flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light',
+    { 'mt-0': isFeatured },
+    { 'mt-auto': !isFeatured },
+]
 ---
 
-<h1>{project.title}</h1>
+<a href={`/portfolio/${project.id}`} class:list={itemClasses}>
+    {project.image && (
+        <Image src={project.image} alt={`${project.title} thumbnail`} class:list={imageClasses} />
+    )}
+    <div class:list={overlayClasses}></div>
+    <div class:list={innerContentClasses}>
+        <p class="mb-1 text-xs text-muted">
+            {project.date}
+        </p>
+        <p class="mb-2 min-h-4 text-xs text-muted font-semibold">
+            {project.company && `Working at ${project.company}`}
+        </p>
+        <h3 class="text-xl mb-2">
+            {project.title}
+        </h3>
+        <p class:list={descriptionClasses}>
+            {project.shortDescription}
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+            {project.tags.map((tag: string) => (
+                <span class="badge">{tag}</span>
+            ))}
+        </div>
+        <span class:list={viewClasses}>
+            View Project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+    </div>
+</a>
