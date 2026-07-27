@@ -13,13 +13,13 @@ const isFeatured = position === 1;
 const isWide = position === 4;
 const itemClasses = [
     'group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60',
-    { 'justify-end lg:row-span-2': isFeatured },
-    { 'justify-center p-7': !isFeatured },
-    { 'sm:col-span-2 lg:col-span-2': isWide },
+    { 'lg:row-span-2': isFeatured },
+    { 'justify-center': !isFeatured },
+    { 'lg:col-span-2': isWide },
 ];
 const innerContentClasses = [
-    'relative flex h-full flex-col',
-    { 'justify-end p-7': isFeatured },
+    'relative flex h-full flex-col p-7',
+    { 'lg:justify-end': isFeatured },
 ];
 const imageClasses = [
     'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
@@ -38,7 +38,7 @@ const descriptionClasses = [
 ];
 const viewClasses = [
     'flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light',
-    { 'mt-0': isFeatured },
+    { 'mt-auto lg:mt-2.5': isFeatured },
     { 'mt-auto': !isFeatured },
 ]
 ---
