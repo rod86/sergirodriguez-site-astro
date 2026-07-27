@@ -1,0 +1,15 @@
+---
+import type {ProjectListItem} from "@lib/projects/types.ts";
+import BentoGridItem from './BentoGridItem.astro';
+
+interface Props {
+    projects: ProjectListItem[];
+}
+const { projects } = Astro.props;
+---
+
+<div class="bento-grid mt-12">
+    {projects.map((project, index) => (
+        <BentoGridItem project={project} position={index + 1} />
+    ))}
+</div>

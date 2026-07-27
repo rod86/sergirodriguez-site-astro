@@ -1,0 +1,13 @@
+---
+// import {Image} from 'astro:assets';
+import type {ProjectListItem} from "@lib/projects/types.ts";
+
+interface Props {
+    project: ProjectListItem,
+    position: number,
+}
+
+const { project } = Astro.props;
+---
+
+<h1>{project.title}</h1>
