@@ -30,121 +30,121 @@ const [project1, project2, project3, project4] = await getFeaturedProjects(homeP
 	            </a>
 	        </div>
 
-	        <div class="bento-grid mt-12">
-	            <a href={`/portfolio/${project1.id}`} class="group bento-grid-item bento-grid-item-1">
+	        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-2 mt-12">
+	            <a href={`/portfolio/${project1.id}`} class="group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60 justify-end lg:row-span-2">
 	                {project1.image && (
-	                    <Image src={project1.image} alt={`${project1.title} thumbnail`} class="bento-grid-item-image opacity-30 group-hover:opacity-45" />
+	                    <Image src={project1.image} alt={`${project1.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-300 group-hover:opacity-45" />
 	                )}
-	                <div class="bento-grid-item-overlay"></div>
-	                <div class="bento-grid-item-content">
-	                    <p class="bento-grid-item-date">
+	                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/25"></div>
+	                <div class="relative flex h-full flex-col justify-end p-7">
+	                    <p class="mb-1 text-xs text-muted">
 	                        {project1.date}
 	                    </p>
-	                    <p class="bento-grid-item-company">
+	                    <p class="mb-2 min-h-4 text-xs text-muted font-semibold">
 	                        {project1.company && `Working at ${project1.company}`}
 	                    </p>
-	                    <h3 class="bento-grid-item-title text-2xl">
+	                    <h3 class="mb-2 text-xl">
 	                        {project1.title}
 	                    </h3>
-	                    <p class="bento-grid-item-description max-w-sm mb-4">
+	                    <p class="text-sm leading-relaxed text-muted max-w-sm mb-4">
 	                        {project1.shortDescription}
 	                    </p>
-	                    <div class="bento-grid-item-tags badge-list mb-5">
+	                    <div class="flex flex-wrap gap-2 mb-5">
 	                        {project1.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
-	                    <span class="bento-grid-item-cta">
+	                    <span class="flex w-fit ml-auto mt-0 items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light">
 							View Project
 	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 	                    </span>
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${project2.id}`} class="group bento-grid-item bento-grid-item-2">
+	            <a href={`/portfolio/${project2.id}`} class="group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60 justify-center p-7">
 	                {project2.image && (
-	                    <Image src={project2.image} alt={`${project2.title} thumbnail`} class="bento-grid-item-image" />
+	                    <Image src={project2.image} alt={`${project2.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 	                )}
-	                <div class="bento-grid-item-overlay"></div>
-	                <div class="bento-grid-item-content">
-	                    <p class="bento-grid-item-date">
+	                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40"></div>
+	                <div class="relative flex h-full flex-col">
+	                    <p class="mb-1 text-xs text-muted">
 	                        {project2.date}
 	                    </p>
-	                    <p class="bento-grid-item-company">
+	                    <p class="mb-2 min-h-4 text-xs text-muted font-semibold">
 	                        {project2.company && `Working at ${project2.company}`}
 	                    </p>
-	                    <h3 class="bento-grid-item-title">
+	                    <h3 class="mb-2 text-xl">
 	                        {project2.title}
 	                    </h3>
-	                    <p class="bento-grid-item-description">
+	                    <p class="mb-3 text-sm leading-relaxed text-muted">
 	                        {project2.shortDescription}
 	                    </p>
-	                    <div class="bento-grid-item-tags badge-list">
+	                    <div class="mb-5 flex flex-wrap gap-2">
 	                        {project2.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
-	                    <span class="bento-grid-item-cta">
+	                    <span class="flex w-fit ml-auto mt-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light">
 							View Project
 	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 	                    </span>
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${project3.id}`} class="group bento-grid-item bento-grid-item-3">
+	            <a href={`/portfolio/${project3.id}`} class="group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60 justify-center p-7">
 	                {project3.image && (
-	                    <Image src={project3.image} alt={`${project3.title} thumbnail`} class="bento-grid-item-image" />
+	                    <Image src={project3.image} alt={`${project3.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 	                )}
-	                <div class="bento-grid-item-overlay"></div>
-	                <div class="bento-grid-item-content">
-	                    <p class="bento-grid-item-date">
+	                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40"></div>
+	                <div class="relative flex h-full flex-col">
+	                    <p class="mb-1 text-xs text-muted">
 	                        {project3.date}
 	                    </p>
-	                    <p class="bento-grid-item-company">
+	                    <p class="mb-2 min-h-4 text-xs text-muted font-semibold">
 	                        {project3.company && `Working at ${project3.company}`}
 	                    </p>
-	                    <h3 class="bento-grid-item-title">
+	                    <h3 class="mb-2 text-xl">
 	                        {project3.title}
 	                    </h3>
-	                    <p class="bento-grid-item-description">
+	                    <p class="mb-3 text-sm leading-relaxed text-muted">
 	                        {project3.shortDescription}
 	                    </p>
-	                    <div class="bento-grid-item-tags badge-list">
+	                    <div class="mb-5 flex flex-wrap gap-2">
 	                        {project3.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
-	                    <span class="bento-grid-item-cta">
+	                    <span class="flex w-fit ml-auto mt-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light">
 							View Project
 	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 	                    </span>
 	                </div>
 	            </a>
 
-	            <a href={`/portfolio/${project4.id}`} class="group bento-grid-item bento-grid-item-4">
+	            <a href={`/portfolio/${project4.id}`} class="group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60 justify-center p-7 sm:col-span-2 lg:col-span-2">
 	                {project4.image && (
-	                    <Image src={project4.image} alt={`${project4.title} thumbnail`} class="bento-grid-item-image" />
+	                    <Image src={project4.image} alt={`${project4.title} thumbnail`} class="absolute inset-0 h-full w-full object-cover opacity-25 transition-opacity duration-300 group-hover:opacity-40" />
 	                )}
-	                <div class="bento-grid-item-overlay"></div>
-	                <div class="bento-grid-item-content">
-	                    <p class="bento-grid-item-date">
+	                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40"></div>
+	                <div class="relative flex h-full flex-col">
+	                    <p class="mb-1 text-xs text-muted">
 	                        {project4.date}
 	                    </p>
-	                    <p class="bento-grid-item-company">
+	                    <p class="mb-2 min-h-4 text-xs text-muted font-semibold">
 	                        {project4.company && `Working at ${project4.company}`}
 	                    </p>
-	                    <h3 class="bento-grid-item-title">
+	                    <h3 class="mb-2 text-xl">
 	                        {project4.title}
 	                    </h3>
-	                    <p class="bento-grid-item-description max-w-lg">
+	                    <p class="mb-3 text-sm leading-relaxed text-muted max-w-lg">
 	                        {project4.shortDescription}
 	                    </p>
-	                    <div class="bento-grid-item-tags badge-list">
+	                    <div class="mb-5 flex flex-wrap gap-2">
 	                        {project4.tags.map((tag: string) => (
 	                            <span class="badge">{tag}</span>
 	                        ))}
 	                    </div>
-	                    <span class="bento-grid-item-cta">
+	                    <span class="flex w-fit ml-auto mt-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light">
 							View Project
 	                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 	                    </span>
