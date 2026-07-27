@@ -22,15 +22,14 @@ const projects = await getFeaturedProjects(homeProjects);
 	<!-- ===== FEATURED PROJECTS ===== -->
 	<section>
 	    <div class="page-container pt-4 pb-20 lg:pt-6 lg:pb-24">
-	        <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-	            <h2 class="text-3xl sm:text-4xl">Featured Projects</h2>
-	            <a href="/portfolio" class="inline-flex items-center gap-2 text-sm font-semibold">
-					All projects
-	                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-	            </a>
-	        </div>
-
+	        <h2 class="text-3xl sm:text-4xl">Featured Projects</h2>
 	        <BentoGrid projects={projects} />
+	        <a href="/portfolio" class="mt-8 flex w-fit justify-center ml-auto items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-white">
+				All projects
+	            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+	                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+	            </svg>
+	        </a>
 	    </div>
 	</section>
 </Layout>

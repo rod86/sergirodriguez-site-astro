@@ -77,7 +77,6 @@
   .button-outlined {
     @apply inline-flex items-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
   }
-
   .badge-list {
     @apply flex flex-wrap gap-2;
   }
