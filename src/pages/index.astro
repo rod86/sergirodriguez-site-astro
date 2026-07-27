@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import heroImg from '@assets/img/coding-agent.svg';
 import {getFeaturedProjects} from "@lib/projects/astroCollection.ts";
+import HeroBlock from "@components/home/HeroBlock.astro";
 
 const homeProjects = [
     'ai-prompts-vault-api',
@@ -15,33 +15,8 @@ const [project1, project2, project3, project4] = await getFeaturedProjects(homeP
 
 <Layout>
 	<!-- ===== HERO ===== -->
-	<section class="relative overflow-hidden">
-	    <div class="page-container grid grid-cols-1 items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
-			<!-- left -->
-			<div>
-			    <h1 class="text-2xl leading-[1.15] whitespace-nowrap sm:text-4xl sm:whitespace-normal lg:text-6xl" style="font-size: 48px; font-weight: 600">
-					Full Stack Developer
-			    </h1>
-			    <p class="mt-6 max-w-xl text-[15px] leading-relaxed text-muted">
-					With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
-					I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
-					I care deeply about clean code, thoughtful architecture, and shipping things that last.
-			    </p>
-			    <div class="mt-8 flex flex-wrap gap-3">
-			        <a href="/about" class="button">
-						About Me
-			            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			        </a>
-			        <a href="/portfolio" class="button-outlined bg-background">
-						View Projects
-			        </a>
-			    </div>
-			</div>
-			<!-- right: hero image -->
-			<div>
-			    <Image src={heroImg} alt="Full-stack development illustration" class="mx-auto w-full max-w-md" />
-			</div>
-	    </div>
+	<section>
+	    <HeroBlock />
 	</section>
 
 	<!-- ===== FEATURED PROJECTS ===== -->
