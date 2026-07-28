@@ -72,10 +72,10 @@
   }
 
   .button {
-    @apply inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
   }
   .button-outlined {
-    @apply inline-flex items-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
   }
   .badge-list {
     @apply flex flex-wrap gap-2;
