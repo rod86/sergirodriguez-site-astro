@@ -35,18 +35,18 @@ const isActive = (href: string) =>
                 </a>
             ))}
         </div>
-        <button data-mobile-nav-button class="md:hidden grid h-10 w-10 place-items-center rounded-md border border-stroke text-light" aria-label="Toggle menu" aria-expanded="false">
-            <svg data-icon-open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
-            <svg data-icon-close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden h-5 w-5"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+        <button data-mobile-nav-button class="md:hidden grid h-10 w-10 place-items-center text-light" aria-label="Toggle menu" aria-expanded="false">
+            <svg data-icon-open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+            <svg data-icon-close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="hidden h-10 w-10"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
         </button>
     </nav>
-    <div data-mobile-nav class="hidden md:hidden border-t border-stroke bg-background px-6 py-4">
-        <div class="flex flex-col gap-1 text-sm">
+    <div data-mobile-nav class="hidden md:hidden border-b border-stroke bg-background px-6 py-4">
+        <div class="flex flex-col gap-1">
             {navLinks.map((link) => (
                 <a
                     href={link.href}
                     class:list={[
-                        'rounded-md px-3 py-2.5',
+                        'rounded-md p-3',
                         isActive(link.href) ? 'text-primary-bright' : 'text-muted hover:bg-surface hover:text-light',
                     ]}
                 >
