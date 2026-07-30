@@ -10,27 +10,27 @@ const projects = await getProjectsList();
     <h1 class="mb-14">Projects</h1>
 
     <section>
-        <div class="space-y-16 lg:space-y-24 w-fit mx-auto lg:w-auto lg:mx-0">
+        <div class="space-y-16 lg:space-y-24 w-fit mx-auto md:w-auto lg:mx-0">
             {projects.map((project, i) => (
-                <article class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                <article class="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
                     <a
                         href={`/portfolio/${project.id}`}
                         class:list={[
-                            'flex h-68.5 w-113.25 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke',
-                            i % 2 === 1 && 'lg:order-2',
+                            'flex w-90 h-54.5 lg:w-113.25 lg:h-68.5 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke',
+                            i % 2 === 1 && 'md:order-2',
                         ]}
                     >
                         <Image src={project.image!} alt={`${project.title} thumbnail`} class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
                     </a>
-                    <div class:list={[i % 2 === 1 && 'lg:order-1']}>
+                    <div class:list={['lg:max-w-md', i % 2 === 1 && 'lg:order-1']}>
                         <div class="flex flex-col gap-0.5 text-xs text-muted">
                             <span>
                                 {project.date}
                             </span>
                             {project.company && `Working at ${project.company}`}
                         </div>
-                        <h3 class="mt-2 text-2xl lg:text-3xl">{project.title}</h3>
-                        <p class="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+                        <h3 class="mt-2 text-2xl md:text-3xl">{project.title}</h3>
+                        <p class="mt-3 max-w-md text-sm leading-relaxed text-muted">
                             {project.shortDescription}
                         </p>
                         <div class="mt-4 badge-list">
@@ -38,7 +38,7 @@ const projects = await getProjectsList();
                                 <span class="badge">{tag}</span>
                             ))}
                         </div>
-                        <a href={`/portfolio/${project.id}`} class="group mt-6 flex items-center w-fit mx-auto mr-0 gap-2 font-semibold md:text-sm">
+                        <a href={`/portfolio/${project.id}`} class="group mt-6 flex items-center w-fit mx-auto md:mr-0 gap-2 font-semibold md:text-sm">
 							View Project
                             <span class="transition-transform group-hover:translate-x-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </a>
