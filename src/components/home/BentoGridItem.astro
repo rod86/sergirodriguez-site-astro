@@ -2,6 +2,7 @@
 // import {Image} from 'astro:assets';
 import type {ProjectListItem} from "@lib/projects/types.ts";
 import {Image} from "astro:assets";
+import {Icon} from "astro-icon/components";
 
 interface Props {
     project: ProjectListItem,
@@ -68,7 +69,7 @@ const viewClasses = [
         </div>
         <span class:list={viewClasses}>
             View Project
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <Icon name="lucide:arrow-right" class="h-4 w-4" />
         </span>
     </div>
 </a>

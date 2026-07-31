@@ -1,6 +1,7 @@
 ---
 import heroImg from "@assets/img/coding-agent.svg";
 import {Image} from "astro:assets";
+import {Icon} from "astro-icon/components";
 ---
 
 <div class="grid grid-cols-1 items-center gap-14 py-16 lg:grid-cols-2 lg:py-24">
@@ -17,7 +18,7 @@ import {Image} from "astro:assets";
         <div class="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
             <a href="/about" class="button w-full sm:w-auto">
                 About Me
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <Icon name="lucide:arrow-right" class="h-4 w-4" />
             </a>
             <a href="/portfolio" class="button-outlined bg-background w-full sm:w-auto">
                 View Projects
