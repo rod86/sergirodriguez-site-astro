@@ -67,20 +67,44 @@
 }
 
 @layer components {
+  /* Layout */
   .page-container {
     @apply mx-auto max-w-6xl px-10 pt-10 pb-16 lg:pt-14 lg:pb-20;
   }
 
+  /* Buttons */
   .button {
     @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
   }
   .button-outlined {
     @apply inline-flex items-center justify-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
   }
+
+  /* Badges */
   .badge-list {
     @apply flex flex-wrap gap-2;
   }
   .badge {
     @apply rounded border border-secondary/40 px-2 py-1 text-[11px] text-secondary;
+  }
+
+  /* Link with arrow icon */
+  .link-arrow-right, .link-arrow-left {
+    @apply flex w-fit justify-center mx-auto items-center gap-2 font-semibold text-primary transition-colors md:text-sm hover:text-light;
+  }
+  .link-arrow-right {
+    @apply md:mx-0 md:ml-auto;
+  }
+  .link-arrow-left {
+    @apply md:mx-0;
+  }
+  .link-arrow-icon {
+    @apply w-4 h-4 transition-transform;
+  }
+  .link-arrow-right:hover .link-arrow-icon {
+    @apply translate-x-1;
+  }
+  .link-arrow-left:hover .link-arrow-icon {
+    @apply -translate-x-1;
   }
 }

@@ -39,11 +39,9 @@ const projects = await getProjectsList();
                                     <span class="badge">{tag}</span>
                                 ))}
                             </div>
-                            <a href={`/portfolio/${project.id}`} class="group mt-6 flex items-center w-fit mx-auto md:mr-0 gap-2 font-semibold md:text-sm">
+                            <a href={`/portfolio/${project.id}`} class="link-arrow-right mt-6">
                                 View Project
-                                <span class="transition-transform group-hover:translate-x-1">
-                                    <Icon name="lucide:arrow-right" class="h-4 w-4" />
-                                </span>
+                                <Icon name="lucide:arrow-right" class="link-arrow-icon" />
                             </a>
                         </div>
                     </article>

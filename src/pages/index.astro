@@ -21,9 +21,9 @@ const projects = await getFeaturedProjects(homeProjects);
     <section>
         <h2 class="text-3xl mb-12 sm:text-4xl">Featured Projects</h2>
         <BentoGrid projects={projects} />
-        <a href="/portfolio" class="mt-10 flex w-fit justify-center mx-auto items-center gap-2 font-semibold text-primary transition-colors md:mx-0 md:ml-auto md:text-sm hover:text-white">
+        <a href="/portfolio" class="link-arrow-right mt-10">
 			All projects
-            <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            <Icon name="lucide:arrow-right" class="link-arrow-icon" />
         </a>
     </section>
 </Layout>

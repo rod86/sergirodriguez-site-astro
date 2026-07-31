@@ -38,7 +38,7 @@ const descriptionClasses = [
     { 'max-w-lg': isWide },
 ];
 const viewClasses = [
-    'flex w-fit ml-auto items-center gap-2 text-sm font-semibold text-primary-bright transition-colors group-hover:text-light',
+    'link-arrow-right ml-auto mx-0 text-sm text-primary-bright group-hover:text-light',
     { 'mt-auto lg:mt-2.5': isFeatured },
     { 'mt-auto': !isFeatured },
 ]
@@ -69,7 +69,7 @@ const viewClasses = [
         </div>
         <span class:list={viewClasses}>
             View Project
-            <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            <Icon name="lucide:arrow-right" class="link-arrow-icon group-hover:translate-x-1" />
         </span>
     </div>
 </a>
