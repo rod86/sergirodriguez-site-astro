@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import aboutImg from '@assets/img/aboutme.jpg';
+import {Icon} from "astro-icon/components";
 ---
 
 <Layout title="About Me" description="About Sergi Rodriguez, Full Stack Developer with 10+ years of experience.">
@@ -101,7 +102,7 @@ import aboutImg from '@assets/img/aboutme.jpg';
 			        </div>
 			        <a href="/contact" class="button mt-5 flex justify-center">
 						Get in touch
-			            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			            <Icon name="lucide:arrow-right" class="h-4 w-4" />
 			        </a>
 			    </div>
 			</div>

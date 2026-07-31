@@ -1,6 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
 import logoImg from "@assets/img/logo.png";
+import { Icon } from "astro-icon/components";
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -35,8 +36,8 @@ const isActive = (href: string) =>
             ))}
         </div>
         <button data-mobile-nav-button class="md:hidden grid h-10 w-10 place-items-center text-light" aria-label="Toggle menu" aria-expanded="false">
-            <svg data-icon-open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-10 w-10"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
-            <svg data-icon-close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="hidden h-10 w-10"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+            <Icon name="hamburger" class="h-10 w-10" data-icon-open />
+            <Icon name="close" class="hidden h-10 w-10" data-icon-close />
         </button>
     </nav>
     <div data-mobile-nav class="hidden md:hidden border-b border-stroke bg-background px-6 py-4">

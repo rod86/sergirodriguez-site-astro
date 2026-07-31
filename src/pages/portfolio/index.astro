@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { Image } from 'astro:assets';
 import {getProjectsList} from "@lib/projects/astroCollection.ts";
+import {Icon} from "astro-icon/components";
 
 const projects = await getProjectsList();
 ---
@@ -40,7 +41,9 @@ const projects = await getProjectsList();
                             </div>
                             <a href={`/portfolio/${project.id}`} class="group mt-6 flex items-center w-fit mx-auto md:mr-0 gap-2 font-semibold md:text-sm">
                                 View Project
-                                <span class="transition-transform group-hover:translate-x-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                <span class="transition-transform group-hover:translate-x-1">
+                                    <Icon name="lucide:arrow-right" class="h-4 w-4" />
+                                </span>
                             </a>
                         </div>
                     </article>
