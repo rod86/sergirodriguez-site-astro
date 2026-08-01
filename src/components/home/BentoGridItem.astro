@@ -1,8 +1,8 @@
 ---
-// import {Image} from 'astro:assets';
 import type {ProjectListItem} from "@lib/projects/types.ts";
 import {Image} from "astro:assets";
 import {Icon} from "astro-icon/components";
+import BadgeList from "@components/common/BadgeList.astro";
 
 interface Props {
     project: ProjectListItem,
@@ -63,9 +63,7 @@ const viewClasses = [
             {project.shortDescription}
         </p>
         <div class="flex flex-wrap gap-2 mb-5">
-            {project.tags.map((tag: string) => (
-                <span class="badge">{tag}</span>
-            ))}
+            <BadgeList list={project.tags} />
         </div>
         <span class:list={viewClasses}>
             View Project
