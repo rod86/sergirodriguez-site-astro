@@ -1,0 +1,21 @@
+---
+import {Icon} from "astro-icon/components";
+interface Props {
+    href: string;
+    icon: string;
+    label: string;
+    displayUrl: string;
+}
+const { href, icon, label, displayUrl} = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-xl border border-stroke bg-surface p-6 text-light hover:border-primary/60">
+    <span class="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-background text-secondary">
+        <Icon name={icon} class="h-6 w-6" />
+    </span>
+    <div class="min-w-0">
+        <p class="font-semibold">{label}</p>
+        <p class="truncate text-sm text-muted">{displayUrl}</p>
+    </div>
+    <Icon name="lucide:arrow-up-right" class="ml-auto h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-primary-bright" />
+</a>

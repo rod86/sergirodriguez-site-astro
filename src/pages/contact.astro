@@ -1,73 +1,51 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import {Icon} from "astro-icon/components";
+import SocialLink from "@components/contact/SocialLink.astro";
+import Alert from "@components/common/Alert.astro";
 ---
 
 <Layout title="Contact" description="Get in touch with Sergi Rodriguez, Full Stack Developer.">
-    <section>
-        <div class="page-container py-20 lg:py-28">
-            <div class="text-center">
-                <h1>Let's build something.</h1>
-                <p class="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
-					I'm always open to discussing new projects, freelance work, or opportunities to collaborate.
-					Reach out via LinkedIn, GitHub, or the form.
-                </p>
+
+    <section class="py-20 lg:py-28">
+        <div class="text-center">
+            <h1>Let's build something.</h1>
+            <p class="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
+                I'm always open to discussing new projects, freelance work, or opportunities to collaborate.
+                Reach out via LinkedIn, GitHub, or the form.
+            </p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
+            <div class="flex flex-col gap-5">
+                <SocialLink label="LinkedIn" href="https://linkedin.com/in/sergirodriguez" displayUrl="linkedin.com/in/sergirodriguez" icon="simple-icons:linkedin" />
+                <SocialLink label="GitHub" href="https://github.com/sergirodriguez" displayUrl="github.com/sergirodriguez" icon="simple-icons:github" />
             </div>
 
-            <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
-                <div class="flex flex-col gap-5">
-                    <a href="https://linkedin.com/in/sergirodriguez" target="_blank" rel="noopener"
-					   class="group flex items-center gap-4 rounded-xl border border-stroke bg-surface p-6 text-light hover:border-primary/60">
-                        <span class="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-background text-secondary">
-                            <Icon name="simple-icons:linkedin" class="h-6 w-6" />
-                        </span>
-                        <div class="min-w-0">
-                            <p class="font-semibold">LinkedIn</p>
-                            <p class="truncate text-sm text-muted">linkedin.com/in/sergirodriguez</p>
-                        </div>
-                        <Icon name="lucide:arrow-up-right" class="ml-auto h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-primary-bright" />
-                    </a>
+            <form class="flex flex-col gap-6" id="contact-form">
+                <Alert status="success">
+                    Message sent successfully. I'll get back to you soon.
+                </Alert>
+                <Alert status="error">
+                    Something went wrong. Please try again.
+                </Alert>
 
-                    <a href="https://github.com/sergirodriguez" target="_blank" rel="noopener"
-					   class="group flex items-center gap-4 rounded-xl border border-stroke bg-surface p-6 text-light hover:border-primary/60">
-                        <span class="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-background text-secondary">
-                            <Icon name="simple-icons:github" class="h-6 w-6" />
-                        </span>
-                        <div class="min-w-0">
-                            <p class="font-semibold">GitHub</p>
-                            <p class="truncate text-sm text-muted">github.com/sergirodriguez</p>
-                        </div>
-                        <Icon name="lucide:arrow-up-right" class="ml-auto h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-primary-bright" />
-                    </a>
+                <div>
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" name="name" type="text" required class="form-input" placeholder="Your name" />
                 </div>
-
-                <form class="flex flex-col gap-6" id="contact-form">
-                    <div data-form-success class="items-center gap-3 rounded-md border border-success/40 bg-success/10 px-4 py-3 text-sm text-success">
-                        <Icon name="lucide:check" class="h-5 w-5" />
-                        Message sent successfully. I'll get back to you soon.
-                    </div>
-                    <div data-form-error class="items-center gap-3 rounded-md border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-danger">
-                        <Icon name="lucide:circle-x" class="h-5 w-5" />
-                        Something went wrong. Please try again.
-                    </div>
-                    <div>
-                        <label for="name" class="form-label">Name</label>
-                        <input id="name" name="name" type="text" required class="form-input" placeholder="Your name" />
-                    </div>
-                    <div>
-                        <label for="email" class="form-label">Email</label>
-                        <input id="email" name="email" type="email" required class="form-input" placeholder="you@example.com" />
-                    </div>
-                    <div>
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Tell me about your project…"></textarea>
-                    </div>
-                    <button type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
-						Send Message
-                        <Icon name="lucide:arrow-right" class="h-5 w-5" />
-                    </button>
-                </form>
-            </div>
+                <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="email" required class="form-input" placeholder="you@example.com" />
+                </div>
+                <div>
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Tell me about your project…"></textarea>
+                </div>
+                <button type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
+                    Send Message
+                    <Icon name="lucide:arrow-right" class="h-5 w-5" />
+                </button>
+            </form>
         </div>
     </section>
 </Layout>

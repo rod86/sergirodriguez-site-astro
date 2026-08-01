@@ -1,0 +1,23 @@
+---
+import {Icon} from "astro-icon/components";
+
+interface Props {
+    status: "success" | "error";
+}
+
+const { status } = Astro.props;
+
+const iconsMap: Record<Props["status"], string> = {
+    success: 'lucide:check',
+    error: 'lucide:circle-x',
+};
+
+---
+<div class:list={[
+    'flex items-center gap-3 rounded-md border px-4 py-3 text-sm',
+    status === 'success' && 'text-success border-success/40 bg-success/10',
+    status === 'error' && 'text-danger border-danger/40 bg-danger/10',
+]} role="alert">
+    <Icon name={iconsMap[status]} class="h-5 w-5" aria-hidden="true" />
+    <slot />
+</div>
