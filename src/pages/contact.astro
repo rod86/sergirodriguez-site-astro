@@ -1,12 +1,10 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import {Icon} from "astro-icon/components";
 import SocialLink from "@components/contact/SocialLink.astro";
-import Alert from "@components/common/Alert.astro";
+import ContactForm from "@components/contact/ContactForm.astro";
 ---
 
 <Layout title="Contact" description="Get in touch with Sergi Rodriguez, Full Stack Developer.">
-
     <section class="py-20 lg:py-28">
         <div class="text-center">
             <h1>Let's build something.</h1>
@@ -20,32 +18,7 @@ import Alert from "@components/common/Alert.astro";
                 <SocialLink label="LinkedIn" href="https://linkedin.com/in/sergirodriguez" displayUrl="linkedin.com/in/sergirodriguez" icon="simple-icons:linkedin" />
                 <SocialLink label="GitHub" href="https://github.com/sergirodriguez" displayUrl="github.com/sergirodriguez" icon="simple-icons:github" />
             </div>
-
-            <form class="flex flex-col gap-6" id="contact-form">
-                <Alert status="success">
-                    Message sent successfully. I'll get back to you soon.
-                </Alert>
-                <Alert status="error">
-                    Something went wrong. Please try again.
-                </Alert>
-
-                <div>
-                    <label for="name" class="form-label">Name</label>
-                    <input id="name" name="name" type="text" required class="form-input" placeholder="Your name" />
-                </div>
-                <div>
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="email" required class="form-input" placeholder="you@example.com" />
-                </div>
-                <div>
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Tell me about your project…"></textarea>
-                </div>
-                <button type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
-                    Send Message
-                    <Icon name="lucide:arrow-right" class="h-5 w-5" />
-                </button>
-            </form>
+            <ContactForm className="flex flex-col gap-6" />
         </div>
     </section>
 </Layout>

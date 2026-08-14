@@ -1,0 +1,43 @@
+---
+import Alert from "@components/common/Alert.astro";
+import {Icon} from "astro-icon/components";
+
+interface Props {
+    className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<form
+    id="contact-form"
+    class:list={[className]}
+    action="https://api.web3forms.com/submit"
+    method="post" data-astro-reload novalidate>
+
+    <Alert status="success">
+        Message sent successfully. I'll get back to you soon.
+    </Alert>
+    <Alert status="error">
+        Something went wrong. Please try again.
+    </Alert>
+
+    <div>
+        <label for="name" class="form-label">Name</label>
+        <input id="name" name="name" type="text" required class="form-input" placeholder="Your name"/>
+    </div>
+    <div>
+        <label for="email" class="form-label">Email</label>
+        <input id="email" name="email" type="email" required class="form-input"
+            placeholder="you@example.com"/>
+    </div>
+    <div>
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" name="message" rows="4" required class="form-input resize-none"
+            placeholder="Tell me about your project…"></textarea>
+    </div>
+    <button type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
+        Send Message
+        <Icon name="lucide:arrow-right" class="h-5 w-5"/>
+    </button>
+</form>
