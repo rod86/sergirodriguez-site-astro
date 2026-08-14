@@ -14,10 +14,10 @@ const { className } = Astro.props;
     class:list={[className]}
 >
 
-    <Alert status="success">
+    <Alert id="success-alert" status="success" class="hidden">
         Message sent successfully. I'll get back to you soon.
     </Alert>
-    <Alert status="error">
+    <Alert id="error-alert" status="error" class="hidden">
         Something went wrong. Please try again.
     </Alert>
 
@@ -35,8 +35,57 @@ const { className } = Astro.props;
         <textarea id="message" name="message" rows="4" required class="form-input resize-none"
             placeholder="Tell me about your project…"></textarea>
     </div>
-    <button type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
-        Send Message
-        <Icon name="lucide:arrow-right" class="h-5 w-5"/>
+    <button id="submit-button" type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
+        <span class="submit-label inline-flex items-center gap-2">
+            Send Message
+            <Icon name="lucide:arrow-right" class="h-5 w-5"/>
+        </span>
+        <span class="submit-loading inline-flex items-center gap-2">
+            Sending…
+            <Icon name="lucide:loader-circle" class="h-5 w-5 animate-spin"/>
+        </span>
     </button>
 </form>
+
+<script>
+    async function sendMessage() {
+        return new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+    const submitLabel = submitButton.querySelector('.submit-label') as HTMLElement;
+    const submitLoading = submitButton.querySelector('.submit-loading') as HTMLElement;
+    const successAlert = document.getElementById('success-alert') as HTMLElement;
+    const errorAlert = document.getElementById('error-alert') as HTMLElement;
+
+    function setLoading(isLoading: boolean) {
+        submitButton.disabled = isLoading;
+        submitButton.setAttribute('aria-busy', String(isLoading));
+        submitLabel.style.display = isLoading ? 'none' : 'inline-flex';
+        submitLoading.style.display = isLoading ? 'inline-flex' : 'none';
+    }
+
+    function showAlert(isSuccess: boolean) {
+        successAlert.classList.toggle('hidden', !isSuccess);
+        errorAlert.classList.toggle('hidden', isSuccess);
+    }
+
+    setLoading(false);
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        setLoading(true);
+        successAlert.classList.add('hidden');
+        errorAlert.classList.add('hidden');
+
+        // TODO add form logic
+        await sendMessage();
+        const isSuccess = true;
+
+        setLoading(false);
+        showAlert(isSuccess);
+        form.reset();
+    });
+</script>
