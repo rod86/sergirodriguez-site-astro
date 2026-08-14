@@ -1,43 +1,65 @@
-# Astro Starter Kit: Minimal
+# Sergi Rodriguez Site
 
-```sh
-npm create astro@latest -- --template minimal
+Personal website and portfolio built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+
+The site is fully static (pages are rendered at build time with zero client-side JavaScript by default).
+
+## Tech Stack
+
+- NodeJS v24.16.0
+- Astro 7
+- Tailwind CSS 4
+- TypeScript
+- Vitest
+
+## Requirements
+
+- [Node Version Manager](https://github.com/nvm-sh/nvm)
+
+## Setup
+
+```bash
+nvm use          # use the Node version from .nvmrc
+npm install      # Install dependencies and Husky git hooks
+npm run dev      # Start dev server
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+- `npm run dev`: Start the dev server with hot reloading
+- `npm run build`: Type check and build to `dist/`
+- `npm run preview`: Serve the production build locally
+- `npm test`: Run all tests
+- `npm run lint`: Lint `src/` and `tests/`
+- `npm run lint:fix`: Lint and auto-fix
+- `npm run astro`:  Run the Astro CLI (e.g. `npm run astro -- add <integration>`)
 
-Inside of your Astro project, you'll see the following folders and files:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## Project Structure
+
+```
+collections/              Content data and assets
+public/                   Static assets served as-is
+src/
+  assets/                 Global CSS, images and local SVG icons
+  components/             Reusable .astro components (common, home, layout, contact)
+  layouts/                Page layouts
+  lib/                    Framework-agnostic logic and types
+  pages/                  File-based routes
+  content.config.ts       Content collection definitions and schemas
+tests/
+  lib/fixtures/           Shared test fixtures
+  unit/                   Unit tests
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Testing
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm test
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Tests live under `tests/` and match `tests/**/*.{test,spec}.ts`. Globals (`describe`, `it`, `expect`) are enabled, so no imports are needed. Coverage is collected with v8 and enforced at 80% for statements, branches, functions and lines; reports are written to `coverage/`.
 
-## 🧞 Commands
+## Code Quality
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+A Husky `pre-commit` hook runs `lint-staged`, which lints staged `.ts` and `.astro` files. `npm run build` also runs `astro check` first, so type errors fail the build.
