@@ -2,16 +2,17 @@
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import aboutImg from '@assets/img/aboutme.jpg';
+import {Icon} from "astro-icon/components";
+import BadgeList from "@components/common/BadgeList.astro";
 ---
 
 <Layout title="About Me" description="About Sergi Rodriguez, Full Stack Developer with 10+ years of experience.">
     <section>
-        <div class="page-container grid grid-cols-1 gap-14 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+        <div class="grid grid-cols-1 gap-14 lg:grid-cols-[1.15fr_0.85fr]">
 			<!-- LEFT: text + skills -->
 			<div>
-			    <h1>About Me</h1>
-
-			    <div class="mt-6 space-y-4 text-[15px] leading-relaxed text-muted">
+			    <h1 class="mb-6">About Me</h1>
+			    <div class="space-y-4 text-[15px] leading-relaxed text-muted">
 			        <p>
 						I am Sergi Rodriguez, a web developer specialised in HTML5, CSS3, jQuery, Responsive web design and PHP.
 			        </p>
@@ -23,87 +24,47 @@ import aboutImg from '@assets/img/aboutme.jpg';
 						Finally I ended starting to work with open source web technologies like PHP and MySQL in several companies in Barcelona, most of them digital agencies. During this period, I changed job a few times and I learned different ways to work and adapt to different types and sizes of teams.
 			        </p>
 			    </div>
-
-				<!-- Skills -->
-				<div class="mt-10">
+			    <div class="mt-10">
 				    <h2>Skills &amp; Tools</h2>
 				    <div class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
 				        <div>
 				            <p class="mb-3 text-sm font-medium text-light">Languages</p>
-				            <div class="badge-list">
-				                <span class="badge">JavaScript</span>
-				                <span class="badge">TypeScript</span>
-				                <span class="badge">PHP</span>
-				                <span class="badge">Python</span>
-				                <span class="badge">Bash</span>
-				            </div>
+			                <BadgeList list={['Javascript', 'JavaScript' , 'PHP', 'Python']} />
 				        </div>
 				        <div>
 				            <p class="mb-3 text-sm font-medium text-light">Frontend</p>
-				            <div class="badge-list">
-				                <span class="badge">HTML</span>
-				                <span class="badge">CSS</span>
-				                <span class="badge">Tailwind CSS</span>
-				                <span class="badge">Bootstrap</span>
-				                <span class="badge">React</span>
-				            </div>
+			                <BadgeList list={['HTML', 'CSS' , 'Tailwind CSS', 'Bootstrap', 'React']} />
 				        </div>
 				        <div>
 				            <p class="mb-3 text-sm font-medium text-light">Backend</p>
-				            <div class="badge-list">
-				                <span class="badge">Symfony</span>
-				                <span class="badge">Node.js</span>
-				                <span class="badge">Express</span>
-				                <span class="badge">Laravel</span>
-				            </div>
+			                <BadgeList list={['Symfony', 'NodeJS' , 'Express', 'Laravel']} />
 				        </div>
 				        <div>
 				            <p class="mb-3 text-sm font-medium text-light">Infra &amp; Data</p>
-				            <div class="badge-list">
-				                <span class="badge">MySQL</span>
-				                <span class="badge">PostgreSQL</span>
-				                <span class="badge">Docker</span>
-				                <span class="badge">AWS</span>
-				                <span class="badge">Google Cloud</span>
-				            </div>
+			                <BadgeList list={['MySQL', 'PostgreSQL' , 'Docker', 'AWS', 'Google Cloud']} />
 				        </div>
 				        <div class="sm:col-span-2">
 				            <p class="mb-3 text-sm font-medium text-light">Architecture &amp; Testing</p>
-				            <div class="badge-list">
-				                <span class="badge">REST API</span>
-				                <span class="badge">Clean Code</span>
-				                <span class="badge">SOLID</span>
-				                <span class="badge">Domain-Driven Design</span>
-				                <span class="badge">Hexagonal</span>
-				                <span class="badge">Test-Driven Development</span>
-				                <span class="badge">CI/CD</span>
-				                <span class="badge">Spec-Driven Development</span>
-				            </div>
+			                <BadgeList list={['REST API', 'Clean Code', 'SOLID', 'Domain-Driven Design', 'Hexagonal', 'Test-Driven Development', 'CI/CD', 'Spec-Driven Development']} />
+
 				        </div>
 				        <div class="sm:col-span-2">
 				            <p class="mb-3 text-sm font-medium text-light">Methodologies &amp; Soft Skills</p>
-				            <div class="badge-list">
-				                <span class="badge">Agile</span>
-				                <span class="badge">Peer Mentoring</span>
-				                <span class="badge">Continuous Learner</span>
-				                <span class="badge">Team Player</span>
-				            </div>
+			                <BadgeList list={['Agile', 'Peer Mentoring', 'Continuous Learner', 'Team Player']} />
 				        </div>
 				    </div>
-				</div>
+			    </div>
 			</div>
 
 			<!-- RIGHT: image -->
 			<div>
-			    <div class="lg:sticky lg:top-28">
-			        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-stroke">
-			            <Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
-			        </div>
-			        <a href="/contact" class="button mt-5 flex justify-center">
-						Get in touch
-			            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-			        </a>
+			    <div class="aspect-4/5 overflow-hidden rounded-2xl border border-stroke md:w-90 md:mx-auto lg:w-full lg:mx-0">
+			        <Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
 			    </div>
+			    <a href="/contact" class="button mt-6 flex justify-center md:w-90 md:mx-auto lg:w-full lg:mx-0">
+					Get in touch
+			        <Icon name="lucide:arrow-right" class="h-4 w-4" />
+			    </a>
 			</div>
         </div>
     </section>

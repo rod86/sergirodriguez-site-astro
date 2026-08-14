@@ -1,0 +1,73 @@
+---
+import type {ProjectListItem} from "@lib/projects/types.ts";
+import {Image} from "astro:assets";
+import {Icon} from "astro-icon/components";
+import BadgeList from "@components/common/BadgeList.astro";
+
+interface Props {
+    project: ProjectListItem,
+    position: number,
+}
+
+const { project, position } = Astro.props;
+const isFeatured = position === 1;
+const isWide = position === 4;
+const itemClasses = [
+    'group relative flex flex-col overflow-hidden rounded-xl border border-stroke bg-surface hover:border-primary/60',
+    { 'lg:row-span-2': isFeatured },
+    { 'justify-center': !isFeatured },
+    { 'lg:col-span-2': isWide },
+];
+const innerContentClasses = [
+    'relative flex h-full flex-col p-7',
+    { 'lg:justify-end': isFeatured },
+];
+const imageClasses = [
+    'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
+    { 'opacity-30 group-hover:opacity-45': isFeatured },
+    { 'opacity-25 group-hover:opacity-40': !isFeatured },
+];
+const overlayClasses = [
+    'absolute inset-0 bg-linear-to-t from-background',
+    { 'via-background/75 to-background/25': isFeatured },
+    { 'via-background/80 to-background/40': !isFeatured },
+];
+const descriptionClasses = [
+    'text-sm leading-relaxed text-muted mb-4',
+    { 'max-w-sm': isFeatured },
+    { 'max-w-lg': isWide },
+];
+const viewClasses = [
+    'link-arrow-right ml-auto mx-0 text-sm text-primary-bright group-hover:text-light',
+    { 'mt-auto lg:mt-2.5': isFeatured },
+    { 'mt-auto': !isFeatured },
+]
+---
+
+<a href={`/portfolio/${project.id}`} class:list={itemClasses}>
+    {project.image && (
+        <Image src={project.image} alt={`${project.title} thumbnail`} class:list={imageClasses} />
+    )}
+    <div class:list={overlayClasses}></div>
+    <div class:list={innerContentClasses}>
+        <p class="mb-1 text-xs text-muted">
+            {project.date}
+        </p>
+        <p class="mb-2 text-xs text-muted font-semibold">
+            {project.company && `Working at ${project.company}`}
+        </p>
+        <h3 class="text-xl mb-2">
+            {project.title}
+        </h3>
+        <p class:list={descriptionClasses}>
+            {project.shortDescription}
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+            <BadgeList list={project.tags} />
+        </div>
+        <span class:list={viewClasses}>
+            View Project
+            <Icon name="lucide:arrow-right" class="link-arrow-icon group-hover:translate-x-1" />
+        </span>
+    </div>
+</a>

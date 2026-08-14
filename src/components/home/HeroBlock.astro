@@ -1,0 +1,32 @@
+---
+import heroImg from "@assets/img/coding-agent.svg";
+import {Image} from "astro:assets";
+import {Icon} from "astro-icon/components";
+---
+
+<div class="grid grid-cols-1 items-center gap-14 py-16 lg:grid-cols-2 lg:py-24">
+    <!-- left -->
+    <div class="text-center lg:text-left">
+        <h1 class="text-4xl leading-[1.15] sm:text-4xl lg:whitespace-nowrap lg:text-5xl">
+            Full Stack Developer
+        </h1>
+        <p class="mt-6 leading-relaxed text-muted lg:max-w-xl">
+            With over 10 years of experience building with PHP, Node.js, TypeScript, Python and React,
+            I craft scalable, high-performance web applications — from MVPs to enterprise-grade platforms.
+            I care deeply about clean code, thoughtful architecture, and shipping things that last.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="/about" class="button w-full sm:w-auto">
+                About Me
+                <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+            <a href="/portfolio" class="button-outlined bg-background w-full sm:w-auto">
+                View Projects
+            </a>
+        </div>
+    </div>
+    <!-- right -->
+    <div>
+        <Image src={heroImg} alt="Full-stack development illustration" class="mx-auto w-full max-w-md" />
+    </div>
+</div>

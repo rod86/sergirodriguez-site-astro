@@ -7,7 +7,7 @@ vi.mock('astro:content', () => ({
     render: vi.fn(),
 }));
 
-import {getProjectsList, getProjectDetails} from "@lib/projects/astroCollection.ts";
+import {getProjectsList, getProjectDetails, getFeaturedProjects} from "@lib/projects/astroCollection.ts";
 import type {AstroComponentFactory} from "astro/runtime/server/index.js";
 import {projectsFixture} from "@tests/lib/fixtures/projects.ts";
 import type {ProjectDetails, ProjectListItem} from "@lib/projects/types.ts";
@@ -37,7 +37,7 @@ const buildDetailsFromEntry = (item: CollectionEntry<'projects'>, content: Astro
 describe('Astro Collection', () => {
 
     beforeEach(() => {
-       vi.resetAllMocks();
+        vi.resetAllMocks();
     });
 
     describe('getProjects', () => {
@@ -79,6 +79,30 @@ describe('Astro Collection', () => {
 
             await expect(getProjectDetails(id)).rejects.toThrow(new Error(`Project with id ${id} not found`));
             expect(render).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('getFeaturedProjects', () => {
+        it('returns an object containing featured projects', async () => {
+            const featuredProjects = [
+                projectsFixture[0], // budget tracker
+                projectsFixture[1], // cloud notes
+                projectsFixture[2], // habits tracker
+                projectsFixture[5], // weather project
+            ]
+
+            const expectedResponse = [
+                buildItemFromEntry(projectsFixture[1]),
+                buildItemFromEntry(projectsFixture[5]),
+                buildItemFromEntry(projectsFixture[0]),
+                buildItemFromEntry(projectsFixture[2])
+            ];
+            const featuredIds = expectedResponse.map((item) => item.id);
+            vi.mocked(getCollection).mockResolvedValue(featuredProjects);
+
+            const result = await getFeaturedProjects(featuredIds);
+            expect(getCollection).toHaveBeenCalledWith('projects', expect.any(Function));
+            expect(result).toEqual(expectedResponse);
         });
     });
 });

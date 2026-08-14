@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import icon from 'astro-icon';
+
 export default defineConfig({
   fonts: [
       { 
@@ -15,7 +17,17 @@ export default defineConfig({
         display: 'swap',
       }
   ],
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [
+      icon({
+          include: {
+              "simple-icon": ['github', 'linkedin'],
+          },
+          iconDir: 'src/assets/icons',
+      })
+  ]
 });

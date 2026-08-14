@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-montserrat, "Montserrat", sans-serif);
+}
+
+@theme {
+  /* Brand / semantic */
+  --color-primary: #10b981;
+  --color-primary-bright: #34d399;
+  --color-secondary: #6bb3c4;
+  --color-success: #10b981;
+  --color-danger: #f87171;
+
+  /* theme main colors */
+  --color-background: #0a111e;
+  --color-background-alternate: #0d1626;
+  --color-surface: #111d2e;
+  --color-stroke: #1e2d42;
+
+  /* Text */
+  --color-light: #e6edf5;
+  --color-muted: #8fa1b8;
+}
+
+@layer base {
+  body {
+    @apply flex flex-col min-h-screen bg-background text-light font-sans antialiased;
+  }
+  main {
+    @apply flex-1;
+  }
+
+  h1 {
+    @apply text-4xl font-semibold tracking-tight text-light sm:text-5xl;
+  }
+  h2 {
+    @apply text-lg font-medium text-light;
+  }
+  h3 {
+    @apply font-medium tracking-tight text-light;
+  }
+
+  a {
+    @apply text-primary-bright transition-colors hover:text-light;
+  }
+
+  ul {
+    @apply mt-4 list-disc space-y-1.5 pl-5;
+  }
+  li::marker {
+    @apply text-secondary;
+  }
+
+  /* forms */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  }
+  .form-label {
+    @apply mb-1.5 block text-xs text-muted;
+  }
+  .form-input, .form-select {
+    @apply w-full rounded-md border border-stroke bg-transparent px-3.5 py-2.5 text-sm text-light placeholder:text-muted focus:border-primary focus:outline-none;
+  }
+}
+
+@layer components {
+  /* Layout */
+  .page-container {
+    @apply mx-auto max-w-6xl px-10 pt-10 pb-16 lg:pt-14 lg:pb-20;
+  }
+
+  /* Buttons */
+  .button {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
+  }
+  .button-outlined {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-stroke px-5 py-3 text-sm font-semibold text-light transition-colors hover:border-primary;
+  }
+
+  /* Link with arrow icon */
+  .link-arrow-right, .link-arrow-left {
+    @apply flex w-fit justify-center mx-auto items-center gap-2 font-semibold text-primary transition-colors md:text-sm hover:text-light;
+  }
+  .link-arrow-right {
+    @apply md:mx-0 md:ml-auto;
+  }
+  .link-arrow-left {
+    @apply md:mx-0;
+  }
+  .link-arrow-icon {
+    @apply w-4 h-4 transition-transform;
+  }
+  .link-arrow-right:hover .link-arrow-icon {
+    @apply translate-x-1;
+  }
+  .link-arrow-left:hover .link-arrow-icon {
+    @apply -translate-x-1;
+  }
+}

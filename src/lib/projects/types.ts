@@ -19,3 +19,4 @@ export type ProjectDetails = Omit<ProjectListItem, 'shortDescription'> & {
 
 export type GetProjectsList = () => Promise<ProjectListItem[]>;
 export type GetProjectDetails = (id: string) => Promise<ProjectDetails>;
+export type GetFeaturedProjects = (ids: string[]) => Promise<ProjectListItem[]>;
