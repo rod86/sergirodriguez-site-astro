@@ -13,7 +13,6 @@ const { className } = Astro.props;
     id="contact-form"
     class:list={[className]}
 >
-
     <Alert id="success-alert" status="success" class="hidden">
         Message sent successfully. I'll get back to you soon.
     </Alert>
@@ -80,12 +79,21 @@ const { className } = Astro.props;
         successAlert.classList.add('hidden');
         errorAlert.classList.add('hidden');
 
-        // TODO add form logic
+        const values = {
+            name: (form.elements.namedItem('name') as HTMLInputElement).value,
+            email: (form.elements.namedItem('email') as HTMLInputElement).value,
+            message: (form.elements.namedItem('message') as HTMLInputElement).value,
+        };
+        console.log(values);
+
+        // TODO replace with real logic
         await sendMessage();
         const isSuccess = true;
 
         setLoading(false);
         showAlert(isSuccess);
-        form.reset();
+        if (isSuccess) {
+            form.reset();
+        }
     });
 </script>
