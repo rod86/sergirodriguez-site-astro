@@ -19,9 +19,10 @@ The site is fully static (pages are rendered at build time with zero client-side
 ## Setup
 
 ```bash
-nvm use          # use the Node version from .nvmrc
-npm install      # Install dependencies and Husky git hooks
-npm run dev      # Start dev server
+cp .env.example .env  # Create .env from sample .env file
+nvm use               # use the Node version from .nvmrc
+npm install           # Install dependencies and Husky git hooks
+npm run dev           # Start dev server
 ```
 
 ## Commands

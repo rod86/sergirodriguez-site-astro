@@ -47,9 +47,7 @@ const { className } = Astro.props;
 </form>
 
 <script>
-    async function sendMessage() {
-        return new Promise(resolve => setTimeout(resolve, 2000));
-    }
+    import {sendContactMessage} from "@lib/contactForm/contactForm.ts";
 
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
@@ -84,16 +82,15 @@ const { className } = Astro.props;
             email: (form.elements.namedItem('email') as HTMLInputElement).value,
             message: (form.elements.namedItem('message') as HTMLInputElement).value,
         };
-        console.log(values);
 
-        // TODO replace with real logic
-        await sendMessage();
-        const isSuccess = true;
-
-        setLoading(false);
-        showAlert(isSuccess);
-        if (isSuccess) {
+        try {
+            await sendContactMessage(values);
+            showAlert(true);
             form.reset();
+        } catch {
+            showAlert(false);
+        } finally {
+            setLoading(false);
         }
     });
 </script>
