@@ -1,4 +1,4 @@
-import {sendContactMessage} from "@lib/contactForm/contactForm.ts";
+import {submitContactForm} from "@lib/contactForm/contactForm.ts";
 
 const contactData = {
     name: 'John Smith',
@@ -34,7 +34,7 @@ describe('Contact Form', () => {
         formData.append("access_key", accessToken);
         const body = JSON.stringify(Object.fromEntries(formData));
 
-        const result = await sendContactMessage(contactData);
+        const result = await submitContactForm(contactData);
         expect(fetchMock).toHaveBeenCalledWith(
             "https://api.web3forms.com/submit",
             {
@@ -49,18 +49,19 @@ describe('Contact Form', () => {
         expect(result).toBeUndefined();
     });
 
-    it('fails to send a message', async () => {
-        const apiResponse = {
-            "success": false,
-            "message": "Too Many Requests!"
-        }
+    it.each([
+        { status: 200, apiResponse: {"success": false, "message": "Too Many Requests!"}, expectedMessage: "Too Many Requests!" },
+        { status: 500, apiResponse: {"success": false, "message": "Something went wrong on server"}, expectedMessage: "Something went wrong on server" },
+        { status: 500, apiResponse: {"success": false, "error": "Something went wrong on server"}, expectedMessage: "Something went wrong on server" },
+    ])('fails to send message ($expectedMessage)', async ({ status, apiResponse, expectedMessage}) => {
         fetchMock.mockResolvedValueOnce({
             ok: true,
+            status,
             json:  () => Promise.resolve(apiResponse),
         });
 
         await expect(
-            sendContactMessage(contactData)
-        ).rejects.toThrow(new Error(`Failed to send a message: ${apiResponse.message}`));
+            submitContactForm(contactData)
+        ).rejects.toThrow(new Error(`Failed to send a message: ${expectedMessage}`));
     });
 });

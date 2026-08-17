@@ -1,7 +1,7 @@
 import type {SendContactMessageFunction} from "@lib/contactForm/types.ts";
 
 
-export const sendContactMessage: SendContactMessageFunction = async (data) => {
+export const submitContactForm: SendContactMessageFunction = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
@@ -21,7 +21,8 @@ export const sendContactMessage: SendContactMessageFunction = async (data) => {
         }
     );
     const json = await response.json();
-    if (!json.success) {
-        throw new Error("Failed to send a message: " + json.message);
+
+    if (!response.ok || !json.success) {
+        throw new Error("Failed to send a message: " + (json.message ?? json.error));
     }
 }
