@@ -17,7 +17,7 @@ const { className } = Astro.props;
         Message sent successfully. I'll get back to you soon.
     </Alert>
     <Alert id="error-alert" status="error" class="hidden">
-        Something went wrong. Please try again.
+        <span id="error-message"></span>
     </Alert>
 
     <div>
@@ -55,6 +55,7 @@ const { className } = Astro.props;
     const submitLoading = submitButton.querySelector('.submit-loading') as HTMLElement;
     const successAlert = document.getElementById('success-alert') as HTMLElement;
     const errorAlert = document.getElementById('error-alert') as HTMLElement;
+    const errorMessage = document.getElementById('error-message') as HTMLElement;
 
     function setLoading(isLoading: boolean) {
         submitButton.disabled = isLoading;
@@ -63,9 +64,12 @@ const { className } = Astro.props;
         submitLoading.style.display = isLoading ? 'inline-flex' : 'none';
     }
 
-    function showAlert(isSuccess: boolean) {
+    function showAlert(isSuccess: boolean, message?: string) {
         successAlert.classList.toggle('hidden', !isSuccess);
         errorAlert.classList.toggle('hidden', isSuccess);
+        if (!isSuccess) {
+            errorMessage.textContent = message || 'Something went wrong. Please try again.';
+        }
     }
 
     setLoading(false);
@@ -85,8 +89,8 @@ const { className } = Astro.props;
             });
             showAlert(true);
             form.reset();
-        } catch {
-            showAlert(false);
+        } catch (error) {
+            showAlert(false, (error as Error).message);
         } finally {
             setLoading(false);
         }
