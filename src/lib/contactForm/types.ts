@@ -4,4 +4,6 @@ export type ContactFormData = {
     message: string;
 }
 
-export type SendContactMessageFunction = (data: ContactFormData) => Promise<void>;
+export interface ContactMessageInterface {
+    sendMessage: (data: ContactFormData) => Promise<void>;
+}
