@@ -26,11 +26,12 @@ describe('Submit Contact Form Handler', () => {
     });
 
     it('fails to send a contact message', async () => {
-        vi.mocked(contactMessageMock.sendMessage).mockRejectedValue(new ContactMessageError('Unable to send a contact message: limit quota reached'));
+        const originalError = new ContactMessageError('Unable to send a contact message: limit quota reached');
+        vi.mocked(contactMessageMock.sendMessage).mockRejectedValue(originalError);
 
         await expect(
             handler.invoke(contactData)
-        ).rejects.toThrow(new Error('Failed to send a contact message'));
+        ).rejects.toThrow(new Error('Failed to send a contact message', { cause: originalError }));
     });
 
     it.each<[string, unknown]>([

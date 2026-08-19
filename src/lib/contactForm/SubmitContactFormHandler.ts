@@ -27,8 +27,8 @@ export class SubmitContactFormHandler {
 
         try {
             await this.contactMessage.sendMessage(data as ContactMessage);
-        } catch {
-            throw new Error('Failed to send a contact message')
+        } catch (error) {
+            throw new Error('Failed to send a contact message', { cause: error });
         }
     }
 }
