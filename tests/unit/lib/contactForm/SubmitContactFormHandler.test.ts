@@ -1,5 +1,5 @@
 import type {Mocked} from "vitest";
-import type {ContactMessageInterface} from "@lib/contactForm/types.ts";
+import type {ContactFormData, ContactMessageInterface} from "@lib/contactForm/types.ts";
 import {SubmitContactFormHandler} from "@lib/contactForm/SubmitContactFormHandler.ts";
 
 const contactData = {
@@ -31,5 +31,14 @@ describe('Submit Contact Form Handler', () => {
         await expect(
             handler.invoke(contactData)
         ).rejects.toThrow(new Error('Failed to send a contact message'));
+    });
+
+    it.each<[string, unknown]>([
+        ['Empty object', {}],
+        ['Invalid email', { ...contactData, email: 'invalid-email' }],
+    ])('Validation fails %s', async (_, values) => {
+        await expect(
+            handler.invoke(values as ContactFormData)
+        ).rejects.toThrow(new Error('Please fill in all fields correctly'));
     });
 });
