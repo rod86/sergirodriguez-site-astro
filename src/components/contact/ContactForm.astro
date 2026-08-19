@@ -47,7 +47,7 @@ const { className } = Astro.props;
 </form>
 
 <script>
-    import {submitContactForm} from "@lib/contactForm/contactForm.ts";
+    import {sendContactFormMessageHandler} from "@lib/contactForm";
 
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
@@ -82,7 +82,7 @@ const { className } = Astro.props;
         errorAlert.classList.add('hidden');
 
         try {
-            await submitContactForm({
+            await sendContactFormMessageHandler.invoke({
                 name: (form.elements.namedItem('name') as HTMLInputElement).value,
                 email: (form.elements.namedItem('email') as HTMLInputElement).value,
                 message: (form.elements.namedItem('message') as HTMLInputElement).value,
