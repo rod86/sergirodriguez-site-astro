@@ -8,18 +8,18 @@ const contactDataSchema = z.object({
     message: z.string().min(2),
 });
 
-export type SubmitContactFormRequest = {
+export type SendContactMessageRequest = {
     name?: string;
     email?: string;
     message?: string;
 }
 
-export class SubmitContactFormHandler {
+export class SendContactMessageHandler {
     constructor(
         private readonly contactMessage: ContactMessageInterface
     ) {}
 
-    async invoke(data: SubmitContactFormRequest): Promise<void> {
+    async invoke(data: SendContactMessageRequest): Promise<void> {
         const validation = contactDataSchema.safeParse(data);
         if (!validation.success) {
             throw new Error('Please fill in all fields correctly');

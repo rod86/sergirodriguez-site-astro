@@ -1,6 +1,6 @@
 import type {Mocked} from "vitest";
 import {ContactMessageError, type ContactMessageInterface} from "@lib/contactForm/contactMessage/types.ts";
-import {SubmitContactFormHandler, type SubmitContactFormRequest} from "@lib/contactForm/SubmitContactFormHandler.ts";
+import {SendContactMessageHandler, type SendContactMessageRequest} from "@lib/contactForm/SendContactMessageHandler.ts";
 
 const contactData = {
     name: 'John Smith',
@@ -8,16 +8,16 @@ const contactData = {
     message: 'Hi, I have a project proposal for you',
 }
 
-describe('Submit Contact Form Handler', () => {
+describe('Send Contact Message Handler', () => {
     const contactMessageMock: Mocked<ContactMessageInterface> = {
         sendMessage: vi.fn(),
     }
 
-    let handler: SubmitContactFormHandler;
+    let handler: SendContactMessageHandler;
     beforeEach(() => {
         vi.resetAllMocks();
 
-        handler = new SubmitContactFormHandler(contactMessageMock);
+        handler = new SendContactMessageHandler(contactMessageMock);
     });
 
     it('sends a contact message successfully', async () => {
@@ -39,7 +39,7 @@ describe('Submit Contact Form Handler', () => {
         ['Invalid email', { ...contactData, email: 'invalid-email' }],
     ])('Validation fails %s', async (_, values) => {
         await expect(
-            handler.invoke(values as SubmitContactFormRequest)
+            handler.invoke(values as SendContactMessageRequest)
         ).rejects.toThrow(new Error('Please fill in all fields correctly'));
     });
 });
