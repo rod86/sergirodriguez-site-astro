@@ -21,4 +21,12 @@ describe('Contact Form', () => {
         await submitContactFormData(contactData);
         expect(sendContactMessage).toHaveBeenCalledWith(contactData);
     });
+
+    it('fails to send a contact message', async () => {
+        vi.mocked(sendContactMessage).mockRejectedValue(new Error('Unable to send a contact message: limit quota reached'));
+
+        await expect(
+            submitContactFormData(contactData)
+        ).rejects.toThrow(new Error('Failed to send a contact message'));
+    });
 });
