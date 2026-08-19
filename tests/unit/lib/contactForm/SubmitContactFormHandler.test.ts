@@ -1,6 +1,6 @@
 import type {Mocked} from "vitest";
-import type {ContactFormData, ContactMessageInterface} from "@lib/contactForm/types.ts";
-import {SubmitContactFormHandler} from "@lib/contactForm/SubmitContactFormHandler.ts";
+import {ContactMessageError, type ContactMessageInterface} from "@lib/contactForm/contactMessage/types.ts";
+import {SubmitContactFormHandler, type SubmitContactFormRequest} from "@lib/contactForm/SubmitContactFormHandler.ts";
 
 const contactData = {
     name: 'John Smith',
@@ -26,7 +26,7 @@ describe('Submit Contact Form Handler', () => {
     });
 
     it('fails to send a contact message', async () => {
-        vi.mocked(contactMessageMock.sendMessage).mockRejectedValue(new Error('Unable to send a contact message: limit quota reached'));
+        vi.mocked(contactMessageMock.sendMessage).mockRejectedValue(new ContactMessageError('Unable to send a contact message: limit quota reached'));
 
         await expect(
             handler.invoke(contactData)
@@ -38,7 +38,7 @@ describe('Submit Contact Form Handler', () => {
         ['Invalid email', { ...contactData, email: 'invalid-email' }],
     ])('Validation fails %s', async (_, values) => {
         await expect(
-            handler.invoke(values as ContactFormData)
+            handler.invoke(values as SubmitContactFormRequest)
         ).rejects.toThrow(new Error('Please fill in all fields correctly'));
     });
 });
