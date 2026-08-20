@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import SocialLink from "@components/contact/SocialLink.astro";
 import ContactForm from "@components/contact/ContactForm.astro";
+import config from "@config";
 ---
 
 <Layout title="Contact" description="Get in touch with Sergi Rodriguez, Full Stack Developer.">
@@ -15,8 +16,8 @@ import ContactForm from "@components/contact/ContactForm.astro";
         </div>
         <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
             <div class="flex flex-col gap-5">
-                <SocialLink label="LinkedIn" href="https://linkedin.com/in/sergirodriguez" displayUrl="linkedin.com/in/sergirodriguez" icon="simple-icons:linkedin" />
-                <SocialLink label="GitHub" href="https://github.com/sergirodriguez" displayUrl="github.com/sergirodriguez" icon="simple-icons:github" />
+                <SocialLink label="LinkedIn" href={config.linkedin} displayUrl="linkedin.com/in/sergirodriguez86" icon="simple-icons:linkedin" />
+                <SocialLink label="GitHub" href={config.github} displayUrl="github.com/rod86" icon="simple-icons:github" />
             </div>
             <ContactForm className="flex flex-col gap-6" />
         </div>

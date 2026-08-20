@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-
+import config from "@config";
 ---
 
 <footer class="border-t border-stroke">
@@ -9,10 +9,10 @@ import { Icon } from "astro-icon/components";
             <a href="/privacy" title="Privacy Policy" aria-label="Privacy" class="grid h-9 w-9 place-items-center text-muted hover:border-primary hover:text-primary-bright">
                 <Icon name="lucide:shield" class="h-7 w-7" />
             </a>
-            <a href="https://github.com/sergirodriguez" title="GitHub" target="_blank" rel="noopener" aria-label="GitHub" class="grid h-9 w-9 place-items-center text-muted hover:border-primary hover:text-primary-bright">
+            <a href={config.github} title="GitHub" target="_blank" rel="noopener" aria-label="GitHub" class="grid h-9 w-9 place-items-center text-muted hover:border-primary hover:text-primary-bright">
                 <Icon name="simple-icons:github" class="h-7 w-7" />
             </a>
-            <a href="https://linkedin.com/in/sergirodriguez" title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn" class="grid h-9 w-9 place-items-center text-muted hover:border-primary hover:text-primary-bright">
+            <a href={config.linkedin} title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn" class="grid h-9 w-9 place-items-center text-muted hover:border-primary hover:text-primary-bright">
                 <Icon name="simple-icons:linkedin" class="h-7 w-7" />
             </a>
         </div>

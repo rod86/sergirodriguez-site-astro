@@ -3,6 +3,7 @@ import '@assets/global.css';
 import { Font } from 'astro:assets';
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
+import config from '@config';
 
 interface Props {
 	title?: string;
@@ -10,8 +11,8 @@ interface Props {
 }
 
 const {
-    title = 'Full Stack Developer',
-    description = 'Sergi Rodriguez — Full Stack Developer with 10+ years building scalable web applications with PHP, Node.js, TypeScript, Python and React.',
+    title = config.title,
+    description = config.description,
 } = Astro.props;
 ---
 
