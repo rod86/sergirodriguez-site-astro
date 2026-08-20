@@ -1,11 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Image } from 'astro:assets';
-import {getProjectsList} from "@lib/projects/astroCollection.ts";
+import { projectsContentProvider } from "@lib/projects";
 import {Icon} from "astro-icon/components";
 import BadgeList from "@components/common/BadgeList.astro";
 
-const projects = await getProjectsList();
+const projects = await projectsContentProvider.getProjects();
 ---
 
 <Layout title="Projects" description="Selected projects by Sergi Rodriguez, Full Stack Developer.">

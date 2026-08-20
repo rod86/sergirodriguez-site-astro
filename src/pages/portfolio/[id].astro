@@ -1,12 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import {Image} from 'astro:assets';
-import {getProjectDetails, getProjectsList} from "@lib/projects/astroCollection.ts";
+import { projectsContentProvider } from "@lib/projects";
 import {Icon} from "astro-icon/components";
 import BadgeList from "@components/common/BadgeList.astro";
 
 export async function getStaticPaths() {
-    const projects = await getProjectsList();
+    const projects = await projectsContentProvider.getProjects();
     return projects.map((entry) => ({
         params: {id: entry.id},
         props: {entry},
@@ -23,7 +23,7 @@ const {
     url,
     Content,
     image
-} = await getProjectDetails(id);
+} = await projectsContentProvider.getProjectDetails(id);
 ---
 
 <Layout title={title} description={`${title} — a project by Sergi Rodriguez, Full Stack Developer.`}>

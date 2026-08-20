@@ -1,6 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import {getFeaturedProjects} from "@lib/projects/astroCollection.ts";
+import { projectsContentProvider } from "@lib/projects";
 import HeroBlock from "@components/home/HeroBlock.astro";
 import BentoGrid from "@components/home/BentoGrid.astro";
 import { Icon } from 'astro-icon/components';
@@ -11,7 +11,7 @@ const homeProjects = [
     'symfony-auctions-api',
     'lunchbox',
 ];
-const projects = await getFeaturedProjects(homeProjects);
+const projects = await projectsContentProvider.getFeaturedProjects(homeProjects);
 ---
 
 <Layout>

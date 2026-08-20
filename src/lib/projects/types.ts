@@ -17,6 +17,8 @@ export type ProjectDetails = Omit<ProjectListItem, 'shortDescription'> & {
     Content: AstroComponentFactory;
 };
 
-export type GetProjectsList = () => Promise<ProjectListItem[]>;
-export type GetProjectDetails = (id: string) => Promise<ProjectDetails>;
-export type GetFeaturedProjects = (ids: string[]) => Promise<ProjectListItem[]>;
+export interface ContentProviderInterface {
+    getProjects: () => Promise<ProjectListItem[]>;
+    getFeaturedProjects: (ids: string[]) => Promise<ProjectListItem[]>;
+    getProjectDetails: (id: string) => Promise<ProjectDetails>;
+}

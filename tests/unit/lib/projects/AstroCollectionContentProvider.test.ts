@@ -1,16 +1,15 @@
-import { vi } from "vitest";
-import {type CollectionEntry, getCollection, getEntry, render } from 'astro:content';
+import {vi} from "vitest";
+import {type CollectionEntry, getCollection, getEntry, render} from "astro:content";
+import {AstroCollectionContentProvider} from "@lib/projects/AstroCollectionContentProvider.ts";
+import type {ProjectDetails, ProjectListItem} from "@lib/projects/types.ts";
+import {projectsFixture} from "@tests/lib/fixtures/projects.ts";
+import type {AstroComponentFactory} from "astro/runtime/server/index.js";
 
 vi.mock('astro:content', () => ({
     getCollection: vi.fn(),
     getEntry: vi.fn(),
     render: vi.fn(),
 }));
-
-import {getProjectsList, getProjectDetails, getFeaturedProjects} from "@lib/projects/astroCollection.ts";
-import type {AstroComponentFactory} from "astro/runtime/server/index.js";
-import {projectsFixture} from "@tests/lib/fixtures/projects.ts";
-import type {ProjectDetails, ProjectListItem} from "@lib/projects/types.ts";
 
 const buildItemFromEntry = (item: CollectionEntry<'projects'>): ProjectListItem => ({
     id: item.id,
@@ -34,11 +33,13 @@ const buildDetailsFromEntry = (item: CollectionEntry<'projects'>, content: Astro
     Content: content,
 });
 
-describe('Astro Collection', () => {
-
+describe('Astro Collection Content Provider', () => {
+    let service: AstroCollectionContentProvider;
     beforeEach(() => {
         vi.resetAllMocks();
-    });
+
+        service = new AstroCollectionContentProvider();
+    })
 
     describe('getProjects', () => {
         it('returns an list of projects sorted by date (newest first)', async () => {
@@ -52,33 +53,9 @@ describe('Astro Collection', () => {
             ];
             vi.mocked(getCollection).mockResolvedValue(projectsFixture);
 
-            const result = await getProjectsList();
+            const result = await service.getProjects();
             expect(getCollection).toHaveBeenCalledWith('projects');
             expect(result).toEqual(expectedProjects);
-        });
-    });
-
-    describe('getProjectDetails', () => {
-        it('returns a project details', async () => {
-            const project: CollectionEntry<'projects'> = projectsFixture[0];
-            const contentMock = vi.fn() as unknown as AstroComponentFactory;
-            const expectedProject = buildDetailsFromEntry(project, contentMock);
-
-            vi.mocked(getEntry).mockResolvedValue(project);
-            vi.mocked(render).mockResolvedValue({ Content: contentMock, headings: [], remarkPluginFrontmatter: {} });
-
-            const result = await getProjectDetails(project.id);
-            expect(getEntry).toHaveBeenCalledWith('projects', project.id);
-            expect(render).toHaveBeenCalledWith(project);
-            expect(result).toEqual(expectedProject);
-        });
-
-        it('throws an error when no project is found', async () => {
-            const id = 'invalid-id';
-            vi.mocked(getEntry).mockResolvedValue(undefined);
-
-            await expect(getProjectDetails(id)).rejects.toThrow(new Error(`Project with id ${id} not found`));
-            expect(render).not.toHaveBeenCalled();
         });
     });
 
@@ -100,9 +77,33 @@ describe('Astro Collection', () => {
             const featuredIds = expectedResponse.map((item) => item.id);
             vi.mocked(getCollection).mockResolvedValue(featuredProjects);
 
-            const result = await getFeaturedProjects(featuredIds);
+            const result = await service.getFeaturedProjects(featuredIds);
             expect(getCollection).toHaveBeenCalledWith('projects', expect.any(Function));
             expect(result).toEqual(expectedResponse);
+        });
+    });
+
+    describe('getProjectDetails', () => {
+        it('returns a project details', async () => {
+            const project: CollectionEntry<'projects'> = projectsFixture[0];
+            const contentMock = vi.fn() as unknown as AstroComponentFactory;
+            const expectedProject = buildDetailsFromEntry(project, contentMock);
+
+            vi.mocked(getEntry).mockResolvedValue(project);
+            vi.mocked(render).mockResolvedValue({ Content: contentMock, headings: [], remarkPluginFrontmatter: {} });
+
+            const result = await service.getProjectDetails(project.id);
+            expect(getEntry).toHaveBeenCalledWith('projects', project.id);
+            expect(render).toHaveBeenCalledWith(project);
+            expect(result).toEqual(expectedProject);
+        });
+
+        it('throws an error when no project is found', async () => {
+            const id = 'invalid-id';
+            vi.mocked(getEntry).mockResolvedValue(undefined);
+
+            await expect(service.getProjectDetails(id)).rejects.toThrow(new Error(`Project with id ${id} not found`));
+            expect(render).not.toHaveBeenCalled();
         });
     });
 });
