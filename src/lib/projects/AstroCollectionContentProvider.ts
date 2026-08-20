@@ -11,7 +11,7 @@ export class AstroCollectionContentProvider implements ContentProviderInterface 
         return orderedProjects.map(item => ({
             id: item.id,
             title: item.data.title,
-            image: item.data.image,
+            image: item.data.images[0] ?? null,
             shortDescription: item.data.short_description,
             date: this.formatDate(item.data.date),
             company: item.data.company,
@@ -29,7 +29,7 @@ export class AstroCollectionContentProvider implements ContentProviderInterface 
         return orderedProjects.map(item => ({
             id: item.id,
             title: item.data.title,
-            image: item.data.image,
+            image: item.data.images[0] ?? null,
             shortDescription: item.data.short_description,
             date: this.formatDate(item.data.date),
             company: item.data.company,
@@ -46,7 +46,7 @@ export class AstroCollectionContentProvider implements ContentProviderInterface 
         return {
             id: entry.id,
             title: entry.data.title,
-            image: entry.data.image,
+            images: entry.data.images,
             date: this.formatDate(entry.data.date),
             company: entry.data.company,
             tags: entry.data.tags,

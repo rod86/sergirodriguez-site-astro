@@ -7,7 +7,10 @@ const projectCollection = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         date: z.coerce.date(),
-        image: image(),
+        images: z.array(z.object({
+            text: z.string(),
+            image: image(),
+        })).optional().default([]),
         short_description: z.string(),
         company: z.string().optional().nullable().default(null),
         url: z.url().optional().nullable().default(null),

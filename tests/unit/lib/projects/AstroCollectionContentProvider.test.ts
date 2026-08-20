@@ -14,7 +14,7 @@ vi.mock('astro:content', () => ({
 const buildItemFromEntry = (item: CollectionEntry<'projects'>): ProjectListItem => ({
     id: item.id,
     title: item.data.title,
-    image: item.data.image,
+    image: item.data.images[0] ?? null,
     shortDescription: item.data.short_description,
     date: item.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }),
     company: item.data.company,
@@ -24,7 +24,7 @@ const buildItemFromEntry = (item: CollectionEntry<'projects'>): ProjectListItem 
 const buildDetailsFromEntry = (item: CollectionEntry<'projects'>, content: AstroComponentFactory): ProjectDetails => ({
     id: item.id,
     title: item.data.title,
-    image: item.data.image,
+    images: item.data.images,
     date: item.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }),
     company: item.data.company,
     tags: item.data.tags,
