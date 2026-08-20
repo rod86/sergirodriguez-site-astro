@@ -2,8 +2,8 @@ import type { ImageMetadata } from 'astro';
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 
 type Image = {
+    image: ImageMetadata;
     text?: string;
-    image: ImageMetadata | null;
 };
 
 export type ProjectListItem = {

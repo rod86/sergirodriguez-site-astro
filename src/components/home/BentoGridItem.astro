@@ -45,8 +45,8 @@ const viewClasses = [
 ---
 
 <a href={`/portfolio/${project.id}`} class:list={itemClasses}>
-    {(project.image && project.image.image) && (
-        <Image src={project.image!.image} alt={`${project.title} thumbnail`} class:list={imageClasses} />
+    {project.image && (
+        <Image src={project.image.image} alt={`${project.title} thumbnail`} class:list={imageClasses} />
     )}
     <div class:list={overlayClasses}></div>
     <div class:list={innerContentClasses}>

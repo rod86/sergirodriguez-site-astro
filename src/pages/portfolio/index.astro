@@ -22,8 +22,8 @@ const projects = await projectsContentProvider.getProjects();
                                 i % 2 === 1 && 'md:order-2',
                             ]}
                         >
-                            {(project.image && project.image.image) && (
-                                <Image src={project.image!.image} alt={project.title} class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
+                            {project.image && (
+                                <Image src={project.image.image} alt={project.title} class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
                             )}
                         </a>
                         <div class:list={['lg:max-w-md', i % 2 === 1 && 'lg:order-1']}>
