@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 
 type Image = {
-    text: string;
+    text?: string;
     image: ImageMetadata | null;
 };
 

@@ -2,7 +2,8 @@
 title: Zoobarcelona
 date: 2010-07-01
 company: Opus5
-image: ./img/zoobarcelona.jpg
+images:
+  - image: ./img/zoobarcelona.jpg
 tags: ['TYPO3']
 short_description: Website for Barcelona Zoo
 ---
