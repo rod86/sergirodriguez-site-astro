@@ -4,6 +4,7 @@ import {Image} from 'astro:assets';
 import { projectsContentProvider } from "@lib/projects";
 import {Icon} from "astro-icon/components";
 import BadgeList from "@components/common/BadgeList.astro";
+import ImageCarousel from "@components/portfolio/ImageCarousel.astro";
 
 export async function getStaticPaths() {
     const projects = await projectsContentProvider.getProjects();
@@ -51,10 +52,8 @@ const {
 
             <!-- RIGHT: image -->
             {(images && images.length > 1) && (
-                <div class="flex w-113.25 max-w-full snap-x snap-mandatory gap-4 mx-auto overflow-x-auto overflow-y-hidden rounded-2xl border border-stroke lg:my-auto">
-                    {images.filter((img) => img.image).map((img) => (
-                        <Image src={img.image} alt={img.text ?? title} class="h-68.5 w-full flex-none snap-center object-cover"/>
-                    ))}
+                <div class="flex w-113.25 max-w-full mx-auto lg:my-auto">
+                    <ImageCarousel images={images} />
                 </div>
             )}
             {(images && images.length === 1) && (
@@ -81,4 +80,5 @@ const {
             </div>
         )}
     </section>
+    <div class="aaaa">aaaa</div>
 </Layout>

@@ -100,4 +100,44 @@
   .link-arrow-left:hover .link-arrow-icon {
     @apply -translate-x-1;
   }
+
+  /* Project image*/
+  .project-image-width {
+
+  }
+
+  /* Carousel */
+  .embla {
+    @apply max-w-3xl m-auto;
+  }
+  .embla__viewport {
+    @apply overflow-hidden;
+  }
+  .embla__container {
+    @apply flex w-113.25 -ml-4 touch-pan-y touch-pinch-zoom;
+  }
+  .embla__slide {
+    @apply transform-gpu grow-0 shrink-0 basis-full min-w-0 pl-4;
+  }
+  .embla__slide > img {
+    @apply h-68.5 w-full rounded-2xl border border-stroke;
+  }
+  .embla__thumbs {
+    @apply mt-4;
+  }
+  .embla-thumbs__viewport {
+    @apply overflow-hidden;
+  }
+  .embla-thumbs__container {
+    @apply flex flex-row -ml-4 gap-4;
+  }
+  .embla-thumbs__slide {
+    @apply grow-0 shrink-0 basis-[22%] min-w-0 rounded-md border-2 border-stroke opacity-60 transition cursor-pointer hover:opacity-100 hover:border-primary-bright;
+  }
+  .embla-thumbs__slide > img {
+    @apply rounded-md;
+  }
+  .embla-thumbs__slide--selected {
+    @apply opacity-100 border-primary-bright;
+  }
 }
