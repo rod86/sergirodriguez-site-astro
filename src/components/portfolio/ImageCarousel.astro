@@ -51,6 +51,16 @@ const { images } = Astro.props;
             });
         });
     }
+    const toggleThumbActive = (mainCarousel: EmblaCarouselType, thumbsCarousel: EmblaCarouselType) => {
+        mainCarousel.on("select", () => {
+            const previous = mainCarousel.previousScrollSnap();
+            const next = mainCarousel.selectedScrollSnap();
+            const slideNodes = thumbsCarousel.slideNodes();
+            slideNodes[previous].classList.remove(THUMBNAILS_SELECTED_CLASS);
+            slideNodes[next].classList.add(THUMBNAILS_SELECTED_CLASS);
+            thumbsCarousel.scrollTo(next);
+        });
+    };
 
     const mainCarouselElem = document.querySelector(".embla__viewport") as HTMLElement;
     const thumbCarouselElem = document.querySelector(".embla-thumbs__viewport") as HTMLElement;
@@ -60,4 +70,5 @@ const { images } = Astro.props;
         dragFree: true,
     });
     addThumbClickHandlers(mainCarousel, thumbsCarousel);
+    toggleThumbActive(mainCarousel, thumbsCarousel);
 </script>
