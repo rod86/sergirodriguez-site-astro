@@ -43,11 +43,25 @@ const { images } = Astro.props;
 </div>
 
 <script>
-    import EmblaCarousel, {type EmblaCarouselType} from "embla-carousel";
+    import EmblaCarousel from "embla-carousel";
 
     const THUMBNAILS_SELECTED_CLASS = "embla-thumbs__slide--selected";
 
-    const onClickThumbnail = (mainCarousel: EmblaCarouselType, thumbsCarousel: EmblaCarouselType) => {
+    const initCarousel = (
+        mainCarouselElem: HTMLElement,
+        thumbsCarouselElem: HTMLElement,
+        nextButton: HTMLButtonElement,
+        prevButton: HTMLButtonElement,
+    ) => {
+        const mainCarousel = EmblaCarousel(mainCarouselElem);
+        const thumbsCarousel = EmblaCarousel(thumbsCarouselElem, {
+            containScroll: 'keepSnaps',
+            dragFree: true,
+        });
+
+        nextButton.addEventListener("click", () =>  mainCarousel.scrollNext());
+        prevButton.addEventListener("click", () => mainCarousel.scrollPrev());
+
         const slideNodes = thumbsCarousel.slideNodes();
         slideNodes.forEach((slideNode, index) => {
             slideNode.addEventListener("click", () => {
@@ -56,13 +70,7 @@ const { images } = Astro.props;
                 slideNode.classList.add(THUMBNAILS_SELECTED_CLASS);
             });
         });
-    }
-    const onChangeCarouselSlide = (
-        mainCarousel: EmblaCarouselType,
-        thumbsCarousel: EmblaCarouselType,
-        prevButton: HTMLButtonElement,
-        nextButton: HTMLButtonElement
-    ) => {
+
         const totalSlides = mainCarousel.slideNodes().length;
         mainCarousel.on("select", () => {
             const previous = mainCarousel.previousScrollSnap();
@@ -75,21 +83,10 @@ const { images } = Astro.props;
             nextButton.disabled = (next+1) === totalSlides
         });
     };
-    const onClickNextPrev = (mainCarousel: EmblaCarouselType, next: HTMLElement, prev: HTMLElement) => {
-        next.addEventListener("click", () =>  mainCarousel.scrollNext());
-        prev.addEventListener("click", () => mainCarousel.scrollPrev());
-    };
 
     const mainCarouselElem = document.querySelector(".embla__viewport") as HTMLElement;
     const thumbCarouselElem = document.querySelector(".embla-thumbs__viewport") as HTMLElement;
-    const prevElem = document.querySelector('.embla__previous') as HTMLButtonElement;
-    const nextElem = document.querySelector('.embla__next') as HTMLButtonElement;
-    const mainCarousel = EmblaCarousel(mainCarouselElem);
-    const thumbsCarousel = EmblaCarousel(thumbCarouselElem, {
-        containScroll: 'keepSnaps',
-        dragFree: true,
-    });
-    onClickThumbnail(mainCarousel, thumbsCarousel);
-    onChangeCarouselSlide(mainCarousel, thumbsCarousel, prevElem, nextElem);
-    onClickNextPrev(mainCarousel, nextElem, prevElem);
+    const prevButton = document.querySelector('.embla__previous') as HTMLButtonElement;
+    const nextButton = document.querySelector('.embla__next') as HTMLButtonElement;
+    initCarousel(mainCarouselElem, thumbCarouselElem, nextButton, prevButton);
 </script>
