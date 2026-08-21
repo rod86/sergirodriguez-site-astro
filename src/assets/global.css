@@ -114,10 +114,10 @@
     @apply overflow-hidden relative;
   }
   .embla__container {
-    @apply flex w-113.25 touch-pan-y touch-pinch-zoom; /* -ml-4 */
+    @apply flex gap-4 w-113.25 touch-pan-y touch-pinch-zoom;
   }
   .embla__slide {
-    @apply transform-gpu grow-0 shrink-0 basis-full min-w-0; /* pl-4 */
+    @apply transform-gpu grow-0 shrink-0 basis-full min-w-0;
   }
   .embla__slide > img {
     @apply h-68.5 w-full rounded-2xl border border-stroke;
