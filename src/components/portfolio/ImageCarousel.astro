@@ -37,13 +37,27 @@ const { images } = Astro.props;
 </div>
 
 <script>
-    import EmblaCarousel from "embla-carousel";
+    import EmblaCarousel, {type EmblaCarouselType} from "embla-carousel";
+
+    const THUMBNAILS_SELECTED_CLASS = "embla-thumbs__slide--selected";
+
+    const addThumbClickHandlers = (mainCarousel: EmblaCarouselType, thumbsCarousel: EmblaCarouselType) => {
+        const slideNodes = thumbsCarousel.slideNodes();
+        slideNodes.forEach((slideNode, index) => {
+            slideNode.addEventListener("click", () => {
+                mainCarousel.scrollTo(index, false);
+                slideNodes.forEach(node => node.classList.remove(THUMBNAILS_SELECTED_CLASS));
+                slideNode.classList.add(THUMBNAILS_SELECTED_CLASS);
+            });
+        });
+    }
 
     const mainCarouselElem = document.querySelector(".embla__viewport") as HTMLElement;
     const thumbCarouselElem = document.querySelector(".embla-thumbs__viewport") as HTMLElement;
-    EmblaCarousel(mainCarouselElem);
-    EmblaCarousel(thumbCarouselElem, {
+    const mainCarousel = EmblaCarousel(mainCarouselElem);
+    const thumbsCarousel = EmblaCarousel(thumbCarouselElem, {
         containScroll: 'keepSnaps',
         dragFree: true,
     });
+    addThumbClickHandlers(mainCarousel, thumbsCarousel);
 </script>

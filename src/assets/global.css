@@ -129,13 +129,10 @@
     @apply overflow-hidden;
   }
   .embla-thumbs__container {
-    @apply flex flex-row -ml-4 gap-4;
+    @apply flex flex-row gap-4;
   }
   .embla-thumbs__slide {
-    @apply grow-0 shrink-0 basis-[22%] min-w-0 rounded-md border-2 border-stroke opacity-60 transition cursor-pointer hover:opacity-100 hover:border-primary-bright;
-  }
-  .embla-thumbs__slide > img {
-    @apply rounded-md;
+    @apply overflow-hidden grow-0 shrink-0 basis-[25%] min-w-0 rounded-md border-2 border-stroke opacity-60 transition cursor-pointer hover:opacity-100 hover:border-primary-bright;
   }
   .embla-thumbs__slide--selected {
     @apply opacity-100 border-primary-bright;
