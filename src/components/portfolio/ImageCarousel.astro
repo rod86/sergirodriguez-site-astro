@@ -58,26 +58,27 @@ const { images } = Astro.props;
             containScroll: 'keepSnaps',
             dragFree: true,
         });
+        const thumbsSlidesNodes = thumbsCarousel.slideNodes();
+
+        const selectThumbSlide = (index: number) => {
+            thumbsSlidesNodes.forEach(node => node.classList.remove(THUMBNAILS_SELECTED_CLASS));
+            thumbsSlidesNodes[index].classList.add(THUMBNAILS_SELECTED_CLASS);
+        }
 
         nextButton.addEventListener("click", () =>  mainCarousel.scrollNext());
         prevButton.addEventListener("click", () => mainCarousel.scrollPrev());
 
-        const slideNodes = thumbsCarousel.slideNodes();
-        slideNodes.forEach((slideNode, index) => {
+        thumbsSlidesNodes.forEach((slideNode, index) => {
             slideNode.addEventListener("click", () => {
                 mainCarousel.scrollTo(index, false);
-                slideNodes.forEach(node => node.classList.remove(THUMBNAILS_SELECTED_CLASS));
-                slideNode.classList.add(THUMBNAILS_SELECTED_CLASS);
+                selectThumbSlide(index);
             });
         });
 
         const totalSlides = mainCarousel.slideNodes().length;
         mainCarousel.on("select", () => {
-            const previous = mainCarousel.previousScrollSnap();
             const next = mainCarousel.selectedScrollSnap();
-            const slideNodes = thumbsCarousel.slideNodes();
-            slideNodes[previous].classList.remove(THUMBNAILS_SELECTED_CLASS);
-            slideNodes[next].classList.add(THUMBNAILS_SELECTED_CLASS);
+            selectThumbSlide(next);
             thumbsCarousel.scrollTo(next);
             prevButton.disabled = next === 0;
             nextButton.disabled = (next+1) === totalSlides

@@ -1,7 +1,7 @@
 ---
 title: MC Blueprints
 date: 2015-07-01
-slider:
+images:
   - image: ./img/mcblueprints/home.png
     text: Blueprints list
   - image: ./img/mcblueprints/detail.png
