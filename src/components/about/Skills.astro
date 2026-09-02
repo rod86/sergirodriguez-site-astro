@@ -4,7 +4,6 @@ import BadgeList from "@components/common/BadgeList.astro";
 type SkillsGroup = {
     title: string;
     skills: string[];
-    isFullWidth?: boolean;
 }
 
 interface Props {
@@ -14,11 +13,12 @@ interface Props {
 const { groups } = Astro.props;
 
 ---
-<div class="grid items-start gap-x-6 gap-y-3.5 md:grid-cols-[auto_1fr]">
-    {groups.map(({title, skills}) => (
-        <>
-            <p class="text-sm font-medium text-light">{title}</p>
-            <BadgeList list={skills} />
-        </>
-    ))}
-</div>
+
+{groups.map(({title, skills}) => (
+    <div class="grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-[13rem_1fr] my-5">
+        <p class="text-sm font-medium text-light leading-relaxed">{title}</p>
+        <BadgeList list={skills} />
+    </div>
+))}
+
+

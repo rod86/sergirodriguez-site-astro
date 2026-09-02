@@ -34,12 +34,54 @@ export default {
         {
             title: 'Architecture & Testing',
             skills: ['REST API', 'Clean Code', 'Domain-Driven Design', 'Hexagonal', 'Test-Driven Development', 'CI/CD', 'AI/Spec-Driven Development'],
-            isFullWidth: true,
         },
         {
             title: 'Methodologies & Soft Skills',
             skills: ['Agile', 'Peer Mentoring', 'Continuous Learner', 'Team Player'],
-            isFullWidth: true,
         }
+    ],
+    workExperiences: [
+        {
+            position: 'NodeJS/Python Developer',
+            company: 'Leadtech',
+            location: 'Barcelona, Spain',
+            startDate: '11/2023',
+            endDate: '05/2026',
+        },
+        {
+            position: 'Backend Developer',
+            company: 'Leadtech',
+            location: 'Barcelona, Spain',
+            startDate: '04/2022',
+            endDate: '11/2023',
+        },
+        {
+            position: 'Flutter Developer',
+            company: 'Leadtech',
+            location: 'Barcelona, Spain',
+            startDate: '11/2020',
+            endDate: '04/2022',
+        },
+        {
+            position: 'Backend Developer',
+            company: 'Leadtech',
+            location: 'Barcelona, Spain',
+            startDate: '11/2018',
+            endDate: '11/2020',
+        },
+        {
+            position: 'Web Developer',
+            company: 'Localgiving',
+            location: 'London, UK',
+            startDate: '12/2016',
+            endDate: '08/2018',
+        },
+        {
+            position: 'PHP Developer',
+            company: 'Opera Mediaworks',
+            location: 'London, UK',
+            startDate: '11/2014',
+            endDate: '06/2016',
+        },
     ]
 };

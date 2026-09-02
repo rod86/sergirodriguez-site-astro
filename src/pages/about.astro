@@ -5,6 +5,7 @@ import aboutImg from '@assets/img/aboutme.jpg';
 import {Icon} from "astro-icon/components";
 import config from '@config';
 import Skills from "@components/about/Skills.astro";
+import WorkExperience from "@components/about/WorkExperience.astro";
 ---
 
 <Layout title="About Me" description="About Sergi Rodriguez, Full Stack Developer with 10+ years of experience.">
@@ -28,6 +29,10 @@ import Skills from "@components/about/Skills.astro";
 			    <div class="mt-10">
 				    <h2 class="mb-6">Skills &amp; Tools</h2>
 			        <Skills groups={config.skillsGroups} />
+			    </div>
+			    <div class="mt-10">
+			        <h2 class="mb-6">Experience</h2>
+			        <WorkExperience workExperiences={config.workExperiences} />
 			    </div>
 			</div>
 

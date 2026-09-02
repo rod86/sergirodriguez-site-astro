@@ -1,0 +1,36 @@
+---
+
+type WorkExperience = {
+    position: string;
+    company: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+}
+
+interface Props {
+    workExperiences: WorkExperience[];
+}
+
+const { workExperiences } = Astro.props;
+
+const formatDate = (value: string): string => {
+    const [month, year] = value.split('/').map(Number);
+    const date = new Date(year, month - 1);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+---
+
+{workExperiences.map((experience) => (
+    <div class="grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-[13rem_1fr] my-5">
+        <p class="whitespace-nowrap text-sm leading-relaxed text-muted">{formatDate(experience.startDate)} — {formatDate(experience.endDate)}</p>
+        <div>
+            <h3 class="text-base font-semibold text-ink">{experience.position}</h3>
+            <p class="mt-1 text-sm text-muted">{experience.company} · {experience.location}</p>
+        </div>
+    </div>
+))}
+
+
+
