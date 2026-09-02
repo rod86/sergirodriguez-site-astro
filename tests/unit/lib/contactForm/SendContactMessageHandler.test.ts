@@ -34,6 +34,13 @@ describe('Send Contact Message Handler', () => {
         ).rejects.toThrow(new Error('Failed to send a contact message', { cause: originalError }));
     });
 
+    it('fails to send a message when terms are accepted (honeypot)', async () => {
+        await expect(
+            handler.invoke({ ...contactData, terms: true })
+        ).rejects.toThrow(new Error('Failed to send a contact message'));
+        expect(contactMessageMock.sendMessage).not.toHaveBeenCalled();
+    });
+
     it.each<[string, unknown]>([
         ['Empty object', {}],
         ['Invalid email', { ...contactData, email: 'invalid-email' }],

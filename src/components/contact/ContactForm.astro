@@ -34,6 +34,10 @@ const { className } = Astro.props;
         <textarea id="message" name="message" rows="4" required class="form-input resize-none"
             placeholder="Tell me about your project…"></textarea>
     </div>
+    <div class="hidden">
+        <input type="checkbox" name="terms" id="terms" class="form-checkbox" />
+        <label for="terms"> I accept the <a href="/privacy">Terms of Service</a></label>
+    </div>
     <button id="submit-button" type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
         <span class="submit-label inline-flex items-center gap-2">
             Send Message
@@ -81,11 +85,14 @@ const { className } = Astro.props;
         successAlert.classList.add('hidden');
         errorAlert.classList.add('hidden');
 
+        console.log();
+
         try {
             await sendContactFormMessageHandler.invoke({
                 name: (form.elements.namedItem('name') as HTMLInputElement).value,
                 email: (form.elements.namedItem('email') as HTMLInputElement).value,
                 message: (form.elements.namedItem('message') as HTMLInputElement).value,
+                terms: (form.elements.namedItem('terms') as HTMLInputElement).checked,
             });
             showAlert(true);
             form.reset();

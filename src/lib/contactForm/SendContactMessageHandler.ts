@@ -12,6 +12,7 @@ export type SendContactMessageRequest = {
     name?: string;
     email?: string;
     message?: string;
+    terms?: boolean;
 }
 
 export class SendContactMessageHandler {
@@ -23,6 +24,10 @@ export class SendContactMessageHandler {
         const validation = contactDataSchema.safeParse(data);
         if (!validation.success) {
             throw new Error('Please fill in all fields correctly');
+        }
+
+        if (data.terms !== undefined && data.terms) {
+            throw new Error('Failed to send a contact message');
         }
 
         try {
