@@ -70,7 +70,7 @@
 @layer components {
   /* Layout */
   .page-container {
-    @apply mx-auto max-w-6xl px-10 pt-10 pb-16 lg:pt-14 lg:pb-20;
+    @apply mx-auto max-w-6xl px-10 pt-10 pb-20 lg:pt-14;
   }
 
   /* Buttons */
