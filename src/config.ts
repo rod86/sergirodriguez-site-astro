@@ -8,5 +8,11 @@ export default {
 
     web3Forms: {
         accessToken:  import.meta.env.PUBLIC_WEB3FORMS_ACCESS_TOKEN,
-    }
+    },
+    featuredProjects: [
+        'ai-prompts-vault-api',
+        'learning-hub',
+        'symfony-auctions-api',
+        'lunchbox',
+    ],
 } as const;

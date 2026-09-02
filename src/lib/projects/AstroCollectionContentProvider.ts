@@ -19,7 +19,7 @@ export class AstroCollectionContentProvider implements ContentProviderInterface 
         }));
     }
 
-    async getFeaturedProjects(ids: string[]): Promise<ProjectListItem[]> {
+    async getFeaturedProjects(ids: readonly string[]): Promise<ProjectListItem[]> {
         const projects = (await getCollection('projects',
             ({ id }) => ids.includes(id)
         )) as CollectionEntry<'projects'>[];

@@ -25,6 +25,6 @@ export type ProjectDetails = Omit<ProjectListItem, 'shortDescription' | 'image'>
 
 export interface ContentProviderInterface {
     getProjects: () => Promise<ProjectListItem[]>;
-    getFeaturedProjects: (ids: string[]) => Promise<ProjectListItem[]>;
+    getFeaturedProjects: (ids: readonly string[]) => Promise<ProjectListItem[]>;
     getProjectDetails: (id: string) => Promise<ProjectDetails>;
 }

@@ -73,6 +73,10 @@
     @apply mx-auto max-w-6xl px-10 pt-10 pb-20 lg:pt-14;
   }
 
+  .text-content a {
+    @apply hover:text-primary-bright hover:underline;
+  }
+
   /* Buttons */
   .button {
     @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-bright;
