@@ -18,7 +18,7 @@ const projects = await projectsContentProvider.getProjects();
                         <a
                             href={`/portfolio/${project.id}`}
                             class:list={[
-                                'flex w-90 h-54.5 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke lg:w-113.25 lg:h-68.5',
+                                'flex w-90 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke md:h-54.5 lg:w-113.25 lg:h-68.5',
                                 i % 2 === 1 && 'md:order-2',
                             ]}
                         >
