@@ -3,7 +3,8 @@ import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import aboutImg from '@assets/img/aboutme.jpg';
 import {Icon} from "astro-icon/components";
-import BadgeList from "@components/common/BadgeList.astro";
+import config from '@config';
+import Skills from "@components/about/Skills.astro";
 ---
 
 <Layout title="About Me" description="About Sergi Rodriguez, Full Stack Developer with 10+ years of experience.">
@@ -26,33 +27,7 @@ import BadgeList from "@components/common/BadgeList.astro";
 			    </div>
 			    <div class="mt-10">
 				    <h2>Skills &amp; Tools</h2>
-				    <div class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Languages</p>
-			                <BadgeList list={['TypeScript' , 'PHP', 'Python']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Frontend</p>
-			                <BadgeList list={['HTML/CSS', 'Tailwind CSS', 'Bootstrap', 'React']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Backend</p>
-			                <BadgeList list={['NodeJS', 'Express', 'Symfony', 'Laravel']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Infra &amp; Data</p>
-			                <BadgeList list={['MySQL', 'PostgreSQL' , 'Docker', 'AWS', 'Google Cloud']} />
-				        </div>
-				        <div class="sm:col-span-2">
-				            <p class="mb-3 text-sm font-medium text-light">Architecture &amp; Testing</p>
-			                <BadgeList list={['REST API', 'Clean Code', 'Domain-Driven Design', 'Hexagonal', 'Test-Driven Development', 'CI/CD', 'AI/Spec-Driven Development']} />
-
-				        </div>
-				        <div class="sm:col-span-2">
-				            <p class="mb-3 text-sm font-medium text-light">Methodologies &amp; Soft Skills</p>
-			                <BadgeList list={['Agile', 'Peer Mentoring', 'Continuous Learner', 'Team Player']} />
-				        </div>
-				    </div>
+			        <Skills groups={config.skillsGroups} />
 			    </div>
 			</div>
 

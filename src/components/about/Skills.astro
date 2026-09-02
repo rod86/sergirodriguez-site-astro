@@ -1,0 +1,24 @@
+---
+import BadgeList from "@components/common/BadgeList.astro";
+
+type SkillsGroup = {
+    title: string;
+    skills: string[];
+    isFullWidth?: boolean;
+}
+
+interface Props {
+    groups: SkillsGroup[];
+}
+
+const { groups } = Astro.props;
+
+---
+<div class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+    {groups.map(({title, skills, isFullWidth}) => (
+        <div class:list={[{'sm:col-span-2': isFullWidth}]}>
+            <p class="mb-3 text-sm font-medium text-light">{title}</p>
+            <BadgeList list={skills} />
+        </div>
+    ))}
+</div>
