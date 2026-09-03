@@ -2,13 +2,9 @@
 import Image from "astro/components/Image.astro";
 import logoImg from "@assets/img/logo.png";
 import { Icon } from "astro-icon/components";
+import config from '@config';
 
-const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/about', label: 'About Me' },
-    { href: '/contact', label: 'Contact' },
-];
+const { mainNavItems: navLinks} = config;
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
