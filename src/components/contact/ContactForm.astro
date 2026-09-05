@@ -38,7 +38,7 @@ const { className } = Astro.props;
         <input type="checkbox" name="terms" id="terms" class="form-checkbox" />
         <label for="terms"> I accept the <a href="/privacy">Terms of Service</a></label>
     </div>
-    <button id="submit-button" type="submit" class="button mt-2 justify-center px-8 py-4 text-base">
+    <button id="submit-button" type="submit" class="button mt-2 justify-center px-8 py-4 text-base cursor-pointer">
         <span class="submit-label inline-flex items-center gap-2">
             Send Message
             <Icon name="lucide:arrow-right" class="h-5 w-5"/>
@@ -84,8 +84,6 @@ const { className } = Astro.props;
         setLoading(true);
         successAlert.classList.add('hidden');
         errorAlert.classList.add('hidden');
-
-        console.log();
 
         try {
             await sendContactFormMessageHandler.invoke({
