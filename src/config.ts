@@ -35,7 +35,7 @@ export default {
         },
         {
             title: 'Infrastructure & Data',
-            skills: ['MySQL', 'PostgreSQL' , 'Docker', 'AWS', 'Google Cloud']
+            skills: ['MySQL', 'PostgreSQL' , 'Docker', 'AWS', 'Google Cloud', 'RabbitMQ']
         },
         {
             title: 'Architecture & Testing',
