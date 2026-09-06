@@ -1,16 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Image } from 'astro:assets';
-import {getProjectsList} from "@lib/projects/astroCollection.ts";
+import { projectsContentProvider } from "@lib/projects";
 import {Icon} from "astro-icon/components";
 import BadgeList from "@components/common/BadgeList.astro";
 
-const projects = await getProjectsList();
+const projects = await projectsContentProvider.getProjects();
 ---
 
-<Layout title="Projects" description="Selected projects by Sergi Rodriguez, Full Stack Developer.">
+<Layout title="Portfolio" description="Selected projects by Sergi Rodriguez, Full Stack Developer.">
     <div class="w-fit mx-auto md:w-auto lg:mx-0">
-        <h1 class="mb-14">Projects</h1>
+        <h1 class="mb-14">Portfolio</h1>
         <section>
             <div class="space-y-16 lg:space-y-24">
                 {projects.map((project, i) => (
@@ -18,11 +18,13 @@ const projects = await getProjectsList();
                         <a
                             href={`/portfolio/${project.id}`}
                             class:list={[
-                                'flex w-90 h-54.5 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke lg:w-113.25 lg:h-68.5',
+                                'flex w-90 max-w-full items-center justify-center overflow-hidden rounded-xl border border-stroke md:h-54.5 lg:w-113.25 lg:h-68.5',
                                 i % 2 === 1 && 'md:order-2',
                             ]}
                         >
-                            <Image src={project.image!} alt={`${project.title} thumbnail`} class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
+                            {project.image && (
+                                <Image src={project.image.image} alt={project.title} class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]" />
+                            )}
                         </a>
                         <div class:list={['lg:max-w-md', i % 2 === 1 && 'lg:order-1']}>
                             <div class="flex flex-col gap-0.5 mb-2 text-xs text-muted">

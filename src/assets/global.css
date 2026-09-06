@@ -56,7 +56,8 @@
   input:-webkit-autofill,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: var(--color-light);
+    transition: background-color 600000s ease-in-out 0s;
   }
   .form-label {
     @apply mb-1.5 block text-xs text-muted;
@@ -69,7 +70,11 @@
 @layer components {
   /* Layout */
   .page-container {
-    @apply mx-auto max-w-6xl px-10 pt-10 pb-16 lg:pt-14 lg:pb-20;
+    @apply mx-auto max-w-6xl px-10 pt-10 pb-20 lg:pt-14;
+  }
+
+  .text-content a {
+    @apply hover:text-primary-bright hover:underline;
   }
 
   /* Buttons */
@@ -98,5 +103,51 @@
   }
   .link-arrow-left:hover .link-arrow-icon {
     @apply -translate-x-1;
+  }
+
+  /* Project image*/
+  .project-image-width {
+
+  }
+
+  /* Carousel */
+  .embla {
+    @apply max-w-3xl w-full min-w-0 m-auto;
+  }
+  .embla__viewport {
+    @apply overflow-hidden relative;
+  }
+  .embla__container {
+    @apply flex gap-4 w-full min-w-0 touch-pan-y touch-pinch-zoom md:w-113.25;
+  }
+  .embla__slide {
+    @apply transform-gpu grow-0 shrink-0 basis-full min-w-0;
+  }
+  .embla__slide > img {
+    @apply w-full rounded-2xl border border-stroke md:h-68.5;
+  }
+  .embla__next, .embla__previous {
+    @apply absolute top-1/2 -translate-y-1/2 w-10 h-10 place-items-center rounded-full bg-surface/70 border border-stroke text-light transition-colors cursor-pointer hover:text-primary-bright hover:border-primary-bright disabled:text-muted/70 disabled:cursor-auto disabled:hover:border-stroke;
+  }
+  .embla__previous {
+    @apply left-3;
+  }
+  .embla__next {
+    @apply right-3;
+  }
+  .embla__thumbs {
+    @apply mt-4;
+  }
+  .embla-thumbs__viewport {
+    @apply overflow-hidden;
+  }
+  .embla-thumbs__container {
+    @apply flex flex-row gap-4;
+  }
+  .embla-thumbs__slide {
+    @apply overflow-hidden grow-0 shrink-0 basis-[25%] min-w-0 rounded-md border-2 border-stroke opacity-60 transition cursor-pointer hover:opacity-100 hover:border-primary-bright;
+  }
+  .embla-thumbs__slide--selected {
+    @apply opacity-100 border-primary-bright;
   }
 }

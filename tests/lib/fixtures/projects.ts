@@ -17,7 +17,12 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'Budget Tracker App',
             date: new Date('2024-06-03'),
             company: null,
-            image: imageFixture('budget-tracker-app'),
+            images: [
+                { text: 'Dashboard', image: imageFixture('budget-tracker-app/dashboard') },
+                { text: 'Expenses List', image: imageFixture('budget-tracker-app/expenses-list') },
+                { text: 'Expense Form', image: imageFixture('budget-tracker-app/expenses-form') },
+                { text: 'App Settings', image: imageFixture('budget-tracker-app/app-settings') },
+            ],
             url: null,
             github_url: 'https://github.com/rod86/budget-tracker-app',
             tags: ['Vue', 'NodeJS', 'MongoDB'],
@@ -33,7 +38,9 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'Cloud Notes Sync',
             date: new Date('2022-11-15'),
             company: null,
-            image: imageFixture('cloud-notes-sync'),
+            images: [
+                { text: 'Cloud Notes Sync screenshot', image: imageFixture('cloud-notes-sync') }
+            ],
             url: null,
             github_url: 'https://github.com/rod86/cloud-notes-sync',
             tags: ['React', 'Firebase', 'TypeScript'],
@@ -49,7 +56,9 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'Habit Tracker PWA',
             date: new Date('2020-04-20'),
             company: null,
-            image: imageFixture('habit-tracker-pwa'),
+            images: [
+                { text: 'Habit Tracker PWA screenshot', image: imageFixture('habit-tracker-pwa') }
+            ],
             url: null,
             github_url: 'https://github.com/rod86/habit-tracker-pwa',
             tags: ['React', 'TypeScript', 'PWA'],
@@ -65,7 +74,7 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'Recipe Finder CLI',
             date: new Date('2021-09-22'),
             company: null,
-            image: imageFixture('recipe-finder-cli'),
+            images: [],
             url: null,
             github_url: 'https://github.com/rod86/recipe-finder-cli',
             tags: ['Python', 'CLI'],
@@ -81,7 +90,9 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'TaskFlow API',
             date: new Date('2020-04-05'),
             company: null,
-            image: imageFixture('task-flow-api'),
+            images: [
+                { text: 'TaskFlow API screenshot', image: imageFixture('task-flow-api') }
+            ],
             url: null,
             github_url: 'https://github.com/rod86/task-flow-api',
             tags: ['NodeJS', 'Express', 'PostgreSQL'],
@@ -97,7 +108,9 @@ export const projectsFixture: CollectionEntry<'projects'>[] = [
             title: 'Weather Dashboard',
             date: new Date('2023-08-10'),
             company: null,
-            image: imageFixture('weather-dashboard'),
+            images: [
+                { text: 'Weather Dashboard screenshot', image: imageFixture('weather-dashboard') }
+            ],
             url: null,
             github_url: 'https://github.com/rod86/weather-dashboard',
             tags: ['React', 'TypeScript', 'D3.js'],

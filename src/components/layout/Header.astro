@@ -2,13 +2,9 @@
 import Image from "astro/components/Image.astro";
 import logoImg from "@assets/img/logo.png";
 import { Icon } from "astro-icon/components";
+import config from '@config';
 
-const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/portfolio', label: 'Projects' },
-    { href: '/about', label: 'About Me' },
-    { href: '/contact', label: 'Contact' },
-];
+const { mainNavItems: navLinks} = config;
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -16,9 +12,9 @@ const isActive = (href: string) =>
 ---
 
 <header class="sticky top-0 z-50 bg-background-alternate/60 backdrop-blur">
-    <nav class="page-container flex items-center justify-between py-3">
+    <nav class="page-container flex items-center justify-between py-1.5 md:py-3">
         <a href="/" class="inline-flex items-center" aria-label="Sergi Rodriguez — home">
-            <Image src={logoImg} alt="Sergi Rodriguez" class="h-18 w-auto" />
+            <Image src={logoImg} alt="Sergi Rodriguez" class="h-15 w-auto md:h-18" />
         </a>
         <div class="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (

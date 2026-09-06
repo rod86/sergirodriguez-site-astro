@@ -1,9 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import aboutImg from '@assets/img/aboutme.jpg';
+import aboutImg from '@assets/img/laptop-photo.jpg';
 import {Icon} from "astro-icon/components";
-import BadgeList from "@components/common/BadgeList.astro";
+import config from '@config';
+import Skills from "@components/about/Skills.astro";
+import WorkExperience from "@components/about/WorkExperience.astro";
 ---
 
 <Layout title="About Me" description="About Sergi Rodriguez, Full Stack Developer with 10+ years of experience.">
@@ -14,52 +16,38 @@ import BadgeList from "@components/common/BadgeList.astro";
 			    <h1 class="mb-6">About Me</h1>
 			    <div class="space-y-4 text-[15px] leading-relaxed text-muted">
 			        <p>
-						I am Sergi Rodriguez, a web developer specialised in HTML5, CSS3, jQuery, Responsive web design and PHP.
+						I am Sergi Rodriguez, a software developer specialised in <strong>NodeJS</strong>, <strong>PHP</strong>, <strong>Python</strong> and <strong>React</strong>.
+						I build full stack applications, from REST APIs and automated processes to frontend dashboards.
 			        </p>
 			        <p>
-						I am self-motivated, hard worker with a "can do" attitude and a good team player. I am always keeping myself updated with the latest webs trends reading books and articles.
+						I have studied <strong>Networking and Applications Development</strong> in <strong>Barcelona</strong> where I was introduced to programming languages like <strong>Basic.NET</strong>, <strong>C#.NET</strong>, <strong>ASP 3.0</strong> and <strong>PHP</strong>.
 			        </p>
 			        <p>
-						I have studied training courses about Networking and Applications Development in Barcelona where I was introduced to networking and programing languages like Basic.Net, C#.Net, ASP 3.0 and PHP.
-						Finally I ended starting to work with open source web technologies like PHP and MySQL in several companies in Barcelona, most of them digital agencies. During this period, I changed job a few times and I learned different ways to work and adapt to different types and sizes of teams.
+						I started my career in Barcelona working with <strong>PHP</strong> and <strong>MySQL</strong> in several companies, most of them digital agencies.
+						Five years later, I moved to London, where I grew my skills at different companies including digital agencies, internal marketing tools and a charity platform.
+						After another 5 years, I returned to Barcelona, where I continued building internal products and REST APIs.
+			        </p>
+			        <p>
+						I am a self-motivated hard worker with a "can do" attitude and a good team player.
+						I keep myself updated with the latest trends through books and courses, and I enjoy sharing knowledge and mentoring teammates.
+						Through my experience in many companies, I have learned different ways to work and adapt to different types and sizes of teams.
 			        </p>
 			    </div>
 			    <div class="mt-10">
-				    <h2>Skills &amp; Tools</h2>
-				    <div class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Languages</p>
-			                <BadgeList list={['Javascript', 'JavaScript' , 'PHP', 'Python']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Frontend</p>
-			                <BadgeList list={['HTML', 'CSS' , 'Tailwind CSS', 'Bootstrap', 'React']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Backend</p>
-			                <BadgeList list={['Symfony', 'NodeJS' , 'Express', 'Laravel']} />
-				        </div>
-				        <div>
-				            <p class="mb-3 text-sm font-medium text-light">Infra &amp; Data</p>
-			                <BadgeList list={['MySQL', 'PostgreSQL' , 'Docker', 'AWS', 'Google Cloud']} />
-				        </div>
-				        <div class="sm:col-span-2">
-				            <p class="mb-3 text-sm font-medium text-light">Architecture &amp; Testing</p>
-			                <BadgeList list={['REST API', 'Clean Code', 'SOLID', 'Domain-Driven Design', 'Hexagonal', 'Test-Driven Development', 'CI/CD', 'Spec-Driven Development']} />
-
-				        </div>
-				        <div class="sm:col-span-2">
-				            <p class="mb-3 text-sm font-medium text-light">Methodologies &amp; Soft Skills</p>
-			                <BadgeList list={['Agile', 'Peer Mentoring', 'Continuous Learner', 'Team Player']} />
-				        </div>
-				    </div>
+				    <h2 class="mb-6">Skills &amp; Tools</h2>
+			        <Skills groups={config.skillsGroups} />
+			    </div>
+			    <div class="mt-10">
+			        <h2 class="mb-6">Experience</h2>
+			        <WorkExperience workExperiences={config.workExperiences} />
 			    </div>
 			</div>
 
 			<!-- RIGHT: image -->
 			<div>
 			    <div class="aspect-4/5 overflow-hidden rounded-2xl border border-stroke md:w-90 md:mx-auto lg:w-full lg:mx-0">
-			        <Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
+					<!-- Photo by AltumCode on Unsplash (https://unsplash.com/@altumcode) -->
+					<Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
 			    </div>
 			    <a href="/contact" class="button mt-6 flex justify-center md:w-90 md:mx-auto lg:w-full lg:mx-0">
 					Get in touch

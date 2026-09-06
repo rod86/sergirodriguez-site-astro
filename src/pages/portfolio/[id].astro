@@ -1,12 +1,13 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import {Image} from 'astro:assets';
-import {getProjectDetails, getProjectsList} from "@lib/projects/astroCollection.ts";
+import { projectsContentProvider } from "@lib/projects";
 import {Icon} from "astro-icon/components";
 import BadgeList from "@components/common/BadgeList.astro";
+import ImageCarousel from "@components/portfolio/ImageCarousel.astro";
 
 export async function getStaticPaths() {
-    const projects = await getProjectsList();
+    const projects = await projectsContentProvider.getProjects();
     return projects.map((entry) => ({
         params: {id: entry.id},
         props: {entry},
@@ -22,8 +23,8 @@ const {
     github_url,
     url,
     Content,
-    image
-} = await getProjectDetails(id);
+    images
+} = await projectsContentProvider.getProjectDetails(id);
 ---
 
 <Layout title={title} description={`${title} — a project by Sergi Rodriguez, Full Stack Developer.`}>
@@ -44,15 +45,20 @@ const {
                     <BadgeList list={tags} className="mt-6" />
                 )}
 
-                <div class="mt-8 space-y-4 text-[15px] leading-relaxed text-muted">
+                <div class="mt-8 space-y-4 text-[15px] leading-relaxed text-muted text-content">
                     <Content />
                 </div>
             </div>
 
             <!-- RIGHT: image -->
-            {image && (
+            {(images && images.length > 1) && (
+                <div class="flex w-113.25 max-w-full mx-auto lg:my-auto">
+                    <ImageCarousel images={images} />
+                </div>
+            )}
+            {(images && images.length === 1) && (
                 <div class="flex w-113.25 max-w-full items-center justify-center mx-auto overflow-hidden rounded-2xl border border-stroke lg:my-auto">
-                    <Image src={image} alt={`${title} — dashboard screenshot`} class="h-68.5 w-full object-cover"/>
+                    <Image src={images[0].image} alt={images[0].text ?? title} class="w-full md:h-68.5 md:object-cover"/>
                 </div>
             )}
         </div>
@@ -62,13 +68,13 @@ const {
                 {url && (
                     <a href={url} target="_blank" rel="noopener" class="button">
                         <Icon name="lucide:external-link" class="h-4 w-4" />
-                        View Project
+                        Live Demo
                     </a>
                 )}
                 {github_url && (
                     <a href={github_url} target="_blank" rel="noopener" class="button-outlined">
                         <Icon name="simple-icons:github" class="h-4 w-4" />
-                        GitHub Repository
+                        Source Code
                     </a>
                 )}
             </div>
