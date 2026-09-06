@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import aboutImg from '@assets/img/aboutme.jpg';
+import aboutImg from '@assets/img/laptop-photo.jpg';
 import {Icon} from "astro-icon/components";
 import config from '@config';
 import Skills from "@components/about/Skills.astro";
@@ -46,7 +46,8 @@ import WorkExperience from "@components/about/WorkExperience.astro";
 			<!-- RIGHT: image -->
 			<div>
 			    <div class="aspect-4/5 overflow-hidden rounded-2xl border border-stroke md:w-90 md:mx-auto lg:w-full lg:mx-0">
-			        <Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
+					<!-- Photo by AltumCode on Unsplash (https://unsplash.com/@altumcode) -->
+					<Image src={aboutImg} alt="Portrait of Sergi Rodriguez" class="h-full w-full object-cover" />
 			    </div>
 			    <a href="/contact" class="button mt-6 flex justify-center md:w-90 md:mx-auto lg:w-full lg:mx-0">
 					Get in touch
