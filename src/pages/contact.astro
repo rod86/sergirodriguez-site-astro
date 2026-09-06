@@ -11,13 +11,14 @@ import config from "@config";
             <h1>Let's keep in touch</h1>
             <p class="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
                 I'm always open to discussing new projects or opportunities to collaborate.<br/>
-                Reach out via LinkedIn, GitHub, or the form below.
+                Reach out via LinkedIn, GitHub, email, or the form below.
             </p>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2">
             <div class="flex flex-col gap-5">
-                <SocialLink label="LinkedIn" href={config.linkedin} displayUrl="linkedin.com/in/sergirodriguez86" icon="simple-icons:linkedin" />
-                <SocialLink label="GitHub" href={config.github} displayUrl="github.com/rod86" icon="simple-icons:github" />
+                <SocialLink label="LinkedIn" href={config.linkedin} displayUrl="linkedin.com/in/sergirodriguez86" icon="simple-icons:linkedin" isExternal />
+                <SocialLink label="GitHub" href={config.github} displayUrl="github.com/rod86" icon="simple-icons:github" isExternal />
+                <SocialLink label="Email" href={`mailto:${config.siteEmail}`} displayUrl={config.siteEmail} icon="lucide:mail" />
             </div>
             <ContactForm className="flex flex-col gap-6" />
         </div>

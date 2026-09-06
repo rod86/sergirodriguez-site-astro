@@ -5,11 +5,18 @@ interface Props {
     icon: string;
     label: string;
     displayUrl: string;
+    isExternal?: boolean;
 }
-const { href, icon, label, displayUrl} = Astro.props;
+const {
+    href,
+    icon,
+    label,
+    displayUrl,
+    isExternal = false,
+} = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-xl border border-stroke bg-surface p-6 text-light hover:border-primary/60">
+<a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined} class="group flex items-center gap-4 rounded-xl border border-stroke bg-surface p-6 text-light hover:border-primary/60">
     <span class="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-background text-secondary">
         <Icon name={icon} class="h-6 w-6" />
     </span>

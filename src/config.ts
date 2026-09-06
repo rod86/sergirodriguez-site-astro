@@ -1,7 +1,7 @@
 
 export default {
     siteDomain: "sergirodriguez.dev",
-    siteEmail: "webmaster@sergirodriguez.dev",
+    siteEmail: "contact@sergirodriguez.dev",
     title: "Software Developer",
     description: "Sergi Rodriguez — Software Stack Developer with 20+ years building scalable web applications with PHP, NodeJS, TypeScript, Python and React.",
     linkedin: "https://www.linkedin.com/in/sergirodriguez86/",
