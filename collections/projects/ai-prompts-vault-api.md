@@ -3,7 +3,7 @@ title: AI Prompts Vault API
 date: 2026-07-15
 images: 
   - image: ./img/ai-prompts-vault-api.png
-tags: ['NodeJS', 'TypeScript', 'PostgreSQL']
+tags: ['Node.js', 'TypeScript', 'PostgreSQL']
 github_url: https://github.com/rod86/ai-prompts-vault-api
 short_description: REST API for managing AI prompts
 ---

@@ -3,7 +3,7 @@ export default {
     siteDomain: "sergirodriguez.dev",
     siteEmail: "contact@sergirodriguez.dev",
     title: "Software Developer",
-    description: "Sergi Rodriguez — Software Stack Developer with 20+ years building scalable web applications with PHP, NodeJS, TypeScript, Python and React.",
+    description: "Sergi Rodriguez — Software Stack Developer with 20+ years building scalable web applications with PHP, Node.js, TypeScript, Python and React.",
     linkedin: "https://www.linkedin.com/in/sergirodriguez86/",
     github: "https://github.com/rod86",
     web3Forms: {
@@ -32,7 +32,7 @@ export default {
         },
         {
             title: 'Backend',
-            skills: ['NodeJS', 'Express', 'Symfony', 'Laravel'],
+            skills: ['Node.js', 'Express', 'Symfony', 'Laravel'],
         },
         {
             title: 'Infrastructure & Data',
@@ -49,7 +49,7 @@ export default {
     ],
     workExperiences: [
         {
-            position: 'NodeJS/Python Developer',
+            position: 'Node.js/Python Developer',
             company: 'Leadtech',
             location: 'Barcelona, Spain',
             startDate: '11/2023',
