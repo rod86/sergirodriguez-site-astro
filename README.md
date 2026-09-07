@@ -6,7 +6,7 @@ The site is fully static (pages are rendered at build time with zero client-side
 
 ## Tech Stack
 
-- NodeJS v24.16.0
+- Node.js v24.16.0
 - Astro 7
 - Tailwind CSS 4
 - TypeScript

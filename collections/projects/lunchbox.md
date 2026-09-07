@@ -14,7 +14,7 @@ images:
     text: Street Food Stand Form
   - image: ./img/lunchbox/profile-form.png
     text: My Profile
-tags: ['NodeJS', 'MongoDB', 'React', 'Redux', 'Bootstrap']
+tags: ['Node.js', 'MongoDB', 'React', 'Redux', 'Bootstrap']
 github_url: https://github.com/rod86/lunchbox
 short_description: Application to explore nearby street food
 ---
